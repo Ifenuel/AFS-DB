@@ -108,3 +108,9 @@ _pre-sync-backup-*/
 # Vercel project link and local environment
 .vercel/
 .env.local
+
+# Legacy diagram exports and screenshots, superseded by site/assets
+about-*.png
+erd-*.png
+diagrams/
+*.code-workspace
