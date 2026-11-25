@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#060a11">
 <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/app.css?v=76dd2ae4f2">
+<link rel="stylesheet" href="assets/app.css?v=dfd3ac0ab5">
 <link rel="stylesheet" href="assets/nav.css?v=43e61470bd">
 </head>
 <body>
@@ -168,7 +168,12 @@
 
           <text x="380" y="548" text-anchor="middle" fill="#4f6a84" font-size="9.5">46 declared foreign keys, read from sys.foreign_keys. Oracle 26ai Free and MySQL 8.4.9 are separate engines.</text>
         </svg></div>
-        <figcaption>Every database named above exists in the running catalog; counts are exported from
+<div class="arch-mobile">
+          <p class="am-core"><strong>SQL Server 2025</strong><span>AFS instance &middot; one engine</span></p>
+          <ul class="am-list"><li><span class="am-dot" aria-hidden="true"></span><span class="am-name">AFS_CoreBanking</span><span class="am-meta">12 tables · 14 FKs</span><span class="am-tag">ledger · transfers</span></li><li><span class="am-dot" aria-hidden="true"></span><span class="am-name">AFS_Payments</span><span class="am-meta">7 tables · 5 FKs</span><span class="am-tag">payments · settlement</span></li><li><span class="am-dot" aria-hidden="true"></span><span class="am-name">AFS_Fraud</span><span class="am-meta">4 tables · 2 FKs</span><span class="am-tag">rules · alerts · cases</span></li><li><span class="am-dot" aria-hidden="true"></span><span class="am-name">AFS_CustomerService</span><span class="am-meta">5 tables · 4 FKs</span><span class="am-tag">support cases</span></li><li><span class="am-dot" aria-hidden="true"></span><span class="am-name">AFS_Audit</span><span class="am-meta">6 tables · 0 FKs</span><span class="am-tag">append-only events</span></li><li><span class="am-dot" aria-hidden="true"></span><span class="am-name">AFS_Reporting</span><span class="am-meta">7 tables · 2 FKs</span><span class="am-tag">warehouse · marts</span></li><li><span class="am-dot" aria-hidden="true"></span><span class="am-name">AFS_Identity</span><span class="am-meta">7 tables · 7 FKs</span><span class="am-tag">grants · reviews</span></li><li><span class="am-dot" aria-hidden="true"></span><span class="am-name">AFS_Compliance</span><span class="am-meta">7 tables · 5 FKs</span><span class="am-tag">controls · findings</span></li><li><span class="am-dot" aria-hidden="true"></span><span class="am-name">AFS_Archive</span><span class="am-meta">9 tables · 7 FKs</span><span class="am-tag">retention · legal hold</span></li></ul>
+          <p class="am-note">46 declared foreign keys, read from <code>sys.foreign_keys</code>.</p>
+        </div>
+                <figcaption>Every database named above exists in the running catalog; counts are exported from
         <code>sys.tables</code>, <code>sys.foreign_keys</code> and <code>sys.partitions</code>.</figcaption>
       </figure>
     </div>
