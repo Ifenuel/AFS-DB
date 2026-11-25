@@ -1,16 +1,6 @@
 name: SQL Server deploy and test
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "sql-server/**"
-      - "automation/**"
-      - ".github/workflows/sql-server-deploy.yml"
-  pull_request:
-    paths:
-      - "sql-server/**"
-      - "automation/**"
   workflow_dispatch:
 
 permissions:

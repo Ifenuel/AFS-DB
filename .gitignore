@@ -89,7 +89,7 @@ _*.png
 
 # The public repository carries one document: README.md
 *.md
-!README.md
+/README.md
 
 # Large local artifacts kept out of the published repository
 lab/
@@ -114,3 +114,5 @@ about-*.png
 erd-*.png
 diagrams/
 *.code-workspace
+
+docs/
