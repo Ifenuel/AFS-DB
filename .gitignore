@@ -101,3 +101,10 @@ demonstrations/
 GitHub-Publish-Selection/
 _pre-sync-backup-*/
 *.zip
+
+.vercel
+.env*
+
+# Vercel project link and local environment
+.vercel/
+.env.local
