@@ -1,0 +1,20 @@
+# Only the static site is uploaded; the database lab and installers stay local.
+.git
+lab/
+installers/
+logs/
+backups/
+review-package/
+portfolio/
+demonstrations/
+GitHub-Publish-Selection/
+_pre-sync-backup-*/
+*.zip
+docs/
+evidence/
+sql-server/
+tools/
+automation/
+test-data/
+reports/
+change-requests/
