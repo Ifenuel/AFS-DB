@@ -134,13 +134,11 @@ REQUIRED_DIRS = [
 
     "automation",
 
-    "test-data",
 
     "evidence",
 
 
-    ".github/workflows",
-]
+    ".github/workflows",]
 
 
 
