@@ -1,0 +1,46 @@
+
+PL/SQL procedure successfully completed.
+
+
+PL/SQL procedure successfully completed.
+
+
+Table created.
+
+
+Table created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+Savepoint created.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Commit complete.
+
+
+ACCOUNT_NUMB	BALANCE LEDGER_SUM
+------------ ---------- ----------
+ACC999999991	    900       -100
+ACC999999992	    600        100
+
+rc=0

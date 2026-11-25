@@ -1,0 +1,7 @@
+name|freq_type|freq_interval|freq_recurrence_factor|active_start_time|active_end_time
+AFS - Full Backup (nightly)|4|1|0|10000|235959
+AFS - Index and Statistics (weekly)|8|1|1|30000|235959
+AFS - Integrity Check (weekly)|8|1|1|20000|235959
+AFS - Job Failure Watch (hourly)|4|1|0|500|235959
+AFS - Log Backup (15 min)|4|1|0|500|235959
+syspolicy_purge_history|4|1|0|20000|235959

@@ -1,0 +1,67 @@
+﻿ORA-01507: database not mounted
+Help: https://docs.oracle.com/error-help/db/ora-01507/
+
+
+ORACLE instance shut down.
+ORACLE instance started.
+
+Total System Global Area 1603649672 bytes
+Fixed Size		    5283976 bytes
+Variable Size		  503316480 bytes
+Database Buffers	 1090519040 bytes
+Redo Buffers		    4530176 bytes
+Database mounted.
+=== mode before the switch ===
+
+TS		    LOG_MODE	 OPEN_MODE
+------------------- ------------ --------------------
+2026-11-24 22:06:58 NOARCHIVELOG MOUNTED
+
+1 row selected.
+
+
+Database altered.
+
+
+Database altered.
+
+=== mode after the switch ===
+
+TS		    LOG_MODE	 OPEN_MODE
+------------------- ------------ --------------------
+2026-11-24 22:07:07 ARCHIVELOG	 READ WRITE
+
+1 row selected.
+
+
+System altered.
+
+=== archived logs produced ===
+
+no rows selected
+
+=== containers ===
+
+    CON_ID NAME 															    OPEN_MODE
+---------- -------------------------------------------------------------------------------------------------------------------------------- ----------
+	 2 PDB$SEED															    READ ONLY
+	 3 FREEPDB1															    READ WRITE
+
+2 rows selected.
+
+=== archive destination in use ===
+
+DEST_NAME
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+STATUS
+---------
+DESTINATION
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+LOG_ARCHIVE_DEST_1
+VALID
+
+
+
+1 row selected.
+
+

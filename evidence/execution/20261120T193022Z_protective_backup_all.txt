@@ -1,0 +1,15 @@
+Running C:\Users\<user>\.config\workspace\sql-server\backup\25_backup_all_databases.sql (2 batch(es))
+DatabaseName | BackupType | SizeMB | Verification | BackupPath | Message
+-------------+------------+--------+--------------+------------+--------
+AFS_Audit | FULL |  | FAILED | C:\AFS\Backups\AFS_Audit\AFS_AFS_Audit_FULL_20261120T193024Z.bak | BACKUP DATABASE is terminating abnormally.
+AFS_CoreBanking | FULL |  | FAILED | C:\AFS\Backups\AFS_CoreBanking\AFS_AFS_CoreBanking_FULL_20261120T193024Z.bak | BACKUP DATABASE is terminating abnormally.
+AFS_CustomerService | FULL |  | FAILED | C:\AFS\Backups\AFS_CustomerService\AFS_AFS_CustomerService_FULL_20261120T193024Z.bak | BACKUP DATABASE is terminating abnormally.
+AFS_Fraud | FULL |  | FAILED | C:\AFS\Backups\AFS_Fraud\AFS_AFS_Fraud_FULL_20261120T193024Z.bak | BACKUP DATABASE is terminating abnormally.
+AFS_Payments | FULL |  | FAILED | C:\AFS\Backups\AFS_Payments\AFS_AFS_Payments_FULL_20261120T193024Z.bak | BACKUP DATABASE is terminating abnormally.
+AFS_Reporting | FULL |  | FAILED | C:\AFS\Backups\AFS_Reporting\AFS_AFS_Reporting_FULL_20261120T193024Z.bak | BACKUP DATABASE is terminating abnormally.
+DatabasesVerified
+-----------------
+0
+Failures
+--------
+6

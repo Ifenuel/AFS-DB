@@ -1,0 +1,106 @@
+{
+  "generated_at_utc": "2026-11-25T17:49:07+00:00",
+  "database": "AFS_Payments",
+  "schema": "paylab",
+  "baseline": {
+    "control_grants": 1,
+    "update_allowed": true,
+    "delete_allowed": true,
+    "audit_rows": 0
+  },
+  "after": {
+    "control_grants": 0,
+    "deny_rows": 6,
+    "update_denied": true,
+    "delete_denied": true,
+    "api_still_works": true,
+    "app_audit_rows": 2
+  },
+  "failed_logins": {
+    "total": 20,
+    "top_principal": "AFS_App"
+  },
+  "assertions": [
+    {
+      "id": "S1",
+      "description": "application can rewrite a ledger row",
+      "expected": "0",
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "id": "S2",
+      "description": "application can delete a ledger row",
+      "expected": "0",
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "id": "S3",
+      "description": "no in-database audit evidence of the change",
+      "expected": "0",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "id": "S4",
+      "description": "baseline grants CONTROL on the schema",
+      "expected": "1",
+      "actual": "1",
+      "passed": true
+    },
+    {
+      "id": "S5",
+      "description": "CONTROL grant removed",
+      "expected": "0",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "id": "S6",
+      "description": "explicit DENY permissions present",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "S7",
+      "description": "direct ledger update denied",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "S8",
+      "description": "direct ledger delete denied",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "S9",
+      "description": "application can post through the procedure",
+      "expected": "0",
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "id": "S10",
+      "description": "ledger write is attributed to the application",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "S11",
+      "description": "failed-login events are detectable",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "passed": 11,
+    "total": 11
+  }
+}

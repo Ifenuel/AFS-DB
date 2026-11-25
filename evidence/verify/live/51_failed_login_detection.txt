@@ -1,0 +1,16 @@
+﻿=== Failed-login detection  2026-11-25T11:14:57 ===
+instance log path: C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\
+session target   : C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\afs_logins.xel
+session started
+attempt 1 failed: Exception calling "Open" with "0" argument(s): "Login failed for user 'nosuchlogin'."
+attempt 2 failed: Exception calling "Open" with "0" argument(s): "Login failed for user 'nosuchlogin'."
+attempt 3 failed: Exception calling "Open" with "0" argument(s): "Login failed for user 'nosuchlogin'."
+attempt 4 failed: Exception calling "Open" with "0" argument(s): "Login failed for user 'nosuchlogin'."
+attempt 5 failed: Exception calling "Open" with "0" argument(s): "Login failed for user 'nosuchlogin'."
+attempts made    : 5
+events captured : 2
+  2026-11-25 11:14:57  Login failed for user 'nosuchlogin'.
+  2026-11-25 11:14:57  Login failed for user 'nosuchlogin'. Reason: An attempt to login using SQL authentication failed. Server is configured for Integrated authentication only. [CLIENT: <local machine>]
+events carrying the client host: 1
+existing SecurityEvent login rows: 60
+result: a failed login is recorded with its client and message within seconds

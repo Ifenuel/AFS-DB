@@ -1,0 +1,2 @@
+srv|edition|ver|now
+Adeola|Enterprise Developer Edition (64-bit)|17.0.1000.7|11/24/2026 21:35:31

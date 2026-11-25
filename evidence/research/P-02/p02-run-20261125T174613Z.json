@@ -1,0 +1,161 @@
+{
+  "generated_at_utc": "2026-11-25T17:46:13+00:00",
+  "database": "AFS_Archive",
+  "run_id": 7,
+  "collector": {
+    "runId": 7,
+    "staged": 132,
+    "dropped": 2,
+    "duplicates": 3,
+    "late": 3,
+    "outOfOrder": 3,
+    "unitErrors": 1,
+    "spikes": 1,
+    "corrupt": 1,
+    "conflictingSources": 0,
+    "seconds": 45
+  },
+  "outcomes": {
+    "DUPLICATE": 9,
+    "INVALID": 2,
+    "VALID": 121
+  },
+  "quarantine_reasons": {
+    "DUPLICATE": 9,
+    "NULL_VALUE": 1,
+    "OUT_OF_RANGE": 1
+  },
+  "promoted_readings": 121,
+  "estimated_missing": 14,
+  "completeness": [
+    {
+      "tag": "FLOW_RATE",
+      "observed": 41,
+      "expected": 45.0,
+      "ratio": 0.9111,
+      "maxGap": 2.0,
+      "pGap": 0.135335
+    },
+    {
+      "tag": "SEP_TEMP",
+      "observed": 41,
+      "expected": 45.0,
+      "ratio": 0.9111,
+      "maxGap": 2.0,
+      "pGap": 0.135335
+    },
+    {
+      "tag": "WELLHEAD_PRESS",
+      "observed": 39,
+      "expected": 45.0,
+      "ratio": 0.8667,
+      "maxGap": 2.0,
+      "pGap": 0.135335
+    }
+  ],
+  "correction": {
+    "reading_id": 1309,
+    "original": 72.67,
+    "corrected": 72.77
+  },
+  "assertions": [
+    {
+      "id": "Q1",
+      "description": "staged rows received",
+      "expected": "yes",
+      "actual": "no",
+      "passed": false
+    },
+    {
+      "id": "Q2",
+      "description": "duplicates detected and quarantined",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "Q3",
+      "description": "invalid rows quarantined",
+      "expected": "yes",
+      "actual": "no",
+      "passed": false
+    },
+    {
+      "id": "Q4",
+      "description": "null and out-of-range faults quarantined",
+      "expected": "NULL_VALUE,OUT_OF_RANGE",
+      "actual": "NULL_VALUE,OUT_OF_RANGE",
+      "passed": true
+    },
+    {
+      "id": "Q4b",
+      "description": "kPa pressure converted to bar",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "Q5",
+      "description": "every staged row classified (no pending)",
+      "expected": "0",
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "id": "Q6",
+      "description": "accepted rows equal promoted readings",
+      "expected": 121,
+      "actual": 121,
+      "passed": true
+    },
+    {
+      "id": "Q7",
+      "description": "missing readings estimated from cadence",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "Q8",
+      "description": "completeness below 1 for every tag",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "Q9",
+      "description": "corrupt originals retained in staging",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "Q10",
+      "description": "correction recorded once",
+      "expected": "1",
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "id": "Q11",
+      "description": "original value preserved in the view",
+      "expected": "72.670",
+      "actual": "72.670",
+      "passed": true
+    },
+    {
+      "id": "Q12",
+      "description": "effective value reflects the correction",
+      "expected": "72.770",
+      "actual": "72.770",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "passed": 11,
+    "total": 13
+  },
+  "timings_seconds": {
+    "collection": 45.52
+  }
+}

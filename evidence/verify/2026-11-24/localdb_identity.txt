@@ -1,0 +1,2 @@
+ServerName|Edition|ProductVersion
+Adeola\LOCALDB#388CF292|Express Edition (64-bit)|17.0.1000.7

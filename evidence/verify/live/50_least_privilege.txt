@@ -1,0 +1,20 @@
+﻿=== Least privilege: afs_app  2026-11-25T11:14:57 ===
+integrated security only: 1
+databases before: 13
+
+--- 1. one login, no server role, one database
+login roles : (none)
+sysadmin?   : 0
+test view   : account.vw_AccountSummary
+granted: SELECT on one view; DENY SELECT on Customer and Account
+
+--- 2. what the application can read (impersonated as the app user)
+view read        : 1000
+Customer read    : DENIED: The SELECT permission was denied on the object 'Customer', database 'AFS_CoreBanking', schema 'customer'.
+Account read     : DENIED: The SELECT permission was denied on the object 'Account', database 'AFS_CoreBanking', schema 'account'.
+
+--- 3. blast radius: the same login against the other databases
+AFS_Audit user mapped: 0
+AFS_Fraud user mapped: 0
+AFS_Payments user mapped: 0
+app identity has no user in AFS_Fraud: 0

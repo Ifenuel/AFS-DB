@@ -1,0 +1,315 @@
+{
+  "generated_at_utc": "2026-11-25T17:19:53+00:00",
+  "started_at_utc": "2026-11-25T17:19:48+00:00",
+  "database": "AFS_Payments",
+  "schema": "paylab",
+  "scenarios": [
+    {
+      "scenario": "dry posting",
+      "mode": "baseline",
+      "breaks": 2,
+      "break_types": {
+        "AMOUNT_MISMATCH": 1,
+        "ORPHAN_DEBIT": 1
+      },
+      "detail": "1 debit, 0 credits; breaks=2"
+    },
+    {
+      "scenario": "duplicate submission",
+      "mode": "baseline",
+      "breaks": 0,
+      "break_types": {},
+      "detail": "3 intents, 3 debits for one request; breaks=0"
+    },
+    {
+      "scenario": "concurrent transfers",
+      "mode": "baseline",
+      "breaks": 1,
+      "break_types": {
+        "BALANCE_DRIFT": 1
+      },
+      "detail": "2 x 8,000 from a 10,000 balance; stored 2000.0000, ledger -16000.0000"
+    },
+    {
+      "scenario": "replay same key x3",
+      "mode": "fixed",
+      "breaks": 0,
+      "break_types": {},
+      "detail": "results ['0', '1', '1']; 1 debit"
+    },
+    {
+      "scenario": "failure after debit",
+      "mode": "fixed",
+      "breaks": 0,
+      "break_types": {},
+      "detail": "transaction rolled back; debit untouched; exception queued"
+    },
+    {
+      "scenario": "concurrent transfers",
+      "mode": "fixed",
+      "breaks": 0,
+      "break_types": {},
+      "detail": "results [0, 2]; balance 2000.0000; ledger -8000.0000"
+    }
+  ],
+  "baseline": {
+    "snapshot": {
+      "accounts": "200",
+      "intents": "2",
+      "completed": "2",
+      "failed": "0",
+      "entries": "4",
+      "debits": "2",
+      "credits": "2",
+      "total_balance": "2008000.0000",
+      "ledger_net": "0.0000"
+    },
+    "breaks": {
+      "BALANCE_DRIFT": 1
+    },
+    "breaks_total": 1
+  },
+  "fixed": {
+    "snapshot": {
+      "accounts": "200",
+      "intents": "2",
+      "completed": "1",
+      "failed": "1",
+      "entries": "2",
+      "debits": "1",
+      "credits": "1",
+      "total_balance": "2000000.0000",
+      "ledger_net": "0.0000"
+    },
+    "breaks_total": 0
+  },
+  "assertions": [
+    {
+      "id": "B1.1",
+      "description": "processor reports dry posting",
+      "expected": "DRY_POSTING",
+      "actual": "DRY_POSTING",
+      "passed": true
+    },
+    {
+      "id": "B1.2",
+      "description": "debit exists with no credit",
+      "expected": "1",
+      "actual": "1",
+      "passed": true
+    },
+    {
+      "id": "B1.3",
+      "description": "reconciliation reports an orphan debit and a mismatch",
+      "expected": "AMOUNT_MISMATCH+ORPHAN_DEBIT",
+      "actual": "AMOUNT_MISMATCH+ORPHAN_DEBIT",
+      "passed": true
+    },
+    {
+      "id": "B1.6",
+      "description": "every break is attributed to the injected payment",
+      "expected": "1",
+      "actual": "1",
+      "passed": true
+    },
+    {
+      "id": "B1.4",
+      "description": "debit balance decreased despite no credit",
+      "expected": "8500.0000",
+      "actual": "8500.0000",
+      "passed": true
+    },
+    {
+      "id": "B1.5",
+      "description": "beneficiary was not credited",
+      "expected": "10000.0000",
+      "actual": "10000.0000",
+      "passed": true
+    },
+    {
+      "id": "B2.1",
+      "description": "three submissions create three intents",
+      "expected": "3",
+      "actual": "3",
+      "passed": true
+    },
+    {
+      "id": "B2.2",
+      "description": "three submissions create three debits",
+      "expected": "3",
+      "actual": "3",
+      "passed": true
+    },
+    {
+      "id": "B2.3",
+      "description": "debit account charged three times",
+      "expected": "9250.0000",
+      "actual": "9250.0000",
+      "passed": true
+    },
+    {
+      "id": "B3.1",
+      "description": "both concurrent transfers report success",
+      "expected": "2",
+      "actual": 2,
+      "passed": true
+    },
+    {
+      "id": "B3.2",
+      "description": "account spent 16,000 from a 10,000 balance",
+      "expected": "-16000.0000",
+      "actual": "-16000.0000",
+      "passed": true
+    },
+    {
+      "id": "B3.3",
+      "description": "stored balance disagrees with the ledger",
+      "expected": "2000.0000",
+      "actual": "2000.0000",
+      "passed": true
+    },
+    {
+      "id": "B3.4",
+      "description": "reconciliation reports balance drift",
+      "expected": "1",
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "id": "F1.1",
+      "description": "first submission posts",
+      "expected": "0",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "id": "F1.2",
+      "description": "replays are recognised, not reposted",
+      "expected": "1,1",
+      "actual": "1,1",
+      "passed": true
+    },
+    {
+      "id": "F1.3",
+      "description": "exactly one debit exists",
+      "expected": "1",
+      "actual": "1",
+      "passed": true
+    },
+    {
+      "id": "F1.4",
+      "description": "account charged once",
+      "expected": "9750.0000",
+      "actual": "9750.0000",
+      "passed": true
+    },
+    {
+      "id": "F2.1",
+      "description": "posting fails cleanly",
+      "expected": "3",
+      "actual": "3",
+      "passed": true
+    },
+    {
+      "id": "F2.2",
+      "description": "no ledger entry survives the failure",
+      "expected": "0",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "id": "F2.3",
+      "description": "debit account untouched",
+      "expected": "10000.0000",
+      "actual": "10000.0000",
+      "passed": true
+    },
+    {
+      "id": "F2.4",
+      "description": "failure is queued for an operator",
+      "expected": "1",
+      "actual": "1",
+      "passed": true
+    },
+    {
+      "id": "F3.1",
+      "description": "exactly one transfer succeeds and one is declined",
+      "expected": "0,2",
+      "actual": "0,2",
+      "passed": true
+    },
+    {
+      "id": "F3.2",
+      "description": "stored balance equals ledger-derived balance",
+      "expected": "2000.0000",
+      "actual": "2000.0000",
+      "passed": true
+    },
+    {
+      "id": "F3.3",
+      "description": "ledger records only the successful 8,000",
+      "expected": "-8000.0000",
+      "actual": "-8000.0000",
+      "passed": true
+    },
+    {
+      "id": "F3.4",
+      "description": "reconciliation reports no breaks",
+      "expected": "0",
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "id": "F4.1",
+      "description": "outbox row exists for the committed payment",
+      "expected": "1",
+      "actual": "1",
+      "passed": true
+    },
+    {
+      "id": "F4.2",
+      "description": "publishing clears the queue",
+      "expected": "0",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "id": "F4.3",
+      "description": "first message processed",
+      "expected": "1",
+      "actual": "1",
+      "passed": true
+    },
+    {
+      "id": "F4.4",
+      "description": "duplicate message ignored",
+      "expected": "0",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "id": "F5.1",
+      "description": "trace shows the failed payment",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "F5.2",
+      "description": "trace shows a FAILED event",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "passed": 31,
+    "total": 31
+  },
+  "timings_seconds": {
+    "baseline_dry_posting_s": 0.111,
+    "baseline_duplicate_3x_s": 0.261,
+    "baseline_concurrency_s": 0.524,
+    "fixed_replay_3x_s": 0.259
+  }
+}

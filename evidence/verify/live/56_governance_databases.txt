@@ -1,0 +1,70 @@
+=== Governance databases: structure, volume, integrity  2026-11-25T10:42:24 ===
+server: Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64)
+
+=== estate ===
+database_name                  size_mb     
+------------------------------ ------------
+AFS_Archive                             8.0
+AFS_Audit                             128.0
+AFS_Compliance                          8.0
+AFS_CoreBanking                       256.0
+AFS_CustomerService                   128.0
+AFS_Fraud                             128.0
+AFS_Identity                            8.0
+AFS_Payments                          256.0
+AFS_Reporting                         128.0
+ 
+=== tables and foreign keys per database ===
+database_name  tables      foreign_keys
+-------------- ----------- ------------
+AFS_Identity             7            7
+AFS_Compliance           6            5
+AFS_Archive              5            4
+ 
+=== seeded volume ===
+object_name               rows                
+------------------------- --------------------
+iam.Principal                               63
+iam.Role                                    10
+iam.RoleAssignment                         240
+iam.AccessRequest                          228
+iam.AccessReview                             4
+iam.AccessReviewDecision                   240
+iam.SessionEvent                          3000
+grc.Obligation                              24
+grc.Control                                 30
+grc.ControlObligation                       60
+grc.ControlTest                            120
+grc.Finding                                 12
+grc.Remediation                             12
+retention.ArchivedRecord                  2000
+retention.LegalHoldRecord                  120
+ 
+=== governance questions the model answers ===
+question                                 answer     
+---------------------------------------- -----------
+privileged grants still active                    45
+assignments revoked by the latest review           8
+grants with no matching access request             0
+controls with no obligation mapped                 0
+controls failing their last test                   3
+open high or critical findings                     3
+archived records under legal hold                 80
+purge runs blocked by a hold                      60
+ 
+=== archive hash chain ===
+broken_links
+------------
+           0
+payload_mismatches
+------------------
+                 0
+ 
+=== tamper test: alter one stored hash inside a transaction ===
+mismatches_after_tamper
+-----------------------
+                      1
+rolled back: the evidence is unchanged
+mismatches_after_rollback
+-------------------------
+                        0

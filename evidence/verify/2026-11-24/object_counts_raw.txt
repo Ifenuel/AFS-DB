@@ -1,0 +1,26 @@
+SERVER .
+TablesCnt|ViewsCnt
+65|65
+TablesCnt|ViewsCnt
+32|32
+TablesCnt|ViewsCnt
+0|0
+TablesCnt|ViewsCnt
+0|0
+TablesCnt|ViewsCnt
+0|0
+TablesCnt|ViewsCnt
+16|16
+SERVER (localdb)\MSSQLLocalDB
+TablesCnt|ViewsCnt
+60|60
+TablesCnt|ViewsCnt
+28|28
+TablesCnt|ViewsCnt
+0|0
+TablesCnt|ViewsCnt
+0|0
+TablesCnt|ViewsCnt
+0|0
+TablesCnt|ViewsCnt
+14|14

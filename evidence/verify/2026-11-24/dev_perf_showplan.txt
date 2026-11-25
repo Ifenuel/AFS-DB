@@ -1,0 +1,3 @@
+Running C:\Users\<user>\.config\workspace\evidence\verify\2026-11-24\perf_readonly.sql (1 batch(es))
+FAILED: Exception calling "ExecuteReader" with "0" argument(s): "The SET SHOWPLAN statements must be the only statements in the batch.
+The SET SHOWPLAN statements must be the only statements in the batch."

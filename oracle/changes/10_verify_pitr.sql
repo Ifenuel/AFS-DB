@@ -1,0 +1,8 @@
+SET PAGESIZE 100
+SET LINESIZE 180
+SELECT name, open_mode FROM v$pdbs ORDER BY con_id;
+SELECT log_mode, open_mode, current_scn FROM v$database;
+ALTER SESSION SET CONTAINER = FREEPDB1;
+SELECT COUNT(*) AS marker_rows_after_recovery FROM AFS_LAB.RECOVERY_MARKER;
+SELECT id, note, TO_CHAR(created,'YYYY-MM-DD HH24:MI:SS.FF3') created_at FROM AFS_LAB.RECOVERY_MARKER;
+SELECT TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS') AS checked_at FROM dual;

@@ -1,0 +1,63 @@
+Running C:\Users\<user>\.config\workspace\sql-server\monitoring\40_health_check.sql (2 batch(es))
+OverallStatus | CriticalChecks | WarningChecks | OkChecks | CheckedAtUtc
+--------------+----------------+---------------+----------+-------------
+CRITICAL | 6 | 0 | 19 | 11/20/2026 19:10:05
+CheckId | Severity | CheckName | Details | CheckedAt
+--------+----------+-----------+---------+----------
+BACKUP_FULL_AFS_CoreBanking_RestoreTest | CRITICAL | Full backup freshness: AFS_CoreBanking_RestoreTest | NO FULL BACKUP | 11/20/2026 19:10:04
+BACKUP_LOG_AFS_Audit | CRITICAL | Log backup freshness: AFS_Audit | NO LOG BACKUP | 11/20/2026 19:10:05
+BACKUP_LOG_AFS_CoreBanking_RestoreTest | CRITICAL | Log backup freshness: AFS_CoreBanking_RestoreTest | NO LOG BACKUP | 11/20/2026 19:10:05
+BACKUP_LOG_AFS_CustomerService | CRITICAL | Log backup freshness: AFS_CustomerService | NO LOG BACKUP | 11/20/2026 19:10:05
+BACKUP_LOG_AFS_Fraud | CRITICAL | Log backup freshness: AFS_Fraud | NO LOG BACKUP | 11/20/2026 19:10:05
+BACKUP_LOG_AFS_Payments | CRITICAL | Log backup freshness: AFS_Payments | NO LOG BACKUP | 11/20/2026 19:10:05
+BACKUP_FULL_AFS_Audit | OK | Full backup freshness: AFS_Audit | 2026-11-20T19:13:58 | 11/20/2026 19:10:04
+BACKUP_FULL_AFS_CoreBanking | OK | Full backup freshness: AFS_CoreBanking | 2026-11-20T19:13:57 | 11/20/2026 19:10:04
+BACKUP_FULL_AFS_CustomerService | OK | Full backup freshness: AFS_CustomerService | 2026-11-20T19:13:57 | 11/20/2026 19:10:04
+BACKUP_FULL_AFS_Fraud | OK | Full backup freshness: AFS_Fraud | 2026-11-20T19:13:59 | 11/20/2026 19:10:04
+BACKUP_FULL_AFS_Payments | OK | Full backup freshness: AFS_Payments | 2026-11-20T19:13:57 | 11/20/2026 19:10:04
+BACKUP_FULL_AFS_Reporting | OK | Full backup freshness: AFS_Reporting | 2026-11-20T19:13:58 | 11/20/2026 19:10:04
+BACKUP_LOG_AFS_CoreBanking | OK | Log backup freshness: AFS_CoreBanking | 2026-11-20T19:13:59 | 11/20/2026 19:10:05
+BLOCKING | OK | Blocked sessions | 0 blocked session(s) | 11/20/2026 19:10:05
+DB_STATE_AFS_Audit | OK | Database state: AFS_Audit | ONLINE / recovery=FULL / log_reuse_wait=NOTHING | 11/20/2026 19:10:04
+DB_STATE_AFS_CoreBanking | OK | Database state: AFS_CoreBanking | ONLINE / recovery=FULL / log_reuse_wait=NOTHING | 11/20/2026 19:10:04
+DB_STATE_AFS_CoreBanking_RestoreTest | OK | Database state: AFS_CoreBanking_RestoreTest | ONLINE / recovery=FULL / log_reuse_wait=NOTHING | 11/20/2026 19:10:04
+DB_STATE_AFS_CustomerService | OK | Database state: AFS_CustomerService | ONLINE / recovery=FULL / log_reuse_wait=NOTHING | 11/20/2026 19:10:04
+DB_STATE_AFS_Fraud | OK | Database state: AFS_Fraud | ONLINE / recovery=FULL / log_reuse_wait=NOTHING | 11/20/2026 19:10:04
+DB_STATE_AFS_Payments | OK | Database state: AFS_Payments | ONLINE / recovery=FULL / log_reuse_wait=NOTHING | 11/20/2026 19:10:04
+DB_STATE_AFS_Reporting | OK | Database state: AFS_Reporting | ONLINE / recovery=SIMPLE / log_reuse_wait=NOTHING | 11/20/2026 19:10:04
+DEADLOCKS | OK | Deadlock reports in system_health | 0 retained deadlock report(s) | 11/20/2026 19:10:05
+DISK_C:\ | OK | Disk free space on C:\ | 67.91 GB free of 237.50 GB | 11/20/2026 19:10:04
+INSTANCE | OK | SQL Server instance reachable | Adeola\LOCALDB#1DBC8C56 / Express Edition (64-bit) | 11/20/2026 19:10:04
+LONG_QUERIES | OK | Requests running longer than 60 seconds | 0 request(s) | 11/20/2026 19:10:05
+DatabaseName | LogicalFileName | PhysicalFileName | FileType | SizeMB | growth | is_percent_growth | is_read_only
+-------------+-----------------+------------------+----------+--------+--------+-------------------+-------------
+AFS_Audit | AFS_Audit_log | C:\AFS\Log\AFS_Audit_log.ldf | LOG | 64.00 | 8192 | False | False
+AFS_Audit | AFS_Audit | C:\AFS\Data\AFS_Audit.mdf | ROWS | 128.00 | 8192 | False | False
+AFS_CoreBanking | AFS_CoreBanking_log | C:\AFS\Log\AFS_CoreBanking_log.ldf | LOG | 128.00 | 8192 | False | False
+AFS_CoreBanking | AFS_CoreBanking | C:\AFS\Data\AFS_CoreBanking.mdf | ROWS | 256.00 | 8192 | False | False
+AFS_CoreBanking_RestoreTest | AFS_CoreBanking_log | C:\AFS\Log\AFS_CoreBanking_RestoreTest.ldf | LOG | 128.00 | 8192 | False | False
+AFS_CoreBanking_RestoreTest | AFS_CoreBanking | C:\AFS\Data\AFS_CoreBanking_RestoreTest.mdf | ROWS | 256.00 | 8192 | False | False
+AFS_CustomerService | AFS_CustomerService_log | C:\AFS\Log\AFS_CustomerService_log.ldf | LOG | 64.00 | 8192 | False | False
+AFS_CustomerService | AFS_CustomerService | C:\AFS\Data\AFS_CustomerService.mdf | ROWS | 128.00 | 8192 | False | False
+AFS_Fraud | AFS_Fraud_log | C:\AFS\Log\AFS_Fraud_log.ldf | LOG | 64.00 | 8192 | False | False
+AFS_Fraud | AFS_Fraud | C:\AFS\Data\AFS_Fraud.mdf | ROWS | 128.00 | 8192 | False | False
+AFS_Payments | AFS_Payments_log | C:\AFS\Log\AFS_Payments_log.ldf | LOG | 128.00 | 8192 | False | False
+AFS_Payments | AFS_Payments | C:\AFS\Data\AFS_Payments.mdf | ROWS | 256.00 | 8192 | False | False
+AFS_Reporting | AFS_Reporting_log | C:\AFS\Log\AFS_Reporting_log.ldf | LOG | 64.00 | 8192 | False | False
+AFS_Reporting | AFS_Reporting | C:\AFS\Data\AFS_Reporting.mdf | ROWS | 128.00 | 8192 | False | False
+session_id | blocking_session_id | status | command | wait_type | wait_time | total_elapsed_time | DatabaseName | CurrentStatement
+-----------+---------------------+--------+---------+-----------+-----------+--------------------+--------------+-----------------
+session_id | status | command | wait_type | total_elapsed_time | cpu_time | logical_reads | DatabaseName | SqlText
+-----------+--------+---------+-----------+--------------------+----------+---------------+--------------+--------
+wait_type | wait_time_ms | waiting_tasks_count | signal_wait_time_ms
+----------+--------------+---------------------+--------------------
+SOS_WORK_DISPATCHER | 2132379 | 393 | 133
+DISPATCHER_QUEUE_SEMAPHORE | 422587 | 92 | 3
+DIRTY_PAGE_POLL | 70736 | 643 | 3
+XE_DISPATCHER_WAIT | 70628 | 3 | 0
+SERVER_IDLE_CHECK | 70204 | 27 | 0
+HADR_FILESTREAM_IOMGR_IOCOMPLETION | 70192 | 139 | 3
+BROKER_EVENTHANDLER | 69991 | 27 | 0
+SQLTRACE_INCREMENTAL_FLUSH_SLEEP | 68112 | 18 | 0
+QDS_PERSIST_TASK_MAIN_LOOP_SLEEP | 60012 | 2 | 0
+AZURE_IMDS_VERSIONS | 21065 | 1 | 0

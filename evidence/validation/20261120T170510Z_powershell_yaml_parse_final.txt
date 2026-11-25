@@ -1,0 +1,8 @@
+PASS sql-server/installation/Deploy-AfsSqlServer.ps1
+PASS automation/powershell/Test-AfsEnvironment.ps1
+PASS automation/powershell/Invoke-AfsBackup.ps1
+PASS automation/powershell/Test-AfsBackup.ps1
+PASS automation/powershell/Get-AfsHealth.ps1
+YAML PASS .github\workflows\repo-validation.yml
+YAML PASS .github\workflows\sql-server-deploy.yml
+parse_exit=0

@@ -1,0 +1,25 @@
+=== Backup coverage and VERIFYONLY: every AFS database  2026-11-25T15:12:43Z ===
+
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+DatabaseName|BackupFinish|VerifyResult|FilePath|Message
+------------|------------|------------|--------|-------
+AFS_Archive|2026-11-25 16:12:27|VERIFIED|<backup-root>\backups\full\AFS_Archive_20261125_151227.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Audit|2026-11-25 16:12:25|VERIFIED|<backup-root>\backups\full\AFS_Audit_20261125_151225.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Compliance|2026-11-25 16:12:27|VERIFIED|<backup-root>\backups\full\AFS_Compliance_20261125_151227.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_CoreBanking|2026-11-25 16:12:26|VERIFIED|<backup-root>\backups\full\AFS_CoreBanking_20261125_151225.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_CustomerService|2026-11-25 16:12:26|VERIFIED|<backup-root>\backups\full\AFS_CustomerService_20261125_151226.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Fraud|2026-11-25 16:12:26|VERIFIED|<backup-root>\backups\full\AFS_Fraud_20261125_151226.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Identity|2026-11-25 16:12:27|VERIFIED|<backup-root>\backups\full\AFS_Identity_20261125_151227.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Payments|2026-11-25 16:12:26|VERIFIED|<backup-root>\backups\full\AFS_Payments_20261125_151226.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Reporting|2026-11-25 16:12:27|VERIFIED|<backup-root>\backups\full\AFS_Reporting_20261125_151226.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+databases_total|verified|failed|missing
+---------------|--------|------|-------
+9|9|0|0

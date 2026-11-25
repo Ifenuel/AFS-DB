@@ -1,0 +1,5 @@
+T|R
+Customer|62
+Account|125
+Transfer|12002
+Ledger|24004

@@ -1,0 +1,245 @@
+﻿
+Recovery Manager: Release 23.26.4.0.0 - Production on Tue Nov 24 22:09:22 2026
+Version 23.26.4.0.0
+
+Copyright (c) 1982, 2026, Oracle and/or its affiliates.  All rights reserved.
+
+RMAN> CONNECT TARGET *
+2> BACKUP DATABASE PLUS ARCHIVELOG;
+3> VALIDATE DATABASE;
+4> LIST BACKUP SUMMARY;
+5> 
+6> EXIT
+connected to target database: FREE (DBID=1522235948)
+
+
+Starting backup at 24-NOV-26
+current log archived
+using target database control file instead of recovery catalog
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=181 device type=DISK
+channel ORA_DISK_1: starting compressed archived log backup set
+channel ORA_DISK_1: specifying archived log(s) in backup set
+input archived log thread=1 sequence=1 RECID=1 STAMP=1250201228
+input archived log thread=1 sequence=2 RECID=2 STAMP=1250201260
+input archived log thread=1 sequence=3 RECID=3 STAMP=1250201366
+channel ORA_DISK_1: starting piece 1 at 24-NOV-26
+channel ORA_DISK_1: finished piece 1 at 24-NOV-26
+piece handle=C:\APP\ORACLELAB\FAST_RECOVERY_AREA\FREE\BACKUPSET\2026_11_24\O1_MF_ANNNN_TAG20261124T220929_OJCZ8B60_.BKP tag=TAG20261124T220929 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:15
+Finished backup at 24-NOV-26
+
+Starting backup at 24-NOV-26
+using channel ORA_DISK_1
+channel ORA_DISK_1: starting compressed full datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00001 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\SYSTEM01.DBF
+input datafile file number=00003 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\SYSAUX01.DBF
+input datafile file number=00011 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\UNDOTBS01.DBF
+input datafile file number=00007 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\USERS01.DBF
+channel ORA_DISK_1: starting piece 1 at 24-NOV-26
+channel ORA_DISK_1: finished piece 1 at 24-NOV-26
+piece handle=C:\APP\ORACLELAB\FAST_RECOVERY_AREA\FREE\BACKUPSET\2026_11_24\O1_MF_NNNDF_TAG20261124T220945_OJCZ8TK4_.BKP tag=TAG20261124T220945 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:01:05
+channel ORA_DISK_1: starting compressed full datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00013 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\SYSAUX01.DBF
+input datafile file number=00012 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\SYSTEM01.DBF
+input datafile file number=00014 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\UNDOTBS01.DBF
+input datafile file number=00015 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\USERS01.DBF
+channel ORA_DISK_1: starting piece 1 at 24-NOV-26
+channel ORA_DISK_1: finished piece 1 at 24-NOV-26
+piece handle=C:\APP\ORACLELAB\FAST_RECOVERY_AREA\FREE\C83E6375B1F34C5EA2E8D2E5BAF78F46\BACKUPSET\2026_11_24\O1_MF_NNNDF_TAG20261124T220945_OJCZBW2R_.BKP tag=TAG20261124T220945 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:25
+channel ORA_DISK_1: starting compressed full datafile backup set
+channel ORA_DISK_1: specifying datafile(s) in backup set
+input datafile file number=00004 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\PDBSEED\SYSAUX01.DBF
+input datafile file number=00002 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\PDBSEED\SYSTEM01.DBF
+input datafile file number=00009 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\PDBSEED\UNDOTBS01.DBF
+channel ORA_DISK_1: starting piece 1 at 24-NOV-26
+channel ORA_DISK_1: finished piece 1 at 24-NOV-26
+piece handle=C:\APP\ORACLELAB\FAST_RECOVERY_AREA\FREE\F5A28B527892444CBAB60D3A6F7F777A\BACKUPSET\2026_11_24\O1_MF_NNNDF_TAG20261124T220945_OJCZCOJL_.BKP tag=TAG20261124T220945 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:25
+Finished backup at 24-NOV-26
+
+Starting backup at 24-NOV-26
+current log archived
+using channel ORA_DISK_1
+channel ORA_DISK_1: starting compressed archived log backup set
+channel ORA_DISK_1: specifying archived log(s) in backup set
+input archived log thread=1 sequence=4 RECID=4 STAMP=1250201502
+channel ORA_DISK_1: starting piece 1 at 24-NOV-26
+channel ORA_DISK_1: finished piece 1 at 24-NOV-26
+piece handle=C:\APP\ORACLELAB\FAST_RECOVERY_AREA\FREE\BACKUPSET\2026_11_24\O1_MF_ANNNN_TAG20261124T221142_OJCZDH6T_.BKP tag=TAG20261124T221142 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:01
+Finished backup at 24-NOV-26
+
+Starting Control File and SPFILE Autobackup at 24-NOV-26
+piece handle=C:\APP\ORACLELAB\FAST_RECOVERY_AREA\FREE\AUTOBACKUP\2026_11_24\O1_MF_S_1250201504_OJCZDK39_.BKP comment=NONE
+Finished Control File and SPFILE Autobackup at 24-NOV-26
+
+Starting validate at 24-NOV-26
+using channel ORA_DISK_1
+channel ORA_DISK_1: starting validation of datafile
+channel ORA_DISK_1: specifying datafile(s) for validation
+input datafile file number=00001 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\SYSTEM01.DBF
+input datafile file number=00003 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\SYSAUX01.DBF
+input datafile file number=00011 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\UNDOTBS01.DBF
+input datafile file number=00007 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\USERS01.DBF
+channel ORA_DISK_1: validation complete, elapsed time: 00:00:03
+List of Datafiles
+=================
+File Status Marked Corrupt Empty Blocks Blocks Examined High SCN
+---- ------ -------------- ------------ --------------- ----------
+1    OK     0              21485        121602          2145607   
+  File Name: C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\SYSTEM01.DBF
+  Block Type Blocks Failing Blocks Processed
+  ---------- -------------- ----------------
+  Data       0              79214           
+  Index      0              14381           
+  Other      0              6520            
+
+File Status Marked Corrupt Empty Blocks Blocks Examined High SCN
+---- ------ -------------- ------------ --------------- ----------
+3    OK     0              25681        87045           2145610   
+  File Name: C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\SYSAUX01.DBF
+  Block Type Blocks Failing Blocks Processed
+  ---------- -------------- ----------------
+  Data       0              7442            
+  Index      0              4098            
+  Other      0              49819           
+
+File Status Marked Corrupt Empty Blocks Blocks Examined High SCN
+---- ------ -------------- ------------ --------------- ----------
+7    OK     0              126          896             43383     
+  File Name: C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\USERS01.DBF
+  Block Type Blocks Failing Blocks Processed
+  ---------- -------------- ----------------
+  Data       0              0               
+  Index      0              0               
+  Other      0              770             
+
+File Status Marked Corrupt Empty Blocks Blocks Examined High SCN
+---- ------ -------------- ------------ --------------- ----------
+11   OK     0              58           4481            2145610   
+  File Name: C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\UNDOTBS01.DBF
+  Block Type Blocks Failing Blocks Processed
+  ---------- -------------- ----------------
+  Data       0              0               
+  Index      0              0               
+  Other      0              4422            
+
+channel ORA_DISK_1: starting validation of datafile
+channel ORA_DISK_1: specifying datafile(s) for validation
+input datafile file number=00004 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\PDBSEED\SYSAUX01.DBF
+input datafile file number=00002 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\PDBSEED\SYSTEM01.DBF
+input datafile file number=00009 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\PDBSEED\UNDOTBS01.DBF
+channel ORA_DISK_1: validation complete, elapsed time: 00:00:03
+List of Datafiles
+=================
+File Status Marked Corrupt Empty Blocks Blocks Examined High SCN
+---- ------ -------------- ------------ --------------- ----------
+2    OK     0              6958         37125           2101029   
+  File Name: C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\PDBSEED\SYSTEM01.DBF
+  Block Type Blocks Failing Blocks Processed
+  ---------- -------------- ----------------
+  Data       0              18113           
+  Index      0              10133           
+  Other      0              1916            
+
+File Status Marked Corrupt Empty Blocks Blocks Examined High SCN
+---- ------ -------------- ------------ --------------- ----------
+4    OK     0              8569         51209           2101026   
+  File Name: C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\PDBSEED\SYSAUX01.DBF
+  Block Type Blocks Failing Blocks Processed
+  ---------- -------------- ----------------
+  Data       0              4751            
+  Index      0              2109            
+  Other      0              35771           
+
+File Status Marked Corrupt Empty Blocks Blocks Examined High SCN
+---- ------ -------------- ------------ --------------- ----------
+9    OK     0              34           12803           2101026   
+  File Name: C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\PDBSEED\UNDOTBS01.DBF
+  Block Type Blocks Failing Blocks Processed
+  ---------- -------------- ----------------
+  Data       0              0               
+  Index      0              0               
+  Other      0              12766           
+
+channel ORA_DISK_1: starting validation of datafile
+channel ORA_DISK_1: specifying datafile(s) for validation
+input datafile file number=00013 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\SYSAUX01.DBF
+input datafile file number=00012 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\SYSTEM01.DBF
+input datafile file number=00014 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\UNDOTBS01.DBF
+input datafile file number=00015 name=C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\USERS01.DBF
+channel ORA_DISK_1: validation complete, elapsed time: 00:00:03
+List of Datafiles
+=================
+File Status Marked Corrupt Empty Blocks Blocks Examined High SCN
+---- ------ -------------- ------------ --------------- ----------
+12   OK     0              8173         38415           2145416   
+  File Name: C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\SYSTEM01.DBF
+  Block Type Blocks Failing Blocks Processed
+  ---------- -------------- ----------------
+  Data       0              18166           
+  Index      0              10174           
+  Other      0              1887            
+
+File Status Marked Corrupt Empty Blocks Blocks Examined High SCN
+---- ------ -------------- ------------ --------------- ----------
+13   OK     0              11011        55111           2145416   
+  File Name: C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\SYSAUX01.DBF
+  Block Type Blocks Failing Blocks Processed
+  ---------- -------------- ----------------
+  Data       0              5454            
+  Index      0              2596            
+  Other      0              35979           
+
+File Status Marked Corrupt Empty Blocks Blocks Examined High SCN
+---- ------ -------------- ------------ --------------- ----------
+14   OK     0              2            12803           2145416   
+  File Name: C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\UNDOTBS01.DBF
+  Block Type Blocks Failing Blocks Processed
+  ---------- -------------- ----------------
+  Data       0              0               
+  Index      0              0               
+  Other      0              12798           
+
+File Status Marked Corrupt Empty Blocks Blocks Examined High SCN
+---- ------ -------------- ------------ --------------- ----------
+15   OK     0              98           896             2109135   
+  File Name: C:\APP\ORACLELAB\PRODUCT\26AI\ORADATA\FREE\FREEPDB1\USERS01.DBF
+  Block Type Blocks Failing Blocks Processed
+  ---------- -------------- ----------------
+  Data       0              10              
+  Index      0              3               
+  Other      0              785             
+
+channel ORA_DISK_1: starting validation of datafile
+channel ORA_DISK_1: specifying datafile(s) for validation
+including current control file for validation
+including current SPFILE in backup set
+channel ORA_DISK_1: validation complete, elapsed time: 00:00:01
+List of Control File and SPFILE
+===============================
+File Type    Status Blocks Failing Blocks Examined
+------------ ------ -------------- ---------------
+SPFILE       OK     0              2               
+Control File OK     0              1146            
+Finished validate at 24-NOV-26
+
+
+List of Backups
+===============
+Key     TY LV S Device Type Completion Time #Pieces #Copies Compressed Tag
+------- -- -- - ----------- --------------- ------- ------- ---------- ---
+1       B  A  A DISK        24-NOV-26       1       1       YES        TAG20261124T220929
+2       B  F  A DISK        24-NOV-26       1       1       YES        TAG20261124T220945
+3       B  F  A DISK        24-NOV-26       1       1       YES        TAG20261124T220945
+4       B  F  A DISK        24-NOV-26       1       1       YES        TAG20261124T220945
+5       B  A  A DISK        24-NOV-26       1       1       YES        TAG20261124T221142
+6       B  F  A DISK        24-NOV-26       1       1       YES        TAG20261124T221144
+
+Recovery Manager complete.
+

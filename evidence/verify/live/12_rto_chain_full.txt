@@ -1,0 +1,6 @@
+backup_set_id|type|done|physical_device_name
+55|D|2026-11-24 13:51:24|C:\AFS\Backups\drill\AFS_CoreBanking_DR.bak
+54|D|2026-11-24 13:50:58|C:\AFS\Backups\drill\AFS_CoreBanking_DR.bak
+18|D|2026-11-24 12:34:17|C:\ProgramData\AFS\backups\full\AFS_CoreBanking_20261124_113416.bak
+logs_after_full|first_log
+19|2026-11-24 14:05:00

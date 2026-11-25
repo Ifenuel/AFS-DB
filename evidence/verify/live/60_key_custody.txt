@@ -1,0 +1,45 @@
+﻿=== Key custody and rotation  2026-11-25T11:41:23 ===
+instance          : Adeola (Enterprise Developer 17.0.1000.7)
+custody directory : C:\Keys\AFS
+custody boundary  : private keys exported encrypted under a 48-character passphrase
+passphrase store  : DPAPI-wrapped for <user>, outside every database and backup directory
+engine access     : NT Service\MSSQLSERVER can read the encrypted key files, not the passphrase
+hardware HSM      : not present on this machine; custody is software-enforced
+
+--- 1. TDE protector v1 ---
+existing          : AFS_TDE_Protector_v1
+encryption state  : 3 (3 = encrypted)
+protector v1      : 83F98FCD99D9490A22D8DFD6F02B2C790058E41F
+backed up         : AFS_TDE_Protector_v1-v1-20261125114122.cer and AFS_TDE_Protector_v1-v1-20261125114122.pvk
+
+--- 2. rotate to protector v2 ---
+existing          : AFS_TDE_Protector_v2
+database key      : re-wrapped under AFS_TDE_Protector_v2
+encryption state  : 3 (3 = encrypted)
+active protector  : 90313AF5F2C2643285364463462C89D2C5B3AE60
+v1 retired        : kept in custody, still required to read backups taken before the rotation
+
+--- 3. registry ---
+rows in registry  : 2 protector(s) recorded in AFS_Compliance.grc.KeyCustodyRecord
+
+--- 4. an encrypted backup without its key is noise ---
+source rows       : 6168 in AFS_Audit.audit.AuditRecord
+encrypted backup  : custody_test-20261125114122.bak (1.16 MB, AES-256, certificate AFS_BackupCert_Custody)
+certificate       : BDCBDCA9F710ADC14CEADC38455A36ECFB6B136C
+certificate       : dropped from the instance (simulating a host loss or a revoked protector)
+restore attempt   : refused - Exception calling "ExecuteNonQuery" with "0" argument(s): "Cannot find server certificate with thumbprint '0xBDCBDCA9F710ADC14CEADC38455A36ECFB6B136C'.
+certificate       : re-imported from custody with the passphrase
+restore result    : AFS_CustodyRestore online with 6168 rows (source 6168)
+scratch database  : dropped after verification
+registry          : backup certificate recorded with the time its restore was verified
+
+--- 5. custody inventory ---
+  AFS_BackupCert_Custody-custody-20261125114122.cer     1010 bytes
+  AFS_BackupCert_Custody-custody-20261125114122.pvk     1788 bytes
+  AFS_TDE_Protector_v1-v1-20261125114122.cer      970 bytes
+  AFS_TDE_Protector_v1-v1-20261125114122.pvk     1788 bytes
+  AFS_TDE_Protector_v2-v2-20261125114122.cer      988 bytes
+  AFS_TDE_Protector_v2-v2-20261125114122.pvk     1788 bytes
+  custody.passphrase                            657 bytes
+  custody_test-20261125114122.bak           1212416 bytes
+registry rows     : 3

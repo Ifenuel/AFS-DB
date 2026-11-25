@@ -1,0 +1,2 @@
+backup written: <backup-root>\backups\mysql\afs_lab_20261125_091144.sql (4,211 bytes)
+copies retained: 1 (newest afs_lab_20261125_091144.sql)

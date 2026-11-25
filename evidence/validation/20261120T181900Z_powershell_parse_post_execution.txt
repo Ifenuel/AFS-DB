@@ -1,0 +1,3 @@
+automation/powershell/Invoke-AfsLocalDb.ps1 PASS
+automation/powershell/Install-AfsLocalDb.ps1 PASS
+automation/powershell/Test-AfsEnvironment.ps1 PASS

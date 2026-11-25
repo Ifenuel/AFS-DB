@@ -1,0 +1,20 @@
+Enter a unique credential for AFS_LAB (hidden): 
+User created.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+
+Grant succeeded.
+
+AFS_LAB created. Verify privileges and then connect as AFS_LAB.
+rc=0

@@ -1,0 +1,17 @@
+Running C:\Users\<user>\.config\workspace\sql-server\backup\25_backup_all_databases.sql (2 batch(es))
+DatabaseName | BackupType | SizeMB | Verification | BackupPath | Message
+-------------+------------+--------+--------------+------------+--------
+AFS_Audit | FULL | 3.52 | VERIFIED | C:\AFS\Backups\AFS_Audit\AFS_AFS_Audit_FULL_20261120T193114Z.bak | Backup written and checksum-verified.
+AFS_Audit | FULL | 3.52 | VERIFIED | C:\AFS\Backups\AFS_Audit\AFS_AFS_Audit_FULL_20261120T193114Z.bak | Backup written and checksum-verified.
+AFS_Audit | FULL | 3.52 | VERIFIED | C:\AFS\Backups\AFS_Audit\AFS_AFS_Audit_FULL_20261120T193114Z.bak | Backup written and checksum-verified.
+AFS_CoreBanking | FULL | 6.96 | VERIFIED | C:\AFS\Backups\AFS_CoreBanking\AFS_AFS_CoreBanking_FULL_20261120T193114Z.bak | Backup written and checksum-verified.
+AFS_CustomerService | FULL | 3.52 | VERIFIED | C:\AFS\Backups\AFS_CustomerService\AFS_AFS_CustomerService_FULL_20261120T193114Z.bak | Backup written and checksum-verified.
+AFS_Fraud | FULL | 3.52 | VERIFIED | C:\AFS\Backups\AFS_Fraud\AFS_AFS_Fraud_FULL_20261120T193114Z.bak | Backup written and checksum-verified.
+AFS_Payments | FULL | 5.65 | VERIFIED | C:\AFS\Backups\AFS_Payments\AFS_AFS_Payments_FULL_20261120T193114Z.bak | Backup written and checksum-verified.
+AFS_Reporting | FULL | 3.52 | VERIFIED | C:\AFS\Backups\AFS_Reporting\AFS_AFS_Reporting_FULL_20261120T193114Z.bak | Backup written and checksum-verified.
+DatabasesVerified
+-----------------
+8
+Failures
+--------
+0

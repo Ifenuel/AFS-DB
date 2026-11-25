@@ -1,0 +1,14 @@
+S|T
+account|Account
+account|AccountLedgerEntry
+account|Transfer
+account|TransferEvent
+audit|AuditEvent
+customer|Customer
+customer|CustomerAddress
+customer|CustomerContact
+dbo|sysdiagrams
+reference|AccountStatus
+reference|AccountType
+reference|Country
+reference|Currency

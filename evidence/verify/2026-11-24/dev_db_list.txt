@@ -1,0 +1,7 @@
+name
+AFS_Audit
+AFS_CoreBanking
+AFS_CustomerService
+AFS_Fraud
+AFS_Payments
+AFS_Reporting

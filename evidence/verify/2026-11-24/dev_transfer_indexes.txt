@@ -1,0 +1,7 @@
+name|type_desc|is_unique
+IX_account_Transfer_CompletedAt|NONCLUSTERED|False
+IX_account_Transfer_Currency_CompletedAt|NONCLUSTERED|False
+IX_account_Transfer_From_CompletedAt|NONCLUSTERED|False
+IX_account_Transfer_To_CompletedAt|NONCLUSTERED|False
+PK_account_Transfer|CLUSTERED|NULL
+UQ_account_Transfer_RequestId|NONCLUSTERED|NULL

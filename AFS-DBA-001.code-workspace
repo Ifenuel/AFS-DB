@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "name": "AFS-DBA-001",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "window.title": "AFS-DBA-001 — ${activeEditorShort}${separator}${rootName}",
+    "workbench.startupEditor": "readme"
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-mssql.mssql",
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "redhat.vscode-yaml",
+      "yzhang.markdown-all-in-one",
+      "davidanson.vscode-markdownlint",
+      "github.vscode-github-actions"
+    ]
+  }
+}

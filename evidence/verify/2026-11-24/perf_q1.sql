@@ -1,0 +1,3 @@
+SET NOCOUNT ON;
+SET SHOWPLAN_XML ON;
+SELECT COUNT_BIG(*) AS NovCount FROM account.Transfer WHERE YEAR(CompletedAt) = 2026 AND MONTH(CompletedAt) = 11;

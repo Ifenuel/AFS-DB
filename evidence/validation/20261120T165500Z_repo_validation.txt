@@ -1,0 +1,11 @@
+AFS repository validation
+Root: <workspace>\.config\workspace
+  json: 5 file(s) checked
+  python: 2 file(s) checked
+  sql: 40 file(s) checked
+  markdown: 55 file(s) checked
+  secrets: 110 file(s) checked
+
+PASS: structure, JSON, Python syntax, SQL headers, links and secret scan.
+
+validator_exit=0

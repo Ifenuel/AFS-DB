@@ -1,0 +1,15 @@
+name
+backupfile
+backupfilegroup
+backupmediafamily
+backupmediaset
+backupset
+smart_backup_files
+sysdbmaintplan_jobs
+sysjobactivity
+sysjobhistory
+sysjobs
+sysjobschedules
+sysjobservers
+sysjobsteps
+sysjobstepslogs

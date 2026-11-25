@@ -1,0 +1,9 @@
+C:\Users\ELITE 
+X2\.config\workspace\automation\powershell\AfsReadOnly.ps1 
+: Exception calling "ExecuteReader" with "0" argument(s): "Invalid column name 'physical_device_name'."
+At line:1 char:1
++ & './automation/powershell/AfsReadOnly.ps1' -Server '.' -Database 'ms ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [AfsReadOnly.ps1], MethodInvocationException
+    + FullyQualifiedErrorId : SqlException,AfsReadOnly.ps1
+ 

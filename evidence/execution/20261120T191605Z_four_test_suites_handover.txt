@@ -1,0 +1,177 @@
+[2026-11-20T19:16:05] Server: (localdb)\MSSQLLocalDB
+[2026-11-20T19:16:07] Version: Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64) 
+	Oct 21 2025 12:05:57 
+	Copyright (C) 2025 Microsoft Corporation
+	Express Edition (64-bit) on Windows 10 Pro 10.0 <X64> (Build 26200: ) (Hypervisor)
+
+[2026-11-20T19:16:07] Edition: Express Edition (64-bit)
+[2026-11-20T19:16:07] Running sql-server/databases/01_create_databases.sql (17 batches)
+  5701: Changed database context to 'master'.
+  0: AFS_CoreBanking already exists.
+  0: AFS_Payments already exists.
+  0: AFS_CustomerService already exists.
+  0: AFS_Audit already exists.
+  0: AFS_Reporting already exists.
+  0: AFS_Fraud already exists.
+  0: AFS database creation/configuration complete.
+  name | recovery_model_desc | page_verify_option_desc | compatibility_level | state_desc
+  AFS_Audit | FULL | CHECKSUM | 160 | ONLINE
+  AFS_CoreBanking | FULL | CHECKSUM | 160 | ONLINE
+  AFS_CoreBanking_RestoreTest | FULL | CHECKSUM | 160 | ONLINE
+  AFS_CustomerService | FULL | CHECKSUM | 160 | ONLINE
+  AFS_Fraud | FULL | CHECKSUM | 160 | ONLINE
+  AFS_Payments | FULL | CHECKSUM | 160 | ONLINE
+  AFS_Reporting | SIMPLE | CHECKSUM | 160 | ONLINE
+[2026-11-20T19:16:09] Running sql-server/schemas/02_create_schemas.sql (14 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  5701: Changed database context to 'AFS_Payments'.
+  5701: Changed database context to 'AFS_CustomerService'.
+  5701: Changed database context to 'AFS_Audit'.
+  5701: Changed database context to 'AFS_Reporting'.
+  5701: Changed database context to 'AFS_Fraud'.
+  0: AFS schemas created.
+[2026-11-20T19:16:10] Running sql-server/tables/03_create_tables_core.sql (17 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  0: AFS_CoreBanking tables created (or already existed).
+  schema_name | table_name | create_date
+  account | Account | 11/20/2026 19:06:13
+  account | AccountLedgerEntry | 11/20/2026 19:06:13
+  account | Transfer | 11/20/2026 19:06:13
+  account | TransferEvent | 11/20/2026 19:06:13
+  audit | AuditEvent | 11/20/2026 19:06:13
+  customer | Customer | 11/20/2026 19:06:13
+  customer | CustomerAddress | 11/20/2026 19:06:13
+  customer | CustomerContact | 11/20/2026 19:06:13
+  reference | AccountStatus | 11/20/2026 19:06:13
+  reference | AccountType | 11/20/2026 19:06:13
+  reference | Country | 11/20/2026 19:06:13
+  reference | Currency | 11/20/2026 19:06:13
+[2026-11-20T19:16:10] Running sql-server/tables/03_create_tables_payments.sql (12 batches)
+  5701: Changed database context to 'AFS_Payments'.
+  0: AFS_Payments tables created (or already existed).
+  schema_name | table_name
+  audit | AuditEvent
+  payment | Payment
+  payment | PaymentEvent
+  payment | PaymentMethod
+  payment | PaymentStatus
+  settlement | SettlementBatch
+  settlement | SettlementItem
+[2026-11-20T19:16:10] Running sql-server/tables/03_create_tables_customer_service.sql (9 batches)
+  5701: Changed database context to 'AFS_CustomerService'.
+  0: AFS_CustomerService tables created (or already existed).
+[2026-11-20T19:16:10] Running sql-server/tables/03_create_tables_audit.sql (10 batches)
+  5701: Changed database context to 'AFS_Audit'.
+  0: AFS_Audit tables created (or already existed).
+[2026-11-20T19:16:10] Running sql-server/tables/03_create_tables_reporting.sql (11 batches)
+  5701: Changed database context to 'AFS_Reporting'.
+  0: AFS_Reporting tables created (or already existed).
+[2026-11-20T19:16:10] Running sql-server/tables/03_create_tables_fraud.sql (8 batches)
+  5701: Changed database context to 'AFS_Fraud'.
+  0: AFS_Fraud tables created (or already existed).
+[2026-11-20T19:16:11] Running sql-server/tables/04_seed_reference.sql (16 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  5701: Changed database context to 'AFS_Payments'.
+  5701: Changed database context to 'AFS_CustomerService'.
+  5701: Changed database context to 'AFS_Fraud'.
+  0: Reference data seeded.
+[2026-11-20T19:16:11] Running sql-server/indexes/04_create_indexes.sql (29 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  5701: Changed database context to 'AFS_Payments'.
+  5701: Changed database context to 'AFS_CustomerService'.
+  5701: Changed database context to 'AFS_Audit'.
+  5701: Changed database context to 'AFS_Fraud'.
+  0: Indexes created (or already existed).
+[2026-11-20T19:16:12] Running sql-server/views/06_create_views.sql (16 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  5701: Changed database context to 'AFS_Payments'.
+  5701: Changed database context to 'AFS_Reporting'.
+  0: Views created.
+[2026-11-20T19:16:12] Running sql-server/functions/07_create_functions.sql (4 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  0: Account statement function created.
+[2026-11-20T19:16:12] Running sql-server/procedures/05_transfer_engine.sql (9 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  0: Transfer engine and reconciliation procedures created.
+[2026-11-20T19:16:12] Running sql-server/procedures/05_payment_procedures.sql (8 batches)
+  5701: Changed database context to 'AFS_Payments'.
+  0: Payment procedures created.
+[2026-11-20T19:16:12] Running sql-server/security/09_create_users_roles.sql (45 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  0: AFS_CoreBanking users/roles configured.
+  5701: Changed database context to 'AFS_Payments'.
+  0: AFS_Payments users/roles configured.
+  5701: Changed database context to 'AFS_CustomerService'.
+  0: AFS_CustomerService users/roles configured.
+  5701: Changed database context to 'AFS_Reporting'.
+  0: AFS_Reporting users/roles configured.
+  5701: Changed database context to 'AFS_Audit'.
+  0: AFS_Audit users/roles configured.
+  5701: Changed database context to 'AFS_Fraud'.
+  0: AFS_Fraud users/roles configured.
+[2026-11-20T19:16:13] Running sql-server/tests/01_schema_tests.sql (14 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  0: AFS_CoreBanking schema checks passed.
+  5701: Changed database context to 'AFS_Payments'.
+  0: AFS_Payments schema checks passed.
+  5701: Changed database context to 'AFS_CustomerService'.
+  0: AFS_CustomerService schema checks passed.
+  5701: Changed database context to 'AFS_Audit'.
+  0: AFS_Audit schema checks passed.
+  5701: Changed database context to 'AFS_Reporting'.
+  0: AFS_Reporting schema checks passed.
+  5701: Changed database context to 'AFS_Fraud'.
+  0: AFS_Fraud schema checks passed.
+  0: ALL SCHEMA TESTS PASSED.
+[2026-11-20T19:16:13] Running sql-server/tests/02_transfer_tests.sql (4 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  8153: Warning: Null value is eliminated by an aggregate or other SET operation.
+  TestId | TestName | Expected | Actual | Status
+  T-TXN-001 | Successful transfer | COMPLETED; sender 900; recipient 600 | COMPLETED; sender 900.0000; recipient 600.0000 | PASS
+  T-TXN-002 | Duplicate request is idempotent | DUPLICATE; one transfer; balances 900/600 | DUPLICATE; transfer count 1; balances 900.0000/600.0000 | PASS
+  T-TXN-003 | Insufficient funds rejected | Error 51006; no transfer; balances 900/600 | Error 51006; transfers 0; balances 900.0000/600.0000 | PASS
+  T-TXN-004 | Inactive account rejected | Error 51002; no transfer | Error 51002; transfers 0 | PASS
+  T-TXN-005 | Invalid recipient rejected | Error 51001; no transfer | Error 51001; transfers 0 | PASS
+  T-TXN-006 | Forced failure rolls back | Error 59999; balances 900/600; no transfer | Error 59999; balances 900.0000/600.0000; transfers 0 | PASS
+  T-TXN-007 | Balance equals OpeningBalance + ledger sum for test accounts | 0 mismatches | 0 mismatches | PASS
+  T-TXN-008 | Failed transfer is audited | At least 1 failure audit event | 5 event(s) | PASS
+  TotalTests | Passed | Failed
+  8 | 8 | 0
+  0: ALL TRANSFER TESTS PASSED.
+[2026-11-20T19:16:14] Running sql-server/tests/03_security_tests.sql (7 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  CustomerId | EmailMasked
+  1 | t***@***
+  5701: Changed database context to 'AFS_Payments'.
+  5701: Changed database context to 'AFS_Reporting'.
+  SummaryDate | CurrencyCode
+  5701: Changed database context to 'AFS_Audit'.
+  AuditRecordId | EventType
+  TestId | TestName | Expected | Actual | Status
+  T-SEC-001 | App can execute transfer procedure | 1 | 1 | PASS
+  T-SEC-002 | App cannot select account.Account | Permission denied | Denied: 229 | PASS
+  T-SEC-003 | App cannot update account.Account | Permission denied | Denied: 229 | PASS
+  T-SEC-004 | App cannot select audit.AuditEvent | Permission denied | Denied: 229 | PASS
+  T-SEC-005 | App can select masked customer profile | Success | Success | PASS
+  T-SEC-006 | Developer cannot update account.Account | Permission denied | Denied: 229 | PASS
+  T-SEC-007 | App can execute payment procedure | 1 | 1 | PASS
+  T-SEC-008 | App cannot select payment.Payment | Permission denied | Denied: 229 | PASS
+  T-SEC-009 | Reporting can select reporting view | Success | Success | PASS
+  T-SEC-010 | Reporting cannot select Core account table | Permission denied | Denied: 916 | PASS
+  T-SEC-011 | Auditor can select audit records | Success | Success | PASS
+  T-SEC-012 | Auditor cannot update audit records | Permission denied | Denied: 229 | PASS
+  TotalTests | Passed | Failed
+  12 | 12 | 0
+  0: ALL SECURITY TESTS PASSED.
+[2026-11-20T19:16:15] Running sql-server/tests/04_payment_tests.sql (6 batches)
+  5701: Changed database context to 'AFS_CoreBanking'.
+  5701: Changed database context to 'AFS_Payments'.
+  TestId | TestName | Expected | Actual | Status
+  T-PAY-001 | Payment completes and posts once | COMPLETED; one payment; balances 900/600 | COMPLETED; payments 1; balances 900.0000/600.0000 | PASS
+  T-PAY-002 | Duplicate payment request is idempotent | COMPLETED/DUPLICATE; one payment; balances 900/600 | COMPLETED; payments 1; balances 900.0000/600.0000 | PASS
+  T-PAY-003 | Insufficient funds fails payment safely | Error 51006; payment FAILED; no transfer; balances 900/600 | Error 51006; payment FAILED; transfers 0; balances 900.0000/600.0000 | PASS
+  TotalTests | Passed | Failed
+  3 | 3 | 0
+  0: ALL PAYMENT TESTS PASSED.
+[2026-11-20T19:16:15] Completed. Review the result sets and log; a zero exit code alone is not proof that every assertion passed.
+Log: C:\Users\<user>\.config\workspace\logs\localdb-run-20261120T191605Z.log

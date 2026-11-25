@@ -1,0 +1,6 @@
+Running C:\Users\<user>\.config\workspace\sql-server\maintenance\50_index_maintenance.sql (2 batch(es))
+SchemaName | TableName | IndexName | FragmentationPercent | PageCount | Action | Executed
+-----------+-----------+-----------+----------------------+-----------+--------+---------
+WhatIf | DatabaseName | RebuildThreshold | ReorganizeThreshold
+-------+--------------+------------------+--------------------
+True | AFS_CoreBanking | 30.00 | 10.00

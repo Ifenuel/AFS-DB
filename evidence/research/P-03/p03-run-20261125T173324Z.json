@@ -1,0 +1,130 @@
+{
+  "generated_at_utc": "2026-11-25T17:33:24+00:00",
+  "baseline": {
+    "rows": 10000,
+    "total": "12495000.00",
+    "checksum": "2560002"
+  },
+  "after_bad_update": {
+    "rows": 10000,
+    "total": "13744500.00",
+    "checksum": "2560002"
+  },
+  "restored": {
+    "rows": 10000,
+    "total": "12495000.00",
+    "checksum": "2560002"
+  },
+  "timings_seconds": {
+    "database_restore_s": 0.98,
+    "service_verified_s": 0.12
+  },
+  "blocking_seconds": {
+    "before_rcsi": 5.12,
+    "after_rcsi": 0.1
+  },
+  "assertions": [
+    {
+      "id": "C1",
+      "description": "baseline row count",
+      "expected": "10000",
+      "actual": 10000,
+      "passed": true
+    },
+    {
+      "id": "C2",
+      "description": "unbounded update rewrote every row",
+      "expected": "10000",
+      "actual": "10000",
+      "passed": true
+    },
+    {
+      "id": "C3",
+      "description": "detection reports the balance drift",
+      "expected": "BALANCE_DRIFT",
+      "actual": "BALANCE_DRIFT",
+      "passed": true
+    },
+    {
+      "id": "C4",
+      "description": "restore returns the pre-update state",
+      "expected": "OK",
+      "actual": "OK",
+      "passed": true
+    },
+    {
+      "id": "C5",
+      "description": "row count after restore",
+      "expected": "10000",
+      "actual": 10000,
+      "passed": true
+    },
+    {
+      "id": "C6",
+      "description": "total balance after restore",
+      "expected": "12495000.00",
+      "actual": "12495000.00",
+      "passed": true
+    },
+    {
+      "id": "C7",
+      "description": "checksum after restore",
+      "expected": "2560002",
+      "actual": "2560002",
+      "passed": true
+    },
+    {
+      "id": "C8",
+      "description": "guarded update rejected by row-count assertion",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "C9",
+      "description": "guarded update changed nothing",
+      "expected": "2560002",
+      "actual": "2560002",
+      "passed": true
+    },
+    {
+      "id": "C10",
+      "description": "unsafe NOT NULL migration rejected",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "C11",
+      "description": "safe migration applied",
+      "expected": "0",
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "id": "C12",
+      "description": "backfilled column is populated",
+      "expected": "10000",
+      "actual": "10000",
+      "passed": true
+    },
+    {
+      "id": "C13",
+      "description": "reader blocked by the open transaction",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    },
+    {
+      "id": "C14",
+      "description": "reader no longer blocked",
+      "expected": "yes",
+      "actual": "yes",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "passed": 14,
+    "total": 14
+  }
+}

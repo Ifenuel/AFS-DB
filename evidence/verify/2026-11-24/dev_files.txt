@@ -1,0 +1,13 @@
+Db|type_desc|SizeMB|PhysicalName
+AFS_Audit|LOG|64.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Audit_log.ldf
+AFS_Audit|ROWS|128.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Audit.mdf
+AFS_CoreBanking|LOG|128.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf
+AFS_CoreBanking|ROWS|256.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CustomerService|LOG|64.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CustomerService_log.ldf
+AFS_CustomerService|ROWS|128.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CustomerService.mdf
+AFS_Fraud|LOG|64.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Fraud_log.ldf
+AFS_Fraud|ROWS|128.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Fraud.mdf
+AFS_Payments|LOG|128.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Payments_log.ldf
+AFS_Payments|ROWS|256.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Payments.mdf
+AFS_Reporting|LOG|64.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Reporting_log.ldf
+AFS_Reporting|ROWS|128.000000|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Reporting.mdf

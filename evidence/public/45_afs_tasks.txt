@@ -1,0 +1,25 @@
+== MySQL backup task ==
+
+
+TaskName           : AFS MySQL Backup
+State              : Ready
+NextRunTime        : 11/26/2026 2:30:00 AM
+LastRunTime        : 11/30/1999 12:00:00 AM
+LastTaskResult     : 267011
+AllowOnBatteries   : True
+StartWhenAvailable : True
+
+
+
+
+== health monitor task ==
+
+
+TaskName       : AFS Backup Health
+State          : Ready
+NextRunTime    : 11/25/2026 9:18:46 AM
+LastRunTime    : 11/30/1999 12:00:00 AM
+LastTaskResult : 267011
+
+
+

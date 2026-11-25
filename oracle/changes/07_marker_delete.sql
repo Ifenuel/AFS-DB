@@ -1,0 +1,14 @@
+-- AFS-DBA-001 | ORCL-CHG-001 step 4: archive the marker, then delete it (simulated data loss)
+SET PAGESIZE 100
+SET LINESIZE 160
+
+-- Must run from the root container: SWITCH LOGFILE is not a PDB operation.
+ALTER SYSTEM SWITCH LOGFILE;
+
+ALTER SESSION SET CONTAINER = FREEPDB1;
+
+DELETE FROM AFS_LAB.RECOVERY_MARKER WHERE id = 1;
+COMMIT;
+
+SELECT COUNT(*) AS rows_after_delete FROM AFS_LAB.RECOVERY_MARKER;
+SELECT TO_CHAR(SYSDATE,'YYYY-MM-DD HH24:MI:SS') AS delete_time FROM dual;

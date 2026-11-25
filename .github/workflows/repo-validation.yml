@@ -1,0 +1,38 @@
+name: Repository validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Structure, links and static checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate repository
+        run: python automation/python/validate_repo.py
+
+      - name: Audit the published site
+        run: python tools/audit_site.py
+
+      - name: Compile Python tooling
+        run: python -m compileall -q automation/python
+
+      - name: Check PowerShell files are present
+        run: |
+          test -f sql-server/installation/Deploy-AfsSqlServer.ps1
+          test -f automation/powershell/Test-AfsEnvironment.ps1
+          echo "PowerShell deployment assets present."

@@ -1,0 +1,205 @@
+{
+  "generated_at_utc": "2026-11-25T17:49:13Z",
+  "counting_rules": {
+    "tables": "user tables; excludes the dbo.sysdiagrams support table present in six databases",
+    "views": "user views (is_ms_shipped = 0)",
+    "procedures": "user procedures; excludes the seven sp_*diagram helpers per database",
+    "rows": "SUM(sys.partitions.rows) over heaps and clustered indexes of user tables",
+    "foreign_keys": "every foreign key in the database",
+    "size_mb": "SUM(sys.database_files.size) for data and log files",
+    "backup_sets": "rows in msdb.dbo.backupset for databases whose name starts with AFS_"
+  },
+  "sqlserver": {
+    "instance": "Adeola",
+    "version": "17.0.1000.7",
+    "edition": "Enterprise Developer Edition (64-bit)",
+    "databases": [
+      {
+        "name": "AFS_Archive",
+        "state": "ONLINE",
+        "recovery_model": "FULL",
+        "tables": 9,
+        "views": 0,
+        "procedures": 0,
+        "foreign_keys": 7,
+        "rows": 2737,
+        "size_mb": 80.0,
+        "last_full": "2026-11-25 16:12:27.000",
+        "last_log": "2026-11-25 18:35:00.000",
+        "full_sets": 1,
+        "log_sets": 9
+      },
+      {
+        "name": "AFS_Audit",
+        "state": "ONLINE",
+        "recovery_model": "FULL",
+        "tables": 6,
+        "views": 0,
+        "procedures": 0,
+        "foreign_keys": 0,
+        "rows": 6769,
+        "size_mb": 192.0,
+        "last_full": "2026-11-25 16:12:25.000",
+        "last_log": "2026-11-25 18:35:00.000",
+        "full_sets": 13,
+        "log_sets": 54
+      },
+      {
+        "name": "AFS_Compliance",
+        "state": "ONLINE",
+        "recovery_model": "FULL",
+        "tables": 7,
+        "views": 0,
+        "procedures": 0,
+        "foreign_keys": 5,
+        "rows": 261,
+        "size_mb": 16.0,
+        "last_full": "2026-11-25 16:12:27.000",
+        "last_log": "2026-11-25 18:35:00.000",
+        "full_sets": 1,
+        "log_sets": 9
+      },
+      {
+        "name": "AFS_CoreBanking",
+        "state": "ONLINE",
+        "recovery_model": "FULL",
+        "tables": 12,
+        "views": 5,
+        "procedures": 5,
+        "foreign_keys": 14,
+        "rows": 90840,
+        "size_mb": 384.0,
+        "last_full": "2026-11-25 16:12:26.000",
+        "last_log": "2026-11-25 18:35:00.000",
+        "full_sets": 16,
+        "log_sets": 58
+      },
+      {
+        "name": "AFS_CustomerService",
+        "state": "ONLINE",
+        "recovery_model": "FULL",
+        "tables": 5,
+        "views": 0,
+        "procedures": 0,
+        "foreign_keys": 4,
+        "rows": 417,
+        "size_mb": 192.0,
+        "last_full": "2026-11-25 16:12:26.000",
+        "last_log": "2026-11-25 18:35:00.000",
+        "full_sets": 9,
+        "log_sets": 59
+      },
+      {
+        "name": "AFS_Fraud",
+        "state": "ONLINE",
+        "recovery_model": "FULL",
+        "tables": 4,
+        "views": 0,
+        "procedures": 0,
+        "foreign_keys": 2,
+        "rows": 3601,
+        "size_mb": 192.0,
+        "last_full": "2026-11-25 16:12:26.000",
+        "last_log": "2026-11-25 18:35:00.000",
+        "full_sets": 4,
+        "log_sets": 54
+      },
+      {
+        "name": "AFS_Identity",
+        "state": "ONLINE",
+        "recovery_model": "FULL",
+        "tables": 7,
+        "views": 0,
+        "procedures": 0,
+        "foreign_keys": 7,
+        "rows": 3785,
+        "size_mb": 16.0,
+        "last_full": "2026-11-25 16:12:27.000",
+        "last_log": "2026-11-25 18:35:00.000",
+        "full_sets": 1,
+        "log_sets": 9
+      },
+      {
+        "name": "AFS_Payments",
+        "state": "ONLINE",
+        "recovery_model": "FULL",
+        "tables": 7,
+        "views": 4,
+        "procedures": 4,
+        "foreign_keys": 5,
+        "rows": 1499,
+        "size_mb": 384.0,
+        "last_full": "2026-11-25 16:12:26.000",
+        "last_log": "2026-11-25 18:35:00.000",
+        "full_sets": 16,
+        "log_sets": 74
+      },
+      {
+        "name": "AFS_Reporting",
+        "state": "ONLINE",
+        "recovery_model": "SIMPLE",
+        "tables": 7,
+        "views": 2,
+        "procedures": 0,
+        "foreign_keys": 2,
+        "rows": 89995,
+        "size_mb": 192.0,
+        "last_full": "2026-11-25 16:12:27.000",
+        "last_log": null,
+        "full_sets": 4,
+        "log_sets": 0
+      }
+    ],
+    "totals": {
+      "databases": 9,
+      "tables": 64,
+      "views": 11,
+      "procedures": 9,
+      "foreign_keys": 46,
+      "rows": 199904,
+      "size_mb": 1648.0,
+      "full_sets": 65,
+      "log_sets": 326
+    }
+  },
+  "oracle": {
+    "engine": "Oracle",
+    "version": "Oracle AI Database 26ai Free Release 23.26.4.0.0 - Develop, Learn, and Run for Free",
+    "instance": "FREE",
+    "pdb": "FREEPDB1",
+    "open_mode": "READ WRITE",
+    "log_mode": "ARCHIVELOG",
+    "tables": 3,
+    "lab": {
+      "schema": "AFS_LAB",
+      "accounts": 1000,
+      "ledger_entries": 40000
+    },
+    "scope": "one pluggable database (FREEPDB1), one lab schema (AFS_LAB)"
+  },
+  "mysql": {
+    "engine": "MySQL",
+    "version": "8.4.9",
+    "host": "Adeola",
+    "schemas": [
+      {
+        "schema": "afs_lab",
+        "tables": 2,
+        "approx_rows": 41075
+      },
+      {
+        "schema": "afs_lab_restore",
+        "tables": 2,
+        "approx_rows": 41075
+      }
+    ],
+    "lab": {
+      "schema": "afs_lab",
+      "accounts": 1000,
+      "ledger_entries": 40000,
+      "balance_total": 568568500.0
+    },
+    "scope": "one schema (afs_lab) plus its scratch restore copy"
+  },
+  "engine_scope_note": "SQL Server counts nine databases. Oracle counts one schema inside one pluggable database. MySQL counts one schema plus its restore copy. The three are reported separately and are never summed into one database or table count."
+}

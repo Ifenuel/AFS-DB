@@ -1,0 +1,9 @@
+[2026-11-25T09:13:37] AFS backup health
+CRITICAL SQL Server   log backup: AFS_Audit            8 min since last log backup (warn 1m / crit 2m)
+CRITICAL SQL Server   log backup: AFS_CoreBanking      8 min since last log backup (warn 1m / crit 2m)
+CRITICAL SQL Server   log backup: AFS_CustomerService  8 min since last log backup (warn 1m / crit 2m)
+CRITICAL SQL Server   log backup: AFS_Fraud            8 min since last log backup (warn 1m / crit 2m)
+CRITICAL SQL Server   log backup: AFS_Payments         8 min since last log backup (warn 1m / crit 2m)
+WARNING  Oracle       fast recovery area               41.9% used (warn 10% / crit 95%)
+CRITICAL Oracle       scheduled RMAN run               last run 0.2 h ago, result 0
+OK       MySQL        newest dump                      afs_lab_20261125_091144.sql, 0 h old

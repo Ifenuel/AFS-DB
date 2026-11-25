@@ -1,0 +1,24 @@
+=== Oracle and MySQL at estate scale  2026-11-25T11:07:44 ===
+
+--- Oracle 26ai Free, AFS_LAB in FREEPDB1 ---
+  ACCOUNTS LEDGER_ENTRIES BALANCE_MISMATCHES
+---------- -------------- ------------------
+      1000	    40000		   0
+1 row selected.
+  TABLE_MB
+----------
+       4.4
+1 row selected.
+
+--- MySQL 8.4.9, afs_lab ---
+version
+8.4.9
+accounts	ledger_entries	balance_mismatches	negative_running
+1000	40000	0	0
+
+--- MySQL dump and scratch restore ---
+dump file : afs_lab_scale_20261125_110423.sql  (2791269 bytes)
+restored_accounts	restored_entries	restored_mismatches
+1000	40000	0
+
+verdict   : PASS - both engines hold the same 1,000 accounts and 40,000 entries as the core, reconcile to zero, and the dump restores into a scratch schema with identical counts

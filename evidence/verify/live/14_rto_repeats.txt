@@ -1,0 +1,10 @@
+=== run 2 ===
+[21:44:44.719] restore complete (full + 19 logs) in 4.9 s
+[21:44:46.396] DBCC CHECKDB clean; 1.7 s
+[21:44:46.446] restored counts: customers=562 accounts=725 transfers=17372 ledger=34744
+[21:44:46.449] TOTAL RTO 7.2 s (restore 4.9 s + checkdb 1.7 s)
+=== run 3 ===
+[21:44:53.921] restore complete (full + 19 logs) in 4.3 s
+[21:44:56.289] DBCC CHECKDB clean; 2.4 s
+[21:44:56.398] restored counts: customers=562 accounts=725 transfers=17372 ledger=34744
+[21:44:56.402] TOTAL RTO 7.5 s (restore 4.3 s + checkdb 2.4 s)

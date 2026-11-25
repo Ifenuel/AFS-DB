@@ -1,0 +1,61 @@
+{
+  "project": "AFS-DBA-001",
+  "profile": "smoke",
+  "seed": 20261120,
+  "generated_at_utc": "2026-11-20T17:00:35.342940+00:00",
+  "requested": {
+    "customers": 100,
+    "accounts": 200,
+    "transfers": 1000,
+    "payments": 300,
+    "cases": 50,
+    "audit_events": 500
+  },
+  "actual": {
+    "customers": 100,
+    "accounts": 200,
+    "transfers": 992,
+    "ledger_entries": 1984,
+    "payments": 300,
+    "cases": 50,
+    "audit_events": 500
+  },
+  "elapsed_seconds": 0.157,
+  "files": {
+    "accounts.csv": {
+      "bytes": 30380,
+      "megabytes": 0.03
+    },
+    "audit_events.csv": {
+      "bytes": 92050,
+      "megabytes": 0.09
+    },
+    "customers.csv": {
+      "bytes": 14299,
+      "megabytes": 0.01
+    },
+    "ledger_entries.csv": {
+      "bytes": 254926,
+      "megabytes": 0.24
+    },
+    "payments.csv": {
+      "bytes": 71057,
+      "megabytes": 0.07
+    },
+    "support_cases.csv": {
+      "bytes": 8780,
+      "megabytes": 0.01
+    },
+    "transfers.csv": {
+      "bytes": 230935,
+      "megabytes": 0.22
+    }
+  },
+  "notes": [
+    "All data is synthetic; emails use the reserved .invalid domain.",
+    "Transfers and ledger entries are generated together with running balances.",
+    "Account OpeningBalance is initial funding; Balance equals OpeningBalance + ledger sum.",
+    "Completed payment rows reference generated transfers.",
+    "This manifest is the authoritative record of the achieved volume."
+  ]
+}

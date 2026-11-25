@@ -1,0 +1,27 @@
+== MySQL service state ==
+
+
+Name        : MySQLAFS
+Status      : Running
+StartType   : Automatic
+DisplayName : MySQLAFS
+
+
+
+
+== server version and data ==
++---------+------+--------------------------------+
+| version | port | datadir                        |
++---------+------+--------------------------------+
+| 8.4.9   | 3306 | C:\ProgramData\AFS\mysql\data\ |
++---------+------+--------------------------------+
++----------+
+| accounts |
++----------+
+|        2 |
++----------+
++-------------+
+| ledger_rows |
++-------------+
+|           2 |
++-------------+

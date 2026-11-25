@@ -1,0 +1,73 @@
+=== Health check after backup coverage closed  2026-11-25T15:13:40Z ===
+
+DBCC execution completed. If DBCC printed error messages, contact your system administrator.
+OverallStatus|CriticalChecks|WarningChecks|OkChecks|CheckedAtUtc
+-------------|--------------|-------------|--------|------------
+CRITICAL|1|0|45|2026-11-25 15:13:44.5158932
+CheckId|Severity|CheckName|Details|CheckedAt
+-------|--------|---------|-------|---------
+JOB_AFS - Log Backup (15 min)|CRITICAL|Agent job: AFS - Log Backup (15 min)|last run 2026-11-25T16:05:00, run_status=0|2026-11-25 15:13:42.443
+BACKUP_FULL_AFS_Archive|OK|Full backup freshness: AFS_Archive|2026-11-25T16:12:27|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Audit|OK|Full backup freshness: AFS_Audit|2026-11-25T16:12:25|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Compliance|OK|Full backup freshness: AFS_Compliance|2026-11-25T16:12:27|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_CoreBanking|OK|Full backup freshness: AFS_CoreBanking|2026-11-25T16:12:26|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_CustomerService|OK|Full backup freshness: AFS_CustomerService|2026-11-25T16:12:26|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Fraud|OK|Full backup freshness: AFS_Fraud|2026-11-25T16:12:26|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Identity|OK|Full backup freshness: AFS_Identity|2026-11-25T16:12:27|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Payments|OK|Full backup freshness: AFS_Payments|2026-11-25T16:12:26|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Reporting|OK|Full backup freshness: AFS_Reporting|2026-11-25T16:12:27|2026-11-25 15:13:42.160
+BACKUP_LOG_AFS_Archive|OK|Log backup freshness: AFS_Archive|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_Audit|OK|Log backup freshness: AFS_Audit|2026-11-25T16:12:27|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_Compliance|OK|Log backup freshness: AFS_Compliance|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_CoreBanking|OK|Log backup freshness: AFS_CoreBanking|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_CustomerService|OK|Log backup freshness: AFS_CustomerService|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_Fraud|OK|Log backup freshness: AFS_Fraud|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_Identity|OK|Log backup freshness: AFS_Identity|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_Payments|OK|Log backup freshness: AFS_Payments|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BLOCKING|OK|Blocked sessions|0 blocked session(s)|2026-11-25 15:13:42.451
+DB_STATE_AFS_Archive|OK|Database state: AFS_Archive|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Audit|OK|Database state: AFS_Audit|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Compliance|OK|Database state: AFS_Compliance|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_CoreBanking|OK|Database state: AFS_CoreBanking|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_CustomerService|OK|Database state: AFS_CustomerService|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Fraud|OK|Database state: AFS_Fraud|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Identity|OK|Database state: AFS_Identity|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Payments|OK|Database state: AFS_Payments|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Reporting|OK|Database state: AFS_Reporting|ONLINE / recovery=SIMPLE / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DEADLOCKS|OK|Deadlock reports in system_health|0 retained deadlock report(s)|2026-11-25 15:13:44.504
+DISK_C:\|OK|Disk free space on C:\|40.65 GB free of 237.50 GB|2026-11-25 15:13:41.721
+INSTANCE|OK|SQL Server instance reachable|Adeola / Enterprise Developer Edition (64-bit)|2026-11-25 15:13:41.451
+JOB_AFS - Full Backup (nightly)|OK|Agent job: AFS - Full Backup (nightly)|last run 2026-11-25T08:29:22, run_status=1|2026-11-25 15:13:42.443
+JOB_AFS - Index and Statistics (weekly)|OK|Agent job: AFS - Index and Statistics (weekly)|last run 2026-11-24T12:34:13, run_status=1|2026-11-25 15:13:42.443
+JOB_AFS - Integrity Check (weekly)|OK|Agent job: AFS - Integrity Check (weekly)|last run 2026-11-24T12:34:13, run_status=1|2026-11-25 15:13:42.443
+JOB_AFS - Job Failure Watch (hourly)|OK|Agent job: AFS - Job Failure Watch (hourly)|last run 2026-11-25T16:05:00, run_status=1|2026-11-25 15:13:42.443
+JOB_syspolicy_purge_history|OK|Agent job: syspolicy_purge_history|last run 2026-11-25T08:29:22, run_status=1|2026-11-25 15:13:42.443
+LOG_USAGE_AFS_Archive|OK|Transaction log usage: AFS_Archive|4.93% used, 71.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Audit|OK|Transaction log usage: AFS_Audit|23.27% used, 63.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Compliance|OK|Transaction log usage: AFS_Compliance|15.30% used, 7.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_CoreBanking|OK|Transaction log usage: AFS_CoreBanking|9.78% used, 127.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_CustomerService|OK|Transaction log usage: AFS_CustomerService|15.38% used, 63.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Fraud|OK|Transaction log usage: AFS_Fraud|17.13% used, 63.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Identity|OK|Transaction log usage: AFS_Identity|4.69% used, 7.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Payments|OK|Transaction log usage: AFS_Payments|0.54% used, 127.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Reporting|OK|Transaction log usage: AFS_Reporting|9.57% used, 63.99 MB|2026-11-25 15:13:42.479
+LONG_QUERIES|OK|Requests running longer than 60 seconds|0 request(s)|2026-11-25 15:13:42.455
+DatabaseName|LogicalFileName|PhysicalFileName|FileType|SizeMB|growth|is_percent_growth|is_read_only
+------------|---------------|----------------|--------|------|------|-----------------|------------
+AFS_Archive|AFS_Archive_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Archive_log.ldf|LOG|72.00|8192|0|0
+AFS_Archive|AFS_Archive|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Archive.mdf|ROWS|8.00|8192|0|0
+AFS_Audit|AFS_Audit_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Audit_log.ldf|LOG|64.00|8192|0|0
+AFS_Audit|AFS_Audit|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Audit.mdf|ROWS|128.00|8192|0|0
+AFS_Compliance|AFS_Compliance_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Compliance_log.ldf|LOG|8.00|8192|0|0
+AFS_Compliance|AFS_Compliance|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Compliance.mdf|ROWS|8.00|8192|0|0
+AFS_CoreBanking|AFS_CoreBanking_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf|LOG|128.00|8192|0|0
+AFS_CoreBanking|AFS_CoreBanking|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf|ROWS|256.00|8192|0|0
+AFS_CustomerService|AFS_CustomerService_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CustomerService_log.ldf|LOG|64.00|8192|0|0
+AFS_CustomerService|AFS_CustomerService|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CustomerService.mdf|ROWS|128.00|8192|0|0
+AFS_Fraud|AFS_Fraud_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Fraud_log.ldf|LOG|64.00|8192|0|0
+AFS_Fraud|AFS_Fraud|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Fraud.mdf|ROWS|128.00|8192|0|0
+AFS_Identity|AFS_Identity_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Identity_log.ldf|LOG|8.00|8192|0|0
+AFS_Identity|AFS_Identity|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Identity.mdf|ROWS|8.00|8192|0|0
+AFS_Payments|AFS_Payments_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Payments_log.ldf|LOG|128.00|8192|0|0
+AFS_Payments|AFS_Payments|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Payments.mdf|ROWS|256.00|8192|0|0
+AFS_Reporting|AFS_Reporting_log|C:\Program Files\Microsof

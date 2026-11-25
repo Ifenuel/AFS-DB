@@ -1,0 +1,4 @@
+ActualElapsedms="9"
+ActualElapsedms="9"
+ActualLogicalReads="108"
+ActualRowsRead="12002"

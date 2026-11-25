@@ -1,0 +1,12 @@
+
+Database            Status   Detail                                                
+--------            ------   ------                                                
+AFS_Audit           VERIFIED 1.1 MB, 64 ms, AFS_Audit_20261125_072924.bak          
+AFS_CoreBanking     VERIFIED 14.4 MB, 144 ms, AFS_CoreBanking_20261125_072930.bak  
+AFS_CustomerService VERIFIED 0.7 MB, 40 ms, AFS_CustomerService_20261125_072933.bak
+AFS_Fraud           VERIFIED 0.7 MB, 39 ms, AFS_Fraud_20261125_072934.bak          
+AFS_Payments        VERIFIED 1 MB, 47 ms, AFS_Payments_20261125_072935.bak         
+AFS_Reporting       VERIFIED 4.8 MB, 70 ms, AFS_Reporting_20261125_072936.bak      
+
+
+all 6 databases verified

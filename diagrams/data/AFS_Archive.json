@@ -1,0 +1,561 @@
+{
+  "database": "AFS_Archive",
+  "tables": [
+    {
+      "name": "retention.ArchivedRecord",
+      "columns": [
+        {
+          "name": "ArchivedRecordId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "ArchivedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "IsPurged",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PayloadHash",
+          "type": "char(64)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PreviousHash",
+          "type": "char(64)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RecordKey",
+          "type": "nvarchar(80)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RetentionPolicyId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "SourceDatabase",
+          "type": "nvarchar(80)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "SourceTable",
+          "type": "nvarchar(80)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "retention.LegalHold",
+      "columns": [
+        {
+          "name": "LegalHoldId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "Custodian",
+          "type": "nvarchar(120)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "MatterReference",
+          "type": "varchar(40)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PlacedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ReleasedAt",
+          "type": "datetime2(3)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "retention.LegalHoldRecord",
+      "columns": [
+        {
+          "name": "LegalHoldRecordId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "ArchivedRecordId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "LegalHoldId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        }
+      ]
+    },
+    {
+      "name": "retention.PurgeRun",
+      "columns": [
+        {
+          "name": "PurgeRunId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "BlockedByHold",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Candidates",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Purged",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RetentionPolicyId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "RunAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "retention.RetentionPolicy",
+      "columns": [
+        {
+          "name": "RetentionPolicyId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "DataClass",
+          "type": "varchar(40)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "LegalBasis",
+          "type": "varchar(80)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PolicyName",
+          "type": "varchar(60)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RetentionMonths",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "telemetry.CollectorRun",
+      "columns": [
+        {
+          "name": "RunId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "EndedAt",
+          "type": "datetime2(3)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "GapsDetected",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "IntervalMs",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Notes",
+          "type": "varchar(200)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ReadingsWritten",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "StartedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "telemetry.Gap",
+      "columns": [
+        {
+          "name": "GapId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "DetectedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "GapEnd",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "GapStart",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "MissedReadings",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RunId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "TagId",
+          "type": "smallint",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        }
+      ]
+    },
+    {
+      "name": "telemetry.Reading",
+      "columns": [
+        {
+          "name": "ReadingId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "ObservedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Quality",
+          "type": "tinyint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TagId",
+          "type": "smallint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "Value",
+          "type": "decimal(10,3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "telemetry.Tag",
+      "columns": [
+        {
+          "name": "TagId",
+          "type": "smallint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "Description",
+          "type": "varchar(120)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "NominalHigh",
+          "type": "decimal(10,3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "NominalLow",
+          "type": "decimal(10,3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PlcRegister",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TagCode",
+          "type": "varchar(30)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Unit",
+          "type": "varchar(12)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "name": "FK_retention_Record_Policy",
+      "child": "retention.ArchivedRecord",
+      "parent": "retention.RetentionPolicy",
+      "pairs": [
+        {
+          "child_column": "RetentionPolicyId",
+          "parent_column": "RetentionPolicyId"
+        }
+      ]
+    },
+    {
+      "name": "FK_retention_HoldRecord_Hold",
+      "child": "retention.LegalHoldRecord",
+      "parent": "retention.LegalHold",
+      "pairs": [
+        {
+          "child_column": "LegalHoldId",
+          "parent_column": "LegalHoldId"
+        }
+      ]
+    },
+    {
+      "name": "FK_retention_HoldRecord_Record",
+      "child": "retention.LegalHoldRecord",
+      "parent": "retention.ArchivedRecord",
+      "pairs": [
+        {
+          "child_column": "ArchivedRecordId",
+          "parent_column": "ArchivedRecordId"
+        }
+      ]
+    },
+    {
+      "name": "FK_retention_Purge_Policy",
+      "child": "retention.PurgeRun",
+      "parent": "retention.RetentionPolicy",
+      "pairs": [
+        {
+          "child_column": "RetentionPolicyId",
+          "parent_column": "RetentionPolicyId"
+        }
+      ]
+    },
+    {
+      "name": "FK_Gap_Run",
+      "child": "telemetry.Gap",
+      "parent": "telemetry.CollectorRun",
+      "pairs": [
+        {
+          "child_column": "RunId",
+          "parent_column": "RunId"
+        }
+      ]
+    },
+    {
+      "name": "FK_Gap_Tag",
+      "child": "telemetry.Gap",
+      "parent": "telemetry.Tag",
+      "pairs": [
+        {
+          "child_column": "TagId",
+          "parent_column": "TagId"
+        }
+      ]
+    },
+    {
+      "name": "FK_Reading_Tag",
+      "child": "telemetry.Reading",
+      "parent": "telemetry.Tag",
+      "pairs": [
+        {
+          "child_column": "TagId",
+          "parent_column": "TagId"
+        }
+      ]
+    }
+  ]
+}

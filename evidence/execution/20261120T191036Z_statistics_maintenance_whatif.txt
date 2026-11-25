@@ -1,0 +1,6 @@
+Running C:\Users\<user>\.config\workspace\sql-server\maintenance\52_statistics_maintenance.sql (2 batch(es))
+SchemaName | TableName | Action | Executed
+-----------+-----------+--------+---------
+WhatIf | SamplePercent | DatabaseName
+-------+---------------+-------------
+True | 20 | AFS_CoreBanking

@@ -1,0 +1,4 @@
+Running C:\Users\<user>\.config\workspace\sql-server\maintenance\51_integrity_check.sql (2 batch(es))
+DatabaseName | Status | StartedAtUtc | CompletedAtUtc | DurationSeconds
+-------------+--------+--------------+----------------+----------------
+AFS_CoreBanking | CHECKDB_COMPLETED | 11/20/2026 19:10:15 | 11/20/2026 19:10:15 | 0

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>P-04 Privileged access and audit - Apex Financial Services</title>
+<meta name="description" content="An application holding CONTROL and erasing its own trail, then least privilege, denied direct writes and an audit trigger that names the caller.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#060a11">
+<link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/app.css?v=76dd2ae4f2">
+<link rel="stylesheet" href="assets/nav.css?v=43e61470bd">
+<script src="assets/nav.js?v=e9b90b3f5c" defer></script>
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="Apex Financial Services — home">
+      <img class="brand-logo" src="assets/brand/logo-mark.png" width="34" height="34" alt="">
+      <span class="brand-text">
+        <span class="brand-name">Apex Financial Services</span>
+        <span class="brand-tag">Database platform</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Sections"><a class="nav-link" href="index.html">Estate</a><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-platform">Platform<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-platform"><a class="nav-item" href="capabilities.html"><span class="ni-title">Capabilities</span><span class="ni-sub">What this proves, discipline by discipline</span></a><a class="nav-item" href="architecture.html"><span class="ni-title">Schema</span><span class="ni-sub">Tables, keys and entity relationships</span></a><a class="nav-item" href="explorer.html"><span class="ni-title">Explorer</span><span class="ni-sub">Browse every table and column</span></a><a class="nav-item" href="diagrams.html"><span class="ni-title">Diagrams</span><span class="ni-sub">Foreign keys drawn per database</span></a><a class="nav-item" href="oracle.html"><span class="ni-title">Oracle</span><span class="ni-sub">26ai Free lab and exercises</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-operations">Operations<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-operations"><a class="nav-item" href="operations.html"><span class="ni-title">Operations</span><span class="ni-sub">Jobs, maintenance and history</span></a><a class="nav-item" href="backup.html"><span class="ni-title">Backup</span><span class="ni-sub">Restores tested end to end</span></a><a class="nav-item" href="monitoring.html"><span class="ni-title">Monitoring</span><span class="ni-sub">Capacity and health</span></a><a class="nav-item" href="incidents.html"><span class="ni-title">Incidents</span><span class="ni-sub">Ten drilled failures</span></a><a class="nav-item" href="change.html"><span class="ni-title">Change</span><span class="ni-sub">Migrations with rollbacks</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger is-current" type="button" aria-expanded="false" aria-controls="nav-investigations">Investigations<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-investigations"><a class="nav-item" href="investigations.html"><span class="ni-title">Research and investigations</span><span class="ni-sub">Four documented failures, reproduced and fixed</span></a><a class="nav-item" href="case-p01.html"><span class="ni-title">P-01 Payment integrity</span><span class="ni-sub">Dry posting, duplicates and concurrency</span></a><a class="nav-item" href="case-p02.html"><span class="ni-title">P-02 Telemetry quality</span><span class="ni-sub">Missing, late, duplicate and invalid readings</span></a><a class="nav-item" href="case-p03.html"><span class="ni-title">P-03 Change and recovery</span><span class="ni-sub">Unbounded update, blocking and PITR</span></a><a class="nav-item is-current" href="case-p04.html"><span class="ni-title">P-04 Security and audit</span><span class="ni-sub">Least privilege and an evidence trail</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-assurance">Assurance<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-assurance"><a class="nav-item" href="security.html"><span class="ni-title">Security</span><span class="ni-sub">Access control and audit</span></a><a class="nav-item" href="performance.html"><span class="ni-title">Performance</span><span class="ni-sub">Measured before and after</span></a><a class="nav-item" href="verification.html"><span class="ni-title">Evidence</span><span class="ni-sub">Every claim sourced</span></a></div></div><a class="nav-link" href="context.html">Context</a><a class="nav-link" href="about.html">About</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <span></span>
+    </button>
+  </div>
+</header>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="brand-name">Apex Financial Services</span>
+    <button class="drawer-close" type="button" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="drawer-nav" aria-label="Sections"><a class="drawer-link" href="index.html">Estate<small>Overview of the estate</small></a><p class="drawer-group">Platform</p><a class="drawer-link" href="capabilities.html">Capabilities<small>What this proves, discipline by discipline</small></a><a class="drawer-link" href="architecture.html">Schema<small>Tables, keys and entity relationships</small></a><a class="drawer-link" href="explorer.html">Explorer<small>Browse every table and column</small></a><a class="drawer-link" href="diagrams.html">Diagrams<small>Foreign keys drawn per database</small></a><a class="drawer-link" href="oracle.html">Oracle<small>26ai Free lab and exercises</small></a><p class="drawer-group">Operations</p><a class="drawer-link" href="operations.html">Operations<small>Jobs, maintenance and history</small></a><a class="drawer-link" href="backup.html">Backup<small>Restores tested end to end</small></a><a class="drawer-link" href="monitoring.html">Monitoring<small>Capacity and health</small></a><a class="drawer-link" href="incidents.html">Incidents<small>Ten drilled failures</small></a><a class="drawer-link" href="change.html">Change<small>Migrations with rollbacks</small></a><p class="drawer-group">Investigations</p><a class="drawer-link" href="investigations.html">Research and investigations<small>Four documented failures, reproduced and fixed</small></a><a class="drawer-link" href="case-p01.html">P-01 Payment integrity<small>Dry posting, duplicates and concurrency</small></a><a class="drawer-link" href="case-p02.html">P-02 Telemetry quality<small>Missing, late, duplicate and invalid readings</small></a><a class="drawer-link" href="case-p03.html">P-03 Change and recovery<small>Unbounded update, blocking and PITR</small></a><a class="drawer-link is-current" aria-current="page" href="case-p04.html">P-04 Security and audit<small>Least privilege and an evidence trail</small></a><p class="drawer-group">Assurance</p><a class="drawer-link" href="security.html">Security<small>Access control and audit</small></a><a class="drawer-link" href="performance.html">Performance<small>Measured before and after</small></a><a class="drawer-link" href="verification.html">Evidence<small>Every claim sourced</small></a><p class="drawer-group">About</p><a class="drawer-link" href="context.html">Context<small>Why this project exists</small></a><a class="drawer-link" href="about.html">About<small>The engineer behind it</small></a></nav>
+</div>
+<main id="main">
+
+  <div class="wrap page-head case-head">
+    <div class="kicker">Investigation P-04 &middot; Privileged access and audit</div>
+    <h1>Privileged access and audit evidence</h1>
+    <p class="lede">An application holding CONTROL and erasing its own trail, then least privilege, denied direct writes and an audit trigger that names the caller.</p>
+    <dl class="case-figures"><div><dt>Assertions</dt><dd>11/11 executed</dd></div><div><dt>Latest run</dt><dd>2026-11-25 17:49:07+00:00</dd></div><div><dt>Evidence</dt><dd>evidence/research/P-04/</dd></div></dl>
+    <div class="badges"><a class="badge badge-link" href="investigations.html">All investigations</a>
+      <span class="badge">Executed scripts, not descriptions</span>
+      <span class="badge">Laboratory reproduction</span></div>
+  </div>
+  <div class="wrap band" style="border-top:0;padding-top:10px">
+    <article class="case-body">
+<p><strong>Status:</strong> PASS — 11/11 assertions executed · <strong>Date:</strong> 2026-11-25 <strong>Environment:</strong> <code>AFS_Payments</code>, schema <code>paylab</code>; principals <code>paylab_app</code> and <code>paylab_auditor</code> (no logins) <strong>Classification:</strong> controlled laboratory demonstration of over-privilege and missing audit evidence. No external system or real account is used.</p>
+<h2>1. Documented problem</h2>
+<ul><li><strong>Clerk, 6 February 2025.</strong> The outage began with a database query executed directly against production, outside the change-management path and without runtime type enforcement. One remediation was to restrict direct database access to genuine emergencies.</li><li><strong>Seplat Energy 2024 Integrated Annual Report.</strong> Cyber security is ranked the <strong>number-one risk</strong>; the information security risk explicitly covers IT/OT breaches and IT continuity disruption; <strong>control of access rights</strong> and ISO 27001 external review are stated mitigations. The company reports <strong>no material IT breach</strong> in 2024.</li><li><strong>AFS INC-007</strong> already records an unauthorised-access drill in this estate.</li></ul>
+<p>No claim is made that any named company had the specific configuration reproduced here.</p>
+<h2>2. Technical problem</h2>
+<p>When an application principal owns the schema, it can rewrite or delete ledger rows. If no in-database audit exists, the change leaves no evidence, and the only record is whatever the application chose to log. Least privilege without audit gives denial but no attribution; audit without least privilege gives attribution after the damage.</p>
+<h2>3. Baseline (deliberately unhardened)</h2>
+<div class="table-scroll"><table><thead><tr><th>Control</th><th>State</th></tr></thead><tbody><tr><td><code>paylab_app</code> permission</td><td><code>CONTROL</code> on schema <code>paylab</code> (1 grant)</td></tr><tr><td>Ledger <code>UPDATE</code></td><td>allowed</td></tr><tr><td>Ledger <code>DELETE</code></td><td>allowed</td></tr><tr><td>Audit trigger</td><td>absent</td></tr><tr><td>Audit rows for those changes</td><td><strong>0</strong></td></tr></tbody></table></div>
+<p>Executed with <code>EXECUTE AS USER = 'paylab_app'</code>: one <code>UPDATE</code> and one <code>DELETE</code> both succeeded, and the security log stayed empty.</p>
+<h2>4. Fix</h2>
+<ul><li><code>REVOKE CONTROL ON SCHEMA::paylab FROM paylab_app</code>.</li><li>Grant <code>EXECUTE</code> on <code>paylab.usp_Submit_Safe</code> and <code>usp_TracePayment</code>; <code>SELECT</code> on the payment tables.</li><li><code>DENY UPDATE, DELETE</code> on <code>paylab.LedgerEntry</code>; <code>DENY UPDATE, DELETE, INSERT</code> on <code>paylab.SecurityLog</code>; <code>DENY ALTER</code> on the schema.</li><li><code>paylab_auditor</code>: <code>SELECT</code> on the schema, <code>DENY INSERT, UPDATE, DELETE</code>.</li><li><code>AFTER INSERT, UPDATE, DELETE</code> trigger on <code>paylab.LedgerEntry</code> writing the calling principal, action, object and row count to <code>paylab.SecurityLog</code>.</li></ul>
+<h2>5. Executed results</h2>
+<div class="table-scroll"><table><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody><tr><td><code>CONTROL</code> grants after the fix</td><td><strong>0</strong></td></tr><tr><td>Explicit <code>DENY</code> permissions</td><td><strong>6</strong></td></tr><tr><td>Direct ledger <code>UPDATE</code></td><td><strong>denied, Msg 229</strong></td></tr><tr><td>Direct ledger <code>DELETE</code></td><td><strong>denied, Msg 229</strong></td></tr><tr><td>Payment through <code>usp_Submit_Safe</code></td><td><strong>succeeded</strong></td></tr><tr><td>Ledger writes attributed to <code>paylab_app</code> in the audit log</td><td><strong>2</strong></td></tr><tr><td>Failed-login events available for detection</td><td><strong>20</strong>, most frequent principal <code>AFS_App</code></td></tr></tbody></table></div>
+<p>The application still works because it calls the procedure; direct table access is removed. The DENY is explicit so a future role grant cannot silently restore write access.</p>
+<h2>6. Why ownership chaining matters</h2>
+<p>The procedure and its tables share an owner, so the procedure can write to tables the caller cannot touch directly. That is the intended boundary: the API is the only write path, and the trigger records who used it. It also means the <code>DENY</code> is not a substitute for reviewing what the procedure itself does.</p>
+<h2>7. Failed-login detection</h2>
+<p>Using the existing <code>AFS_Audit.security.SecurityEvent</code> data, a simple query counts failures per principal. In this estate 20 failed events are present, concentrated on <code>AFS_App</code>. A production version would add a time window, a threshold and a baseline, because a count without a rate is not an alert.</p>
+<h2>8. Limitations</h2>
+<ul><li>The audit trail is an <strong>in-database trigger</strong>, not SQL Server Audit, and not a SIEM feed. An attacker with <code>ALTER</code> or <code>CONTROL</code> could disable it — which is precisely why <code>DENY ALTER</code> is part of the fix.</li><li>Denied statements never execute, so they are evidenced by the engine error (Msg 229), not by the trigger. Server audit or extended events would be required to capture attempts centrally.</li><li>The principals have no logins, so no authentication or password policy is tested.</li><li>Detection is a query, not a scheduled alert.</li><li>No claim is made about any bank's access model.</li></ul>
+<h2>9. Production considerations</h2>
+<p>Separate the application role from the deployment role; never grant schema <code>CONTROL</code> to an application; keep audit outside the reach of the audited principal; ship audit rows to an append-only store; alert on privilege changes and on failed-login rate; and review grants periodically against a baseline, because permission drift is gradual.</p>
+<h2>10. Runbook</h2>
+<pre><code class="language-bash"># baseline -&gt; hardening -&gt; denial -&gt; attributed API write
+python tools/security/run_security.py
+
+# inspect the audit trail
+sqlcmd -E -C -S . -d AFS_Payments -Q &quot;SELECT TOP 20 * FROM paylab.SecurityLog ORDER BY AuditId DESC;&quot;
+
+# access review
+sqlcmd -E -C -S . -d AFS_Payments -Q &quot;SELECT p.name, dp.permission_name, dp.state_desc FROM sys.database_permissions dp JOIN sys.database_principals p ON p.principal_id=dp.grantee_principal_id WHERE p.name LIKE &#x27;paylab%&#x27;;&quot;</code></pre>
+<h2>11. Evidence</h2>
+<div class="table-scroll"><table><thead><tr><th>Artifact</th><th>Path</th></tr></thead><tbody><tr><td>Baseline principals and grants</td><td><code>sql-server/security/00_lab_setup.sql</code></td></tr><tr><td>Least privilege and audit trigger</td><td><code>sql-server/security/10_least_privilege_fix.sql</code></td></tr><tr><td>Driver and assertions</td><td><code>tools/security/run_security.py</code></td></tr><tr><td>Results</td><td><code>evidence/research/P-04/RESULTS.md</code>, <code>p04-latest.json</code></td></tr></tbody></table></div>
+<h2>12. What this does not prove</h2>
+<p>That the audit trail is tamper-proof against a determined administrator, that it replaces a SIEM, or that the permission model matches any real bank. It proves that over-privilege is demonstrable, that removing it blocks the write while the API still works, and that legitimate writes become attributable.</p>
+    </article>
+    <nav class="case-nav" aria-label="Case navigation">
+      <a href="case-p03.html">&larr; Previous investigation</a>
+      <a href="investigations.html">Next investigation &rarr;</a>
+    </nav>
+  </div>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div class="foot-brand">
+          <img src="assets/brand/logo-mark.png" width="38" height="38" alt="">
+          <div><strong>Apex Financial Services</strong><span>Database engineering portfolio</span></div>
+        </div>
+        <p style="margin-top:14px;max-width:40ch">A nine-database SQL Server estate covering customers,
+        accounts, transfers, ledger, payments, settlement, fraud, service, reporting and governance &mdash;
+        with the constraints, controls and recovery procedures that keep it consistent.</p>
+      </div>
+      <div>
+        <h4>Technology</h4>
+        <p>SQL Server 2025 Developer<br>Oracle Database 26ai Free<br>MySQL 8.4.9<br>Python automation &middot; T-SQL</p>
+      </div>
+      <div>
+        <h4>Portfolio</h4>
+        <a href="verification.html">Evidence index</a>
+        <a href="investigations.html">Research and investigations</a>
+        <a href="context.html">Context</a>
+        <a href="about.html">About and contact</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>Inventory generated 2026-11-25; each operational figure keeps the timestamp of its capture. SQL Server: 9 databases &middot; 64 tables &middot; 46 foreign keys.</span>
+      <span class="foot-tag">Research. Engineer. Validate.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/vendor/gsap.min.js?v=47da594cbe" defer></script>
+<script src="assets/site.js?v=96e48b62b2" defer></script>
+</body>
+</html>

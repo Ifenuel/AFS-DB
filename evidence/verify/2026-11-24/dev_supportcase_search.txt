@@ -1,0 +1,16 @@
+== AFS_Audit ==
+S|T
+== AFS_CoreBanking ==
+S|T
+== AFS_CustomerService ==
+S|T
+support|CaseCategory
+support|CaseNote
+support|SupportCase
+== AFS_Fraud ==
+S|T
+fraud|FraudCase
+== AFS_Payments ==
+S|T
+== AFS_Reporting ==
+S|T

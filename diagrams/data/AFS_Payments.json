@@ -1,0 +1,513 @@
+{
+  "database": "AFS_Payments",
+  "tables": [
+    {
+      "name": "audit.AuditEvent",
+      "columns": [
+        {
+          "name": "AuditEventId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "Actor",
+          "type": "nvarchar(128)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CorrelationId",
+          "type": "uniqueidentifier",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EntityId",
+          "type": "nvarchar(100)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EntityType",
+          "type": "varchar(50)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EventData",
+          "type": "nvarchar(max)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EventType",
+          "type": "varchar(50)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "payment.Payment",
+      "columns": [
+        {
+          "name": "PaymentId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "Amount",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "BeneficiaryAccountId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "BeneficiaryAccountNumber",
+          "type": "nvarchar(34)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "BeneficiaryName",
+          "type": "nvarchar(200)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CurrencyCode",
+          "type": "char(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "DebitAccountId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "FailureCode",
+          "type": "varchar(50)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "FailureMessage",
+          "type": "nvarchar(400)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PaymentMethodId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "PaymentReference",
+          "type": "varchar(24)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PaymentStatusId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "ProcessedAt",
+          "type": "datetime2(3)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RequestId",
+          "type": "uniqueidentifier",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RowVersion",
+          "type": "timestamp",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TransferId",
+          "type": "uniqueidentifier",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "payment.PaymentEvent",
+      "columns": [
+        {
+          "name": "PaymentEventId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "Actor",
+          "type": "nvarchar(128)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EventData",
+          "type": "nvarchar(max)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EventType",
+          "type": "varchar(30)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PaymentId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        }
+      ]
+    },
+    {
+      "name": "payment.PaymentMethod",
+      "columns": [
+        {
+          "name": "PaymentMethodId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "IsActive",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "MethodCode",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "MethodName",
+          "type": "nvarchar(100)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "payment.PaymentStatus",
+      "columns": [
+        {
+          "name": "PaymentStatusId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "IsTerminal",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "StatusCode",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "StatusName",
+          "type": "nvarchar(100)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "settlement.SettlementBatch",
+      "columns": [
+        {
+          "name": "SettlementBatchId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "BatchReference",
+          "type": "varchar(24)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ClosedAt",
+          "type": "datetime2(3)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "SettlementDate",
+          "type": "date",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Status",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "settlement.SettlementItem",
+      "columns": [
+        {
+          "name": "SettlementItemId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "Amount",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CurrencyCode",
+          "type": "char(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PaymentId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "SettlementBatchId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "Status",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "name": "FK_payment_Payment_Method",
+      "child": "payment.Payment",
+      "parent": "payment.PaymentMethod",
+      "pairs": [
+        {
+          "child_column": "PaymentMethodId",
+          "parent_column": "PaymentMethodId"
+        }
+      ]
+    },
+    {
+      "name": "FK_payment_Payment_Status",
+      "child": "payment.Payment",
+      "parent": "payment.PaymentStatus",
+      "pairs": [
+        {
+          "child_column": "PaymentStatusId",
+          "parent_column": "PaymentStatusId"
+        }
+      ]
+    },
+    {
+      "name": "FK_payment_PaymentEvent_Payment",
+      "child": "payment.PaymentEvent",
+      "parent": "payment.Payment",
+      "pairs": [
+        {
+          "child_column": "PaymentId",
+          "parent_column": "PaymentId"
+        }
+      ]
+    },
+    {
+      "name": "FK_settlement_SettlementItem_Batch",
+      "child": "settlement.SettlementItem",
+      "parent": "settlement.SettlementBatch",
+      "pairs": [
+        {
+          "child_column": "SettlementBatchId",
+          "parent_column": "SettlementBatchId"
+        }
+      ]
+    },
+    {
+      "name": "FK_settlement_SettlementItem_Payment",
+      "child": "settlement.SettlementItem",
+      "parent": "payment.Payment",
+      "pairs": [
+        {
+          "child_column": "PaymentId",
+          "parent_column": "PaymentId"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+mysql: [Warning] Using a password on the command line interface can be insecure.
++---------------------------------------------------+
+| Grants for afs_app@localhost                      |
++---------------------------------------------------+
+| GRANT USAGE ON *.* TO `afs_app`@`localhost`       |
+| GRANT `afs_readonly`@`%` TO `afs_app`@`localhost` |
++---------------------------------------------------+
++--------------------------------------------------+
+| Grants for afs_readonly@localhost                |
++--------------------------------------------------+
+| GRANT USAGE ON *.* TO `afs_readonly`@`localhost` |
++--------------------------------------------------+

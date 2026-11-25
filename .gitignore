@@ -1,0 +1,103 @@
+# ---------------------------------------------------------------------------
+# AFS DBA Portfolio - repository ignore rules
+# Never commit credentials, local secrets, database files or generated data.
+# ---------------------------------------------------------------------------
+
+# Secrets and machine-local configuration
+.env
+.env.*
+!.env.example
+*.secret
+*.secrets
+secrets/
+config/local/
+local.settings.json
+
+# Database backup / recovery artifacts
+backups/
+*.bak
+*.trn
+*.dif
+*.mdf
+*.ndf
+*.ldf
+*.sqlplan
+*.xel
+*.trc
+
+# Generated datasets (generators and seed definitions are tracked)
+test-data/generated/
+test-data/seed/*.csv
+test-data/seed/*.tsv
+!test-data/seed/README.md
+
+# Evidence output generated during a lab run
+evidence/generated/
+reports/generated/
+
+# Local installer media (large binaries; never commit)
+installers/
+
+# Logs
+logs/
+*.log
+*.out
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# PowerShell
+*.clixml
+
+# Node / site build output (only if the optional site is built)
+site/node_modules/
+site/dist/
+
+# Editor and OS local state
+.vscode/*.local.json
+.vscode/launch.json
+.idea/
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Freebuff Desktop local project metadata (managed by the app)
+.freebuff/
+
+# Local SQL Server error logs copied for analysis
+sql-server/**/errorlog*
+
+# Attachments, screenshots and agent/tool state must never be published
+.cloud-attachments/
+.freebuff/
+screenshot*.png
+_*.png
+*.webp
+ha/active_target.json
+
+# Local assistant workspace, chat attachments and QA captures (never published)
+.freebuff/
+.cloud-attachments/
+docs/qa/
+_*.png
+
+# The public repository carries one document: README.md
+*.md
+!README.md
+
+# Large local artifacts kept out of the published repository
+lab/
+installers/
+logs/
+review-package/
+portfolio/
+demonstrations/
+GitHub-Publish-Selection/
+_pre-sync-backup-*/
+*.zip

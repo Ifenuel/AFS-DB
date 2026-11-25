@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "ms-mssql.mssql",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "redhat.vscode-yaml",
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    "github.vscode-github-actions",
+    "ms-azuretools.vscode-containers"
+  ]
+}

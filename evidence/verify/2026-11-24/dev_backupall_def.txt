@@ -1,0 +1,28 @@
+Def
+
+/* ---------- full backups -------------------------------------------------- */
+CREATE   PROCEDURE dbo.AFS_BackupAll
+    @RetentionHours int = 168
+AS
+BEGIN
+    SET NOCOUNT ON;
+    DECLARE @db sysname, @file nvarchar(400), @sql nvarchar(max), @msg nvarchar(400);
+
+    DECLARE cur CURSOR LOCAL FAST_FORWARD FOR
+        SELECT name FROM sys.databases
+        WHERE name LIKE N'AFS[_]%' AND state_desc = N'ONLINE' AND is_read_only = 0;
+    OPEN cur; FETCH NEXT FROM cur INTO @db;
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        SET @file = N'C:\ProgramData\AFS\backups\full\' + @db + N'_'
+                  + FORMAT(SYSUTCDATETIME(), N'yyyyMMdd_HHmmss') + N'.bak';
+        SET @sql = N'BACKUP DATABASE ' + QUOTENAME(@db) + N' TO DISK = '
+                 + QUOTENAME(@file, CHAR(39)) + N' WITH INIT, COMPRESSION, CHECKSUM, STATS = 25;';
+        EXEC (@sql);
+        SET @msg = N'full backup written to ' + @file;
+        INSERT AFS_Audit.dbo.DbaOpsLog (Source, Severity, DatabaseName, Message)
+        VALUES (N'AFS_BackupAll', N'INFO', @db, @msg);
+        FETCH NEXT FROM cur INTO @db;
+    END
+    CLOSE cur; DEALLOCATE cur;
+END

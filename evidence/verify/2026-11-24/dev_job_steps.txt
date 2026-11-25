@@ -1,0 +1,18 @@
+Job|step_name|command
+AFS - Full Backup (nightly)|Back up every AFS database|EXEC master.dbo.AFS_BackupAll;
+AFS - Index and Statistics (weekly)|Maintain indexes and statistics|EXEC master.dbo.AFS_IndexAll;
+AFS - Integrity Check (weekly)|DBCC CHECKDB|EXEC master.dbo.AFS_CheckDbAll;
+AFS - Job Failure Watch (hourly)|Log failures|EXEC master.dbo.AFS_JobFailureWatch;
+AFS - Log Backup (15 min)|Back up the transaction log|EXEC master.dbo.AFS_BackupLogAll;
+syspolicy_purge_history|Verify that automation is enabled.|EXECUTE AS LOGIN = '##MS_PolicyTsqlExecutionLogin##' WITH NO REVERT;
+        IF (msdb.dbo.fn_syspolicy_is_automation_enabled() != 1)
+        BEGIN
+            RAISERROR(34022, 16, 1)
+        END
+syspolicy_purge_history|Purge history.|EXECUTE AS LOGIN = '##MS_PolicyTsqlExecutionLogin##' WITH NO REVERT;
+        EXEC msdb.dbo.sp_syspolicy_purge_history
+syspolicy_purge_history|Erase Phantom System Health Records.|$SQLServerConnection = New-Object System.Data.SqlClient.SqlConnection
+$SQLServerConnection.ConnectionString = "Data Source=$(ESCAPE_NONE(SRVR));Initial Catalog=master;Integrated Security=SSPI;Application Name=syspolicy_purge_history"
+$PolicyStoreConnection = New-Object Microsoft.SqlServer.Management.Sdk.Sfc.SqlStoreConnection($SQLServerConnection)
+$PolicyStore = New-Object Microsoft.SqlServer.Management.Dmf.PolicyStore ($PolicyStoreConnection)
+$PolicyStore.EraseSystemHealthPhantomRecords()

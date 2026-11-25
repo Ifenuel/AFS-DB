@@ -1,0 +1,3 @@
+SET NOCOUNT ON;
+SET SHOWPLAN_XML ON;
+SELECT COUNT_BIG(*) AS NovCount FROM account.Transfer WHERE CompletedAt >= '2026-11-01' AND CompletedAt < '2026-12-01';

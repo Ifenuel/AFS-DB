@@ -1,0 +1,7 @@
+name|state_desc|recovery_model_desc|compatibility_level|is_query_store_on
+AFS_Audit|ONLINE|FULL|160|NULL
+AFS_CoreBanking|ONLINE|FULL|160|NULL
+AFS_CustomerService|ONLINE|FULL|160|NULL
+AFS_Fraud|ONLINE|FULL|160|NULL
+AFS_Payments|ONLINE|FULL|160|NULL
+AFS_Reporting|ONLINE|SIMPLE|160|NULL

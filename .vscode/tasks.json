@@ -1,0 +1,169 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "AFS: Start LocalDB",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "& 'C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\SqlLocalDB.exe' start MSSQLLocalDB"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "AFS: Stop LocalDB",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "& 'C:\\Program Files\\Microsoft SQL Server\\170\\Tools\\Binn\\SqlLocalDB.exe' stop MSSQLLocalDB"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "AFS: Show databases and data",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "automation/powershell/Show-AfsLocalDb.ps1"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "AFS: Run monitoring health check",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "automation/powershell/Invoke-AfsSqlFile.ps1",
+        "-File",
+        "sql-server/monitoring/40_health_check.sql"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "AFS: Run integrity check",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "automation/powershell/Invoke-AfsSqlFile.ps1",
+        "-File",
+        "sql-server/maintenance/51_integrity_check.sql"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "AFS: Run four test suites",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "automation/powershell/Invoke-AfsLocalDb.ps1"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "AFS: Run backup, restore and performance",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "automation/powershell/Invoke-AfsLocalDb.ps1",
+        "-SkipTests",
+        "-Exercises"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "AFS: Run active SQL file",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "automation/powershell/Invoke-AfsSqlFile.ps1",
+        "-File",
+        "${file}"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "AFS: Validate repository",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "automation/python/validate_repo.py"
+      ],
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "AFS: Compile Python tooling",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "-m",
+        "compileall",
+        "-q",
+        "automation/python"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "AFS: Check SQL client availability",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "automation/powershell/Test-AfsEnvironment.ps1",
+        "-Server",
+        "(localdb)\\MSSQLLocalDB"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "AFS: Deploy SQL Server full instance (requires admin)",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "sql-server/installation/Deploy-AfsSqlServer.ps1"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

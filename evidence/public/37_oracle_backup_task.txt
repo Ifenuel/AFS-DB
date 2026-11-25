@@ -1,0 +1,16 @@
+
+
+TaskName           : AFS Oracle RMAN Backup
+State              : Ready
+Action             : <backup-root>\bin\oracle_rman_backup.cmd
+Trigger            : daily 2026-11-25T02:00:00+01:00
+NextRun            : 11/26/2026 2:00:00 AM
+LastRun            : 11/25/2026 9:04:18 AM
+LastResult         : 0
+AllowOnBatteries   : True
+StartWhenAvailable : True
+LogonType          : Interactive
+
+
+
+

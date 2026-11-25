@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Awoyo Emmanuel Ifeoluwa — Database Administration &amp; Engineering</title>
+<meta name="description" content="Database portfolio of Awoyo Emmanuel Ifeoluwa: a nine-database SQL Server estate plus Oracle 26ai Free and MySQL, built and operated end to end — schema, security, backups, recovery, tuning and incidents, with captured evidence.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#060a11">
+<link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/app.css?v=76dd2ae4f2">
+<link rel="stylesheet" href="assets/nav.css?v=43e61470bd">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="Apex Financial Services — home">
+      <img class="brand-logo" src="assets/brand/logo-mark.png" width="34" height="34" alt="">
+      <span class="brand-text">
+        <span class="brand-name">Apex Financial Services</span>
+        <span class="brand-tag">Database platform</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Sections"><a class="nav-link active" href="index.html">Estate</a><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-platform">Platform<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-platform"><a class="nav-item" href="capabilities.html"><span class="ni-title">Capabilities</span><span class="ni-sub">What this proves, discipline by discipline</span></a><a class="nav-item" href="architecture.html"><span class="ni-title">Schema</span><span class="ni-sub">Tables, keys and entity relationships</span></a><a class="nav-item" href="explorer.html"><span class="ni-title">Explorer</span><span class="ni-sub">Browse every table and column</span></a><a class="nav-item" href="diagrams.html"><span class="ni-title">Diagrams</span><span class="ni-sub">Foreign keys drawn per database</span></a><a class="nav-item" href="oracle.html"><span class="ni-title">Oracle</span><span class="ni-sub">26ai Free lab and exercises</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-operations">Operations<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-operations"><a class="nav-item" href="operations.html"><span class="ni-title">Operations</span><span class="ni-sub">Jobs, maintenance and history</span></a><a class="nav-item" href="backup.html"><span class="ni-title">Backup</span><span class="ni-sub">Restores tested end to end</span></a><a class="nav-item" href="monitoring.html"><span class="ni-title">Monitoring</span><span class="ni-sub">Capacity and health</span></a><a class="nav-item" href="incidents.html"><span class="ni-title">Incidents</span><span class="ni-sub">Ten drilled failures</span></a><a class="nav-item" href="change.html"><span class="ni-title">Change</span><span class="ni-sub">Migrations with rollbacks</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-investigations">Investigations<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-investigations"><a class="nav-item" href="investigations.html"><span class="ni-title">Research and investigations</span><span class="ni-sub">Four documented failures, reproduced and fixed</span></a><a class="nav-item" href="case-p01.html"><span class="ni-title">P-01 Payment integrity</span><span class="ni-sub">Dry posting, duplicates and concurrency</span></a><a class="nav-item" href="case-p02.html"><span class="ni-title">P-02 Telemetry quality</span><span class="ni-sub">Missing, late, duplicate and invalid readings</span></a><a class="nav-item" href="case-p03.html"><span class="ni-title">P-03 Change and recovery</span><span class="ni-sub">Unbounded update, blocking and PITR</span></a><a class="nav-item" href="case-p04.html"><span class="ni-title">P-04 Security and audit</span><span class="ni-sub">Least privilege and an evidence trail</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-assurance">Assurance<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-assurance"><a class="nav-item" href="security.html"><span class="ni-title">Security</span><span class="ni-sub">Access control and audit</span></a><a class="nav-item" href="performance.html"><span class="ni-title">Performance</span><span class="ni-sub">Measured before and after</span></a><a class="nav-item" href="verification.html"><span class="ni-title">Evidence</span><span class="ni-sub">Every claim sourced</span></a></div></div><a class="nav-link" href="context.html">Context</a><a class="nav-link" href="about.html">About</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <span></span>
+    </button>
+  </div>
+</header>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="brand-name">Apex Financial Services</span>
+    <button class="drawer-close" type="button" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="drawer-nav" aria-label="Sections"><a class="drawer-link is-current" href="index.html">Estate<small>Overview of the estate</small></a><p class="drawer-group">Platform</p><a class="drawer-link" href="capabilities.html">Capabilities<small>What this proves, discipline by discipline</small></a><a class="drawer-link" href="architecture.html">Schema<small>Tables, keys and entity relationships</small></a><a class="drawer-link" href="explorer.html">Explorer<small>Browse every table and column</small></a><a class="drawer-link" href="diagrams.html">Diagrams<small>Foreign keys drawn per database</small></a><a class="drawer-link" href="oracle.html">Oracle<small>26ai Free lab and exercises</small></a><p class="drawer-group">Operations</p><a class="drawer-link" href="operations.html">Operations<small>Jobs, maintenance and history</small></a><a class="drawer-link" href="backup.html">Backup<small>Restores tested end to end</small></a><a class="drawer-link" href="monitoring.html">Monitoring<small>Capacity and health</small></a><a class="drawer-link" href="incidents.html">Incidents<small>Ten drilled failures</small></a><a class="drawer-link" href="change.html">Change<small>Migrations with rollbacks</small></a><p class="drawer-group">Investigations</p><a class="drawer-link" href="investigations.html">Research and investigations<small>Four documented failures, reproduced and fixed</small></a><a class="drawer-link" href="case-p01.html">P-01 Payment integrity<small>Dry posting, duplicates and concurrency</small></a><a class="drawer-link" href="case-p02.html">P-02 Telemetry quality<small>Missing, late, duplicate and invalid readings</small></a><a class="drawer-link" href="case-p03.html">P-03 Change and recovery<small>Unbounded update, blocking and PITR</small></a><a class="drawer-link" href="case-p04.html">P-04 Security and audit<small>Least privilege and an evidence trail</small></a><p class="drawer-group">Assurance</p><a class="drawer-link" href="security.html">Security<small>Access control and audit</small></a><a class="drawer-link" href="performance.html">Performance<small>Measured before and after</small></a><a class="drawer-link" href="verification.html">Evidence<small>Every claim sourced</small></a><p class="drawer-group">About</p><a class="drawer-link" href="context.html">Context<small>Why this project exists</small></a><a class="drawer-link" href="about.html">About<small>The engineer behind it</small></a></nav>
+</div>
+<main id="main">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow">Enterprise database engineering</span>
+        <h1>The database layer behind a retail bank.</h1>
+        <p class="lede">Engineering the constraints, reconciliation controls and recovery procedures that
+        keep financial data consistent &mdash; and measuring each one instead of asserting it. Nine SQL
+        Server databases, 46 declared foreign keys, and a point-in-time restore that has actually been run.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="capabilities.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor" stroke="none"/></svg>
+            Explore the platform
+          </a>
+          <a class="btn-ghost" href="verification.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/></svg>
+            View engineering evidence
+          </a>
+        </div>
+        <p class="hero-note"><span class="dot-live" aria-hidden="true"></span>
+        9 databases online &middot; catalog captured 25 November 2026, 17:20 UTC</p>
+      </div>
+
+      <figure class="arch">
+        <div class="arch-head"><span>AFS database architecture</span><span>one instance</span></div>
+        <div class="arch-scroll"><svg class="arch-svg" viewBox="0 0 760 566" role="img" aria-labelledby="arch-title arch-desc">
+          <title id="arch-title">The nine SQL Server databases on the AFS instance</title>
+          <desc id="arch-desc">AFS_CoreBanking, AFS_Payments, AFS_Fraud, AFS_CustomerService, AFS_Audit, AFS_Reporting, AFS_Identity, AFS_Compliance and AFS_Archive, each labelled with its table and foreign-key counts, connected to one SQL Server 2025 instance.</desc>
+          <defs>
+            <linearGradient id="core" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#123a56"/><stop offset="1" stop-color="#081726"/>
+            </linearGradient>
+            <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#22c8ff" stop-opacity=".15"/><stop offset="1" stop-color="#22c8ff" stop-opacity=".7"/>
+            </linearGradient>
+            <filter id="nodeglow" x="-40%" y="-40%" width="180%" height="180%">
+              <feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#22c8ff" flood-opacity=".35"/>
+            </filter>
+            <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+              <path d="M26 0H0v26" fill="none" stroke="#122033" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="760" height="566" rx="12" fill="#050c16"/>
+          <rect width="760" height="566" rx="12" fill="url(#grid)" opacity=".55"/>
+
+          <g stroke="url(#edge)" stroke-width="1.4" fill="none">
+            <path d="M212 96 H241 V240 H270"/>
+            <path d="M212 230 H270"/>
+            <path d="M212 364 H241 V240 H270"/>
+            <path d="M548 96 H519 V240 H490"/>
+            <path d="M548 230 H490"/>
+            <path d="M548 364 H519 V240 H490"/>
+            <path d="M380 300 V424"/>
+            <path d="M380 424 H150 V450"/>
+            <path d="M380 424 V450"/>
+            <path d="M380 424 H610 V450"/>
+          </g>
+
+          <g>
+            <rect x="16" y="56" width="196" height="80" rx="10" fill="#081726" stroke="#1b3b56"/>
+            <circle cx="34" cy="78" r="5" fill="#22c8ff" opacity=".85"/>
+            <text x="48" y="83" fill="#e8f4ff" font-size="12.5" font-weight="600">AFS_CoreBanking</text>
+            <text x="48" y="102" fill="#7f9ab4" font-size="10.5">12 tables · 14 FKs</text>
+            <text x="48" y="120" fill="#5c7c99" font-size="10">ledger · transfers</text>
+          </g>
+          <g>
+            <rect x="16" y="190" width="196" height="80" rx="10" fill="#081726" stroke="#1b3b56"/>
+            <circle cx="34" cy="212" r="5" fill="#22c8ff" opacity=".85"/>
+            <text x="48" y="217" fill="#e8f4ff" font-size="12.5" font-weight="600">AFS_Payments</text>
+            <text x="48" y="236" fill="#7f9ab4" font-size="10.5">7 tables · 5 FKs</text>
+            <text x="48" y="254" fill="#5c7c99" font-size="10">payments · settlement</text>
+          </g>
+          <g>
+            <rect x="16" y="324" width="196" height="80" rx="10" fill="#081726" stroke="#1b3b56"/>
+            <circle cx="34" cy="346" r="5" fill="#22c8ff" opacity=".85"/>
+            <text x="48" y="351" fill="#e8f4ff" font-size="12.5" font-weight="600">AFS_Fraud</text>
+            <text x="48" y="370" fill="#7f9ab4" font-size="10.5">4 tables · 2 FKs</text>
+            <text x="48" y="388" fill="#5c7c99" font-size="10">rules · alerts · cases</text>
+          </g>
+
+          <g>
+            <rect x="548" y="56" width="196" height="80" rx="10" fill="#081726" stroke="#1b3b56"/>
+            <circle cx="566" cy="78" r="5" fill="#8fb7ff" opacity=".85"/>
+            <text x="580" y="83" fill="#e8f4ff" font-size="12.5" font-weight="600">AFS_Reporting</text>
+            <text x="580" y="102" fill="#7f9ab4" font-size="10.5">7 tables · 2 FKs</text>
+            <text x="580" y="120" fill="#5c7c99" font-size="10">warehouse · marts</text>
+          </g>
+          <g>
+            <rect x="548" y="190" width="196" height="80" rx="10" fill="#081726" stroke="#1b3b56"/>
+            <circle cx="566" cy="212" r="5" fill="#8fb7ff" opacity=".85"/>
+            <text x="580" y="217" fill="#e8f4ff" font-size="12.5" font-weight="600">AFS_Identity</text>
+            <text x="580" y="236" fill="#7f9ab4" font-size="10.5">7 tables · 7 FKs</text>
+            <text x="580" y="254" fill="#5c7c99" font-size="10">grants · reviews</text>
+          </g>
+          <g>
+            <rect x="548" y="324" width="196" height="80" rx="10" fill="#081726" stroke="#1b3b56"/>
+            <circle cx="566" cy="346" r="5" fill="#8fb7ff" opacity=".85"/>
+            <text x="580" y="351" fill="#e8f4ff" font-size="12.5" font-weight="600">AFS_Compliance</text>
+            <text x="580" y="370" fill="#7f9ab4" font-size="10.5">7 tables · 5 FKs</text>
+            <text x="580" y="388" fill="#5c7c99" font-size="10">controls · findings</text>
+          </g>
+
+          <g filter="url(#nodeglow)">
+            <rect x="270" y="180" width="220" height="120" rx="14" fill="url(#core)" stroke="#2a6f96"/>
+            <rect x="270" y="180" width="220" height="3" rx="1.5" fill="#22c8ff" opacity=".8"/>
+          </g>
+          <ellipse cx="380" cy="214" rx="26" ry="8" fill="none" stroke="#22c8ff" stroke-width="1.3" opacity=".65"/>
+          <path d="M354 214v14c0 4.4 11.6 7 26 7s26-2.6 26-7v-14" fill="none" stroke="#22c8ff" stroke-width="1.3" opacity=".65"/>
+          <text x="380" y="262" text-anchor="middle" fill="#f2f7ff" font-size="16" font-weight="600">SQL Server 2025</text>
+          <text x="380" y="281" text-anchor="middle" fill="#7f9ab4" font-size="11">AFS instance · one engine</text>
+
+          <g>
+            <rect x="60" y="450" width="180" height="74" rx="9" fill="#081726" stroke="#1b3b56"/>
+            <text x="150" y="476" text-anchor="middle" fill="#e8f4ff" font-size="11.5" font-weight="600">AFS_CustomerService</text>
+            <text x="150" y="494" text-anchor="middle" fill="#7f9ab4" font-size="10">5 tables · 4 FKs</text>
+            <text x="150" y="510" text-anchor="middle" fill="#5c7c99" font-size="9.5">support cases</text>
+          </g>
+          <g>
+            <rect x="290" y="450" width="180" height="74" rx="9" fill="#081726" stroke="#1b3b56"/>
+            <text x="380" y="476" text-anchor="middle" fill="#e8f4ff" font-size="11.5" font-weight="600">AFS_Audit</text>
+            <text x="380" y="494" text-anchor="middle" fill="#7f9ab4" font-size="10">6 tables · 0 FKs</text>
+            <text x="380" y="510" text-anchor="middle" fill="#5c7c99" font-size="9.5">append-only events</text>
+          </g>
+          <g>
+            <rect x="520" y="450" width="180" height="74" rx="9" fill="#081726" stroke="#1b3b56"/>
+            <text x="610" y="476" text-anchor="middle" fill="#e8f4ff" font-size="11.5" font-weight="600">AFS_Archive</text>
+            <text x="610" y="494" text-anchor="middle" fill="#7f9ab4" font-size="10">9 tables · 7 FKs</text>
+            <text x="610" y="510" text-anchor="middle" fill="#5c7c99" font-size="9.5">retention · legal hold</text>
+          </g>
+
+          <text x="380" y="548" text-anchor="middle" fill="#4f6a84" font-size="9.5">46 declared foreign keys, read from sys.foreign_keys. Oracle 26ai Free and MySQL 8.4.9 are separate engines.</text>
+        </svg></div>
+        <figcaption>Every database named above exists in the running catalog; counts are exported from
+        <code>sys.tables</code>, <code>sys.foreign_keys</code> and <code>sys.partitions</code>.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap" aria-label="Estate metrics">
+    <div class="metric-bar" data-reveal>
+      <div class="metric">
+        <span class="metric-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></span>
+        <div><div class="metric-num">09</div><div class="metric-label">Databases &mdash; online</div></div>
+      </div>
+      <div class="metric">
+        <span class="metric-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></svg></span>
+        <div><div class="metric-num">64</div><div class="metric-label">Tables &middot; 11 views</div></div>
+      </div>
+      <div class="metric">
+        <span class="metric-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="12" r="3.4"/><path d="M11.4 12H21M18 12v3M15 12v2.4"/></svg></span>
+        <div><div class="metric-num">46</div><div class="metric-label">Foreign keys</div></div>
+      </div>
+      <div class="metric">
+        <span class="metric-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+        <div><div class="metric-num">199,904</div><div class="metric-label">Test rows in catalog</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head" data-reveal>
+        <span class="eyebrow">Engineering evidence</span>
+        <h2>The job is the worst day, not the demo</h2>
+        <p>One hour of unplanned downtime costs $300,000 or more for 93% of enterprises (ITIC, 2025), and
+        since January 2025 EU financial entities must document and <em>test</em> restoration. Each question
+        below is answered with captured output, not a promise.</p>
+      </div>
+      <div class="evidence-grid">
+        <a class="evidence" href="backup.html" data-reveal>
+          <span class="evidence-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.6-3 8.2-7 9-4-.8-7-4.4-7-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></svg></span>
+          <h3>Can you get it back?</h3>
+          <p>Every database holds a checksum-verified full backup, logs ship every 15 minutes, and
+          point-in-time recovery was executed on SQL Server and Oracle &mdash; a deleted row returned to a
+          chosen second.</p>
+          <span class="figure">391 backup sets · restore compared</span>
+        </a>
+        <a class="evidence" href="monitoring.html" data-reveal>
+          <span class="evidence-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12h4l3-7 4 14 3-7h6"/></svg></span>
+          <h3>Would you know it had stopped?</h3>
+          <p>An hourly health check covers backup age, job outcome and log gaps. It was deliberately
+          broken to confirm it raises CRITICAL and exits non-zero.</p>
+          <span class="figure">hourly run · failure proven</span>
+        </a>
+        <a class="evidence" href="architecture.html" data-reveal>
+          <span class="evidence-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg></span>
+          <h3>Does it reconcile?</h3>
+          <p>Debit, credit, ledger event and audit row commit together, a request ID makes a replay settle
+          once, and reconciliation returns no unmatched rows across 20,000 transfers.</p>
+          <span class="figure">0 unmatched rows</span>
+        </a>
+        <a class="evidence" href="performance.html" data-reveal>
+          <span class="evidence-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19l5-6 4 3 7-9"/><path d="M20 4h-4M20 4v4"/></svg></span>
+          <h3>Is the change measured?</h3>
+          <p>At one million rows the obvious index changed nothing; a covering index cut logical reads from
+          6,700 to 164. Changes here carry the measurement and the rollback.</p>
+          <span class="figure">6,700 &rarr; 164 reads</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="band-head" data-reveal>
+        <span class="eyebrow">Explore the estate</span>
+        <h2>Three ways into the engineering</h2>
+        <p>Platform is the schema and the objects; Operations is what ran and what broke; Assurance is the
+        proof and the controls behind each claim.</p>
+      </div>
+      <div class="explore-grid">
+        <article class="explore" data-reveal>
+          <div class="explore-media"><img src="assets/img/platform.jpg" alt="" loading="lazy" width="1392" height="752"></div>
+          <div class="explore-body">
+            <h3>Platform</h3>
+            <p>Schema, relationships, per-database diagrams, the catalog explorer and the Oracle 26ai Free lab.</p>
+            <a class="explore-link" href="capabilities.html">Explore Platform
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="explore" data-reveal>
+          <div class="explore-media"><img src="assets/img/operations.jpg" alt="" loading="lazy" width="1392" height="752"></div>
+          <div class="explore-body">
+            <h3>Operations</h3>
+            <p>Backup and restore, monitoring, ten drilled incidents and change records with rollbacks.</p>
+            <a class="explore-link" href="operations.html">Explore Operations
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+        <article class="explore" data-reveal>
+          <div class="explore-media"><img src="assets/img/assurance.jpg" alt="" loading="lazy" width="1392" height="752"></div>
+          <div class="explore-body">
+            <h3>Assurance</h3>
+            <p>Least privilege, audit, measured performance and the evidence index behind every number.</p>
+            <a class="explore-link" href="verification.html">Explore Assurance
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<section data-reveal class="wrap section">
+    <div class="section-head">
+      <div class="kicker">The problem</div>
+      <h2>Ledger and transaction records drift apart, and recovery is a procedure nobody has run</h2>
+      <p>Most small-bank estates reconcile the ledger, the transfer records and the reporting warehouse
+      by hand at month end, and only discover whether a restore works after data is already lost. This
+      estate closes that gap: reconciliation proves every balance equals its opening balance plus its
+      signed ledger entries across all nine databases, and a recovery drill restores to a point in time
+      and compares the rows before and after.</p>
+    </div>
+    <div class="grid-2">
+      <div class="panel"><h3>Reconciliation instead of spot checks</h3><p class="muted">Every transfer writes
+        its debit and credit in one transaction. The reconciliation procedure returns unmatched rows, and
+        it returns none across 20,000 transfers and 40,000 ledger entries.</p></div>
+      <div class="panel"><h3>Recovery, executed and compared</h3><p class="muted">A deletion drill removed
+        30 support cases; the database was restored to a point before the delete and every removed row
+        was present in the restored copy.</p></div>
+    </div>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head">
+      <div class="kicker">Estate</div>
+      <h2>Nine databases, 15 domains</h2>
+      <p>Each domain lists its tables and row counts, aggregated across the databases that own them.
+      Every table is counted once, so the domain rows add up to the estate total; the audit domain spans
+      four databases because each appends to its own audit table. Relationships are modelled with declared
+      foreign keys, and any table opens in the explorer.</p>
+    </div>
+    <div class="tile-grid"><article class="tile"><h3>Customer</h3><p>KYC record, addresses and contacts.</p><div class="tile-meta">3 tables · 4,020 rows</div></article><article class="tile"><h3>Account</h3><p>Account headers, status, currency and limits.</p><div class="tile-meta">1 table · 1,000 rows</div></article><article class="tile"><h3>Transfer</h3><p>Money movement between accounts and its event trail.</p><div class="tile-meta">2 tables · 40,000 rows</div></article><article class="tile"><h3>Ledger</h3><p>Double-entry postings behind every balance change.</p><div class="tile-meta">1 table · 40,000 rows</div></article><article class="tile"><h3>Reference</h3><p>Controlled lists: country, currency, account type and status.</p><div class="tile-meta">4 tables · 27 rows</div></article><article class="tile"><h3>Payment</h3><p>Inbound and outbound payments with method and status.</p><div class="tile-meta">4 tables · 952 rows</div></article><article class="tile"><h3>Settlement</h3><p>Batch settlement of payments.</p><div class="tile-meta">2 tables · 427 rows</div></article><article class="tile"><h3>Fraud</h3><p>Rules, alerts and cases.</p><div class="tile-meta">3 tables · 2,503 rows</div></article><article class="tile"><h3>Audit</h3><p>Append-only audit events written inside the business transaction.</p><div class="tile-meta">4 tables · 13,179 rows · 4 databases</div></article><article class="tile"><h3>Service</h3><p>Escalation path for support cases.</p><div class="tile-meta">5 tables · 417 rows</div></article><article class="tile"><h3>Reporting</h3><p>Reporting outputs and daily summaries.</p><div class="tile-meta">7 tables · 89,995 rows</div></article><article class="tile"><h3>Identity</h3><p>Principals, roles, grants, reviews and sessions.</p><div class="tile-meta">7 tables · 3,785 rows</div></article><article class="tile"><h3>Compliance</h3><p>Obligations, controls, tests, findings and key custody.</p><div class="tile-meta">7 tables · 261 rows</div></article><article class="tile"><h3>Archive</h3><p>Retention policy, legal hold and archived records.</p><div class="tile-meta">9 tables · 2,737 rows</div></article><article class="tile"><h3>Platform</h3><p>Administrative actions.</p><div class="tile-meta">5 tables · 536 rows</div></article></div>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head">
+      <div class="kicker">Volume</div>
+      <h2>Where the rows are</h2>
+      <p>Row counts read from <span class="mono">sys.partitions</span> at catalog export time.</p>
+    </div>
+    <div class="panel"><svg class="chart" viewBox="0 0 760 284" role="img" aria-label="rows per database"><text x="0" y="20" class="c-label">CoreBanking</text><rect x="190" y="6" width="460.0" height="18" rx="4" class="c-bar"/><text x="658.0" y="20" class="c-value">90,840</text><text x="0" y="50" class="c-label">Reporting</text><rect x="190" y="36" width="455.7" height="18" rx="4" class="c-bar"/><text x="653.7" y="50" class="c-value">89,995</text><text x="0" y="80" class="c-label">Audit</text><rect x="190" y="66" width="33.9" height="18" rx="4" class="c-bar"/><text x="231.9" y="80" class="c-value">6,704</text><text x="0" y="110" class="c-label">Identity</text><rect x="190" y="96" width="19.2" height="18" rx="4" class="c-bar"/><text x="217.2" y="110" class="c-value">3,785</text><text x="0" y="140" class="c-label">Fraud</text><rect x="190" y="126" width="18.2" height="18" rx="4" class="c-bar"/><text x="216.2" y="140" class="c-value">3,601</text><text x="0" y="170" class="c-label">Archive</text><rect x="190" y="156" width="13.9" height="18" rx="4" class="c-bar"/><text x="211.9" y="170" class="c-value">2,737</text><text x="0" y="200" class="c-label">Payments</text><rect x="190" y="186" width="7.6" height="18" rx="4" class="c-bar"/><text x="205.6" y="200" class="c-value">1,499</text><text x="0" y="230" class="c-label">CustomerService</text><rect x="190" y="216" width="2.1" height="18" rx="4" class="c-bar"/><text x="200.1" y="230" class="c-value">417</text><text x="0" y="260" class="c-label">Compliance</text><rect x="190" y="246" width="1.3" height="18" rx="4" class="c-bar"/><text x="199.3" y="260" class="c-value">261</text></svg></div>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head">
+      <div class="kicker">Workload</div>
+      <h2>1,000 customers, 20,000 transfers</h2>
+      <p>The estate carries 1,000 customers, 1,000 accounts and 20,000 transfers posted through the
+      application's own transfer procedure. Every posted transfer carries its two ledger entries and its transfer
+      event, and every account balance reconciles against the ledger.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><span class="stat-label">Customers</span><strong>1,000</strong><span class="stat-note">62 migrated + 500 loaded on Developer</span></div>
+      <div class="stat"><span class="stat-label">Accounts</span><strong>1,000</strong><span class="stat-note">checking, plus savings for 20%</span></div>
+      <div class="stat"><span class="stat-label">Transfers</span><strong>20,000</strong><span class="stat-note">posted through the procedure · 40,000 ledger entries</span></div>
+      <div class="stat"><span class="stat-label">Fraud alerts</span><strong>2,000</strong><span class="stat-note">218 still open</span></div>
+    </div>
+    <p class="muted small">Validation: zero orphan rows across every enabled foreign key, every balance equal to opening
+    balance plus its signed ledger entries, and the application's own reconciliation procedures return no unmatched
+    rows. Payments, settlement batches, support cases and the reporting warehouse were derived from the same
+    transfers. The support-case deletion drill removed 10 cases from 130 and restored all 130 into a point-in-time
+    copy before the copy was dropped, leaving 120 live cases.</p>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head">
+      <div class="kicker">Databases</div>
+      <h2>What each database owns</h2>
+    </div>
+    <div class="grid-3"><a class="card link-card" href="architecture.html#corebanking"><div class="tag">CoreBanking</div><h3 class="mono">AFS_CoreBanking</h3><p>account, audit, customer, reference</p><div class="card-meta">12 tables · 14 FKs · 90,840 rows</div></a><a class="card link-card" href="architecture.html#payments"><div class="tag">Payments</div><h3 class="mono">AFS_Payments</h3><p>audit, payment, settlement</p><div class="card-meta">7 tables · 5 FKs · 1,499 rows</div></a><a class="card link-card" href="architecture.html#fraud"><div class="tag">Fraud</div><h3 class="mono">AFS_Fraud</h3><p>audit, fraud</p><div class="card-meta">4 tables · 2 FKs · 3,601 rows</div></a><a class="card link-card" href="architecture.html#audit"><div class="tag">Audit</div><h3 class="mono">AFS_Audit</h3><p>administration, audit, dbo, operational, security</p><div class="card-meta">6 tables · 0 FKs · 6,704 rows</div></a><a class="card link-card" href="architecture.html#customerservice"><div class="tag">CustomerService</div><h3 class="mono">AFS_CustomerService</h3><p>escalation, service_request, support</p><div class="card-meta">5 tables · 4 FKs · 417 rows</div></a><a class="card link-card" href="architecture.html#reporting"><div class="tag">Reporting</div><h3 class="mono">AFS_Reporting</h3><p>reporting, staging, warehouse</p><div class="card-meta">7 tables · 2 FKs · 89,995 rows</div></a><a class="card link-card" href="architecture.html#identity"><div class="tag">Identity</div><h3 class="mono">AFS_Identity</h3><p>iam</p><div class="card-meta">7 tables · 7 FKs · 3,785 rows</div></a><a class="card link-card" href="architecture.html#compliance"><div class="tag">Compliance</div><h3 class="mono">AFS_Compliance</h3><p>grc</p><div class="card-meta">7 tables · 5 FKs · 261 rows</div></a><a class="card link-card" href="architecture.html#archive"><div class="tag">Archive</div><h3 class="mono">AFS_Archive</h3><p>retention</p><div class="card-meta">9 tables · 7 FKs · 2,737 rows</div></a></div>
+  </section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div class="foot-brand">
+          <img src="assets/brand/logo-mark.png" width="38" height="38" alt="">
+          <div><strong>Apex Financial Services</strong><span>Database engineering portfolio</span></div>
+        </div>
+        <p style="margin-top:14px;max-width:40ch">A nine-database SQL Server estate covering customers,
+        accounts, transfers, ledger, payments, settlement, fraud, service, reporting and governance &mdash;
+        with the constraints, controls and recovery procedures that keep it consistent.</p>
+      </div>
+      <div>
+        <h4>Technology</h4>
+        <p>SQL Server 2025 Developer<br>Oracle Database 26ai Free<br>MySQL 8.4.9<br>Python automation &middot; T-SQL</p>
+      </div>
+      <div>
+        <h4>Portfolio</h4>
+        <a href="verification.html">Evidence index</a>
+        <a href="investigations.html">Research and investigations</a>
+        <a href="context.html">Context</a>
+        <a href="about.html">About and contact</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>Inventory captured 25 November 2026, 17:20 UTC &middot; each operational figure keeps the timestamp of its own capture.</span>
+      <span class="foot-tag">Research. Engineer. Validate.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/vendor/gsap.min.js?v=28033e449a" defer></script>
+<script src="assets/site.js?v=c24e9374b6" defer></script>
+<script src="assets/explorer.js?v=b693472d0f" defer></script>
+
+<script src="assets/nav.js?v=e9b90b3f5c" defer></script>
+</body>
+</html>

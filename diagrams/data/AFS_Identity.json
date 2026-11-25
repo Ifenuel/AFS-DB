@@ -1,0 +1,463 @@
+{
+  "database": "AFS_Identity",
+  "tables": [
+    {
+      "name": "iam.AccessRequest",
+      "columns": [
+        {
+          "name": "AccessRequestId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "ApprovedAt",
+          "type": "datetime2(3)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Approver",
+          "type": "nvarchar(120)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "BusinessJustification",
+          "type": "nvarchar(400)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PrincipalId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "RequestedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RoleId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "Status",
+          "type": "varchar(12)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "iam.AccessReview",
+      "columns": [
+        {
+          "name": "AccessReviewId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "CompletedAt",
+          "type": "datetime2(3)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Reviewer",
+          "type": "nvarchar(120)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ReviewPeriod",
+          "type": "date",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Scope",
+          "type": "nvarchar(200)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "iam.AccessReviewDecision",
+      "columns": [
+        {
+          "name": "AccessReviewDecisionId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "AccessReviewId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "DecidedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Decision",
+          "type": "varchar(8)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Note",
+          "type": "nvarchar(300)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RoleAssignmentId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        }
+      ]
+    },
+    {
+      "name": "iam.Principal",
+      "columns": [
+        {
+          "name": "PrincipalId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Department",
+          "type": "nvarchar(80)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "IsActive",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PrincipalName",
+          "type": "nvarchar(120)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PrincipalType",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "iam.Role",
+      "columns": [
+        {
+          "name": "RoleId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "Description",
+          "type": "nvarchar(300)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "IsPrivileged",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RoleName",
+          "type": "nvarchar(80)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "iam.RoleAssignment",
+      "columns": [
+        {
+          "name": "RoleAssignmentId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "ExpiresAt",
+          "type": "datetime2(3)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "GrantedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "GrantedBy",
+          "type": "nvarchar(120)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "IsActive",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PrincipalId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "RoleId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        }
+      ]
+    },
+    {
+      "name": "iam.SessionEvent",
+      "columns": [
+        {
+          "name": "SessionEventId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "AuthMethod",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ClientHost",
+          "type": "nvarchar(80)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "DatabaseName",
+          "type": "nvarchar(80)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EndedAt",
+          "type": "datetime2(3)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PrincipalId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "StartedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "name": "FK_iam_AccessRequest_Principal",
+      "child": "iam.AccessRequest",
+      "parent": "iam.Principal",
+      "pairs": [
+        {
+          "child_column": "PrincipalId",
+          "parent_column": "PrincipalId"
+        }
+      ]
+    },
+    {
+      "name": "FK_iam_AccessRequest_Role",
+      "child": "iam.AccessRequest",
+      "parent": "iam.Role",
+      "pairs": [
+        {
+          "child_column": "RoleId",
+          "parent_column": "RoleId"
+        }
+      ]
+    },
+    {
+      "name": "FK_iam_Decision_Assignment",
+      "child": "iam.AccessReviewDecision",
+      "parent": "iam.RoleAssignment",
+      "pairs": [
+        {
+          "child_column": "RoleAssignmentId",
+          "parent_column": "RoleAssignmentId"
+        }
+      ]
+    },
+    {
+      "name": "FK_iam_Decision_Review",
+      "child": "iam.AccessReviewDecision",
+      "parent": "iam.AccessReview",
+      "pairs": [
+        {
+          "child_column": "AccessReviewId",
+          "parent_column": "AccessReviewId"
+        }
+      ]
+    },
+    {
+      "name": "FK_iam_RoleAssignment_Principal",
+      "child": "iam.RoleAssignment",
+      "parent": "iam.Principal",
+      "pairs": [
+        {
+          "child_column": "PrincipalId",
+          "parent_column": "PrincipalId"
+        }
+      ]
+    },
+    {
+      "name": "FK_iam_RoleAssignment_Role",
+      "child": "iam.RoleAssignment",
+      "parent": "iam.Role",
+      "pairs": [
+        {
+          "child_column": "RoleId",
+          "parent_column": "RoleId"
+        }
+      ]
+    },
+    {
+      "name": "FK_iam_Session_Principal",
+      "child": "iam.SessionEvent",
+      "parent": "iam.Principal",
+      "pairs": [
+        {
+          "child_column": "PrincipalId",
+          "parent_column": "PrincipalId"
+        }
+      ]
+    }
+  ]
+}

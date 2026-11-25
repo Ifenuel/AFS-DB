@@ -1,0 +1,28 @@
+== building AFS_Scale_Lab with 1000000 rows ==
+rows: 1000000 loaded in 5.1 s, spanning 37 months
+== 1. no index on CompletedAt ==
+
+Phase    Access     LogicalReads WallMs
+-----    ------     ------------ ------
+no index Index Scan         6700    303
+
+
+== 2. index on CompletedAt only ==
+
+Phase               Access     LogicalReads WallMs
+-----               ------     ------------ ------
+index (CompletedAt) Index Scan         6700    410
+
+
+== 3. index on CompletedAt covering Amount ==
+
+Phase                    Access     LogicalReads WallMs
+-----                    ------     ------------ ------
+index + INCLUDE (Amount) Index Seek          164    205
+
+
+== concurrency: two sessions, one row ==
+second session: timed out - lock wait observed after 3.0 s
+== cleanup ==
+lab database present after cleanup: 0
+done

@@ -1,0 +1,12 @@
+name|state_desc|recovery_model_desc|compatibility_level
+AFS_Audit|ONLINE|FULL|160
+AFS_CoreBanking|ONLINE|FULL|160
+AFS_CoreBanking_RestoreTest|ONLINE|SIMPLE|160
+AFS_CustomerService|ONLINE|FULL|160
+AFS_Fraud|ONLINE|FULL|160
+AFS_Payments|ONLINE|FULL|160
+AFS_Reporting|ONLINE|SIMPLE|160
+master|ONLINE|SIMPLE|170
+model|ONLINE|SIMPLE|170
+msdb|ONLINE|SIMPLE|170
+tempdb|ONLINE|SIMPLE|170

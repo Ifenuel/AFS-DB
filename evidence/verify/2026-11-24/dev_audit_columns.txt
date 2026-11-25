@@ -1,0 +1,17 @@
+COLUMN_NAME
+AuditEventId
+AuditEventId
+EventType
+EventType
+EntityType
+EntityType
+EntityId
+EntityId
+Actor
+Actor
+CorrelationId
+CorrelationId
+EventData
+EventData
+CreatedAt
+CreatedAt

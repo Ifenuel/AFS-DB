@@ -1,0 +1,7 @@
+S|T
+dbo|sysdiagrams
+escalation|Escalation
+service_request|ServiceRequest
+support|CaseCategory
+support|CaseNote
+support|SupportCase

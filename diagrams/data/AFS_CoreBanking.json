@@ -1,0 +1,981 @@
+{
+  "database": "AFS_CoreBanking",
+  "tables": [
+    {
+      "name": "account.Account",
+      "columns": [
+        {
+          "name": "AccountId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "AccountNumber",
+          "type": "char(12)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "AccountStatusId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "AccountTypeId",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "Balance",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ClosedAt",
+          "type": "datetime2(3)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CurrencyCode",
+          "type": "char(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "CustomerId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "DailyTransferLimit",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "OpenedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "OpeningBalance",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "OverdraftLimit",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PerTransferLimit",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RowVersion",
+          "type": "timestamp",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "UpdatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "account.AccountLedgerEntry",
+      "columns": [
+        {
+          "name": "LedgerEntryId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "AccountId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "Amount",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "BalanceAfter",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CurrencyCode",
+          "type": "char(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "Description",
+          "type": "nvarchar(200)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EntryType",
+          "type": "varchar(6)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "OccurredAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TransferId",
+          "type": "uniqueidentifier",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        }
+      ]
+    },
+    {
+      "name": "account.Transfer",
+      "columns": [
+        {
+          "name": "TransferId",
+          "type": "uniqueidentifier",
+          "nullable": false,
+          "identity": false,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "Amount",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CompletedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CorrelationId",
+          "type": "uniqueidentifier",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CurrencyCode",
+          "type": "char(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "Description",
+          "type": "nvarchar(200)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "FromAccountId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "RequestId",
+          "type": "uniqueidentifier",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RowVersion",
+          "type": "timestamp",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Status",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ToAccountId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        }
+      ]
+    },
+    {
+      "name": "account.TransferEvent",
+      "columns": [
+        {
+          "name": "TransferEventId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "Actor",
+          "type": "nvarchar(128)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EventData",
+          "type": "nvarchar(max)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EventType",
+          "type": "varchar(30)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TransferId",
+          "type": "uniqueidentifier",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        }
+      ]
+    },
+    {
+      "name": "audit.AuditEvent",
+      "columns": [
+        {
+          "name": "AuditEventId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "Actor",
+          "type": "nvarchar(128)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CorrelationId",
+          "type": "uniqueidentifier",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EntityId",
+          "type": "nvarchar(100)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EntityType",
+          "type": "varchar(50)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EventData",
+          "type": "nvarchar(max)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EventType",
+          "type": "varchar(50)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "customer.Customer",
+      "columns": [
+        {
+          "name": "CustomerId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CustomerNumber",
+          "type": "char(10)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CustomerStatus",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "DateOfBirth",
+          "type": "date",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Email",
+          "type": "nvarchar(254)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "FirstName",
+          "type": "nvarchar(100)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "LastName",
+          "type": "nvarchar(100)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Phone",
+          "type": "nvarchar(30)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RiskRating",
+          "type": "varchar(10)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RowVersion",
+          "type": "timestamp",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "UpdatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "customer.CustomerAddress",
+      "columns": [
+        {
+          "name": "AddressId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "AddressType",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "City",
+          "type": "nvarchar(100)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CountryCode",
+          "type": "char(2)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CustomerId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "IsPrimary",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Line1",
+          "type": "nvarchar(200)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Line2",
+          "type": "nvarchar(200)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "PostalCode",
+          "type": "nvarchar(20)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Region",
+          "type": "nvarchar(100)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "customer.CustomerContact",
+      "columns": [
+        {
+          "name": "ContactId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "ContactType",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ContactValue",
+          "type": "nvarchar(254)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CustomerId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "IsPrimary",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "reference.AccountStatus",
+      "columns": [
+        {
+          "name": "AccountStatusId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "AllowsTransfers",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "IsActive",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "StatusCode",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "StatusName",
+          "type": "nvarchar(100)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "reference.AccountType",
+      "columns": [
+        {
+          "name": "AccountTypeId",
+          "type": "int",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "IsActive",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TypeCode",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TypeName",
+          "type": "nvarchar(100)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "reference.Country",
+      "columns": [
+        {
+          "name": "CountryCode",
+          "type": "char(2)",
+          "nullable": false,
+          "identity": false,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "CountryName",
+          "type": "nvarchar(100)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "IsActive",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "reference.Currency",
+      "columns": [
+        {
+          "name": "CurrencyCode",
+          "type": "char(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "CurrencyName",
+          "type": "nvarchar(100)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "IsActive",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "MinorUnit",
+          "type": "tinyint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "name": "FK_account_Account_AccountStatus",
+      "child": "account.Account",
+      "parent": "reference.AccountStatus",
+      "pairs": [
+        {
+          "child_column": "AccountStatusId",
+          "parent_column": "AccountStatusId"
+        }
+      ]
+    },
+    {
+      "name": "FK_account_Account_AccountType",
+      "child": "account.Account",
+      "parent": "reference.AccountType",
+      "pairs": [
+        {
+          "child_column": "AccountTypeId",
+          "parent_column": "AccountTypeId"
+        }
+      ]
+    },
+    {
+      "name": "FK_account_Account_Currency",
+      "child": "account.Account",
+      "parent": "reference.Currency",
+      "pairs": [
+        {
+          "child_column": "CurrencyCode",
+          "parent_column": "CurrencyCode"
+        }
+      ]
+    },
+    {
+      "name": "FK_account_Account_Customer",
+      "child": "account.Account",
+      "parent": "customer.Customer",
+      "pairs": [
+        {
+          "child_column": "CustomerId",
+          "parent_column": "CustomerId"
+        }
+      ]
+    },
+    {
+      "name": "FK_account_AccountLedgerEntry_Account",
+      "child": "account.AccountLedgerEntry",
+      "parent": "account.Account",
+      "pairs": [
+        {
+          "child_column": "AccountId",
+          "parent_column": "AccountId"
+        }
+      ]
+    },
+    {
+      "name": "FK_account_AccountLedgerEntry_Currency",
+      "child": "account.AccountLedgerEntry",
+      "parent": "reference.Currency",
+      "pairs": [
+        {
+          "child_column": "CurrencyCode",
+          "parent_column": "CurrencyCode"
+        }
+      ]
+    },
+    {
+      "name": "FK_account_AccountLedgerEntry_Transfer",
+      "child": "account.AccountLedgerEntry",
+      "parent": "account.Transfer",
+      "pairs": [
+        {
+          "child_column": "TransferId",
+          "parent_column": "TransferId"
+        }
+      ]
+    },
+    {
+      "name": "FK_account_Transfer_Currency",
+      "child": "account.Transfer",
+      "parent": "reference.Currency",
+      "pairs": [
+        {
+          "child_column": "CurrencyCode",
+          "parent_column": "CurrencyCode"
+        }
+      ]
+    },
+    {
+      "name": "FK_account_Transfer_FromAccount",
+      "child": "account.Transfer",
+      "parent": "account.Account",
+      "pairs": [
+        {
+          "child_column": "FromAccountId",
+          "parent_column": "AccountId"
+        }
+      ]
+    },
+    {
+      "name": "FK_account_Transfer_ToAccount",
+      "child": "account.Transfer",
+      "parent": "account.Account",
+      "pairs": [
+        {
+          "child_column": "ToAccountId",
+          "parent_column": "AccountId"
+        }
+      ]
+    },
+    {
+      "name": "FK_account_TransferEvent_Transfer",
+      "child": "account.TransferEvent",
+      "parent": "account.Transfer",
+      "pairs": [
+        {
+          "child_column": "TransferId",
+          "parent_column": "TransferId"
+        }
+      ]
+    },
+    {
+      "name": "FK_customer_CustomerAddress_Country",
+      "child": "customer.CustomerAddress",
+      "parent": "reference.Country",
+      "pairs": [
+        {
+          "child_column": "CountryCode",
+          "parent_column": "CountryCode"
+        }
+      ]
+    },
+    {
+      "name": "FK_customer_CustomerAddress_Customer",
+      "child": "customer.CustomerAddress",
+      "parent": "customer.Customer",
+      "pairs": [
+        {
+          "child_column": "CustomerId",
+          "parent_column": "CustomerId"
+        }
+      ]
+    },
+    {
+      "name": "FK_customer_CustomerContact_Customer",
+      "child": "customer.CustomerContact",
+      "parent": "customer.Customer",
+      "pairs": [
+        {
+          "child_column": "CustomerId",
+          "parent_column": "CustomerId"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Evidence — Apex Financial Services</title>
+<meta name="description" content="The verbatim output behind every claim: encrypted-backup refusal, least privilege, failed-login capture, dataset integrity, the capability sweep and a host-loss rebuild.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#060a11">
+<link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/app.css?v=76dd2ae4f2">
+<link rel="stylesheet" href="assets/nav.css?v=43e61470bd">
+<script src="assets/nav.js?v=e9b90b3f5c" defer></script>
+<style>
+.term{background:#070c14;border:1px solid #1e2b3d;border-radius:12px;padding:16px 18px;margin:0;
+ overflow:auto;max-height:460px;font:12.5px/1.65 ui-monospace,SFMono-Regular,"Cascadia Mono",Consolas,monospace;
+ color:#c7d5e6;white-space:pre;tab-size:2}
+.term::-webkit-scrollbar{width:10px;height:10px}
+.term::-webkit-scrollbar-thumb{background:#22334a;border-radius:8px}
+.ev{border-left:2px solid rgba(31,157,143,.55);padding-left:18px;margin-top:34px}
+.ev h3{margin:0 0 6px;font-size:18px;letter-spacing:-.01em}
+.ev .meta{margin:0 0 12px;color:#9aa7b8;font-size:13px}
+.ev .meta b{color:#cfdae8;font-weight:600}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="Apex Financial Services — home">
+      <img class="brand-logo" src="assets/brand/logo-mark.png" width="34" height="34" alt="">
+      <span class="brand-text">
+        <span class="brand-name">Apex Financial Services</span>
+        <span class="brand-tag">Database platform</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Sections"><a class="nav-link" href="index.html">Estate</a><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-platform">Platform<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-platform"><a class="nav-item" href="capabilities.html"><span class="ni-title">Capabilities</span><span class="ni-sub">What this proves, discipline by discipline</span></a><a class="nav-item" href="architecture.html"><span class="ni-title">Schema</span><span class="ni-sub">Tables, keys and entity relationships</span></a><a class="nav-item" href="explorer.html"><span class="ni-title">Explorer</span><span class="ni-sub">Browse every table and column</span></a><a class="nav-item" href="diagrams.html"><span class="ni-title">Diagrams</span><span class="ni-sub">Foreign keys drawn per database</span></a><a class="nav-item" href="oracle.html"><span class="ni-title">Oracle</span><span class="ni-sub">26ai Free lab and exercises</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-operations">Operations<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-operations"><a class="nav-item" href="operations.html"><span class="ni-title">Operations</span><span class="ni-sub">Jobs, maintenance and history</span></a><a class="nav-item" href="backup.html"><span class="ni-title">Backup</span><span class="ni-sub">Restores tested end to end</span></a><a class="nav-item" href="monitoring.html"><span class="ni-title">Monitoring</span><span class="ni-sub">Capacity and health</span></a><a class="nav-item" href="incidents.html"><span class="ni-title">Incidents</span><span class="ni-sub">Ten drilled failures</span></a><a class="nav-item" href="change.html"><span class="ni-title">Change</span><span class="ni-sub">Migrations with rollbacks</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-investigations">Investigations<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-investigations"><a class="nav-item" href="investigations.html"><span class="ni-title">Research and investigations</span><span class="ni-sub">Four documented failures, reproduced and fixed</span></a><a class="nav-item" href="case-p01.html"><span class="ni-title">P-01 Payment integrity</span><span class="ni-sub">Dry posting, duplicates and concurrency</span></a><a class="nav-item" href="case-p02.html"><span class="ni-title">P-02 Telemetry quality</span><span class="ni-sub">Missing, late, duplicate and invalid readings</span></a><a class="nav-item" href="case-p03.html"><span class="ni-title">P-03 Change and recovery</span><span class="ni-sub">Unbounded update, blocking and PITR</span></a><a class="nav-item" href="case-p04.html"><span class="ni-title">P-04 Security and audit</span><span class="ni-sub">Least privilege and an evidence trail</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger is-current" type="button" aria-expanded="false" aria-controls="nav-assurance">Assurance<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-assurance"><a class="nav-item" href="security.html"><span class="ni-title">Security</span><span class="ni-sub">Access control and audit</span></a><a class="nav-item" href="performance.html"><span class="ni-title">Performance</span><span class="ni-sub">Measured before and after</span></a><a class="nav-item is-current" href="verification.html"><span class="ni-title">Evidence</span><span class="ni-sub">Every claim sourced</span></a></div></div><a class="nav-link" href="context.html">Context</a><a class="nav-link" href="about.html">About</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <span></span>
+    </button>
+  </div>
+</header>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="brand-name">Apex Financial Services</span>
+    <button class="drawer-close" type="button" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="drawer-nav" aria-label="Sections"><a class="drawer-link" href="index.html">Estate<small>Overview of the estate</small></a><p class="drawer-group">Platform</p><a class="drawer-link" href="capabilities.html">Capabilities<small>What this proves, discipline by discipline</small></a><a class="drawer-link" href="architecture.html">Schema<small>Tables, keys and entity relationships</small></a><a class="drawer-link" href="explorer.html">Explorer<small>Browse every table and column</small></a><a class="drawer-link" href="diagrams.html">Diagrams<small>Foreign keys drawn per database</small></a><a class="drawer-link" href="oracle.html">Oracle<small>26ai Free lab and exercises</small></a><p class="drawer-group">Operations</p><a class="drawer-link" href="operations.html">Operations<small>Jobs, maintenance and history</small></a><a class="drawer-link" href="backup.html">Backup<small>Restores tested end to end</small></a><a class="drawer-link" href="monitoring.html">Monitoring<small>Capacity and health</small></a><a class="drawer-link" href="incidents.html">Incidents<small>Ten drilled failures</small></a><a class="drawer-link" href="change.html">Change<small>Migrations with rollbacks</small></a><p class="drawer-group">Investigations</p><a class="drawer-link" href="investigations.html">Research and investigations<small>Four documented failures, reproduced and fixed</small></a><a class="drawer-link" href="case-p01.html">P-01 Payment integrity<small>Dry posting, duplicates and concurrency</small></a><a class="drawer-link" href="case-p02.html">P-02 Telemetry quality<small>Missing, late, duplicate and invalid readings</small></a><a class="drawer-link" href="case-p03.html">P-03 Change and recovery<small>Unbounded update, blocking and PITR</small></a><a class="drawer-link" href="case-p04.html">P-04 Security and audit<small>Least privilege and an evidence trail</small></a><p class="drawer-group">Assurance</p><a class="drawer-link" href="security.html">Security<small>Access control and audit</small></a><a class="drawer-link" href="performance.html">Performance<small>Measured before and after</small></a><a class="drawer-link is-current" aria-current="page" href="verification.html">Evidence<small>Every claim sourced</small></a><p class="drawer-group">About</p><a class="drawer-link" href="context.html">Context<small>Why this project exists</small></a><a class="drawer-link" href="about.html">About<small>The engineer behind it</small></a></nav>
+</div>
+<main id="main">
+  <div class="wrap page-head">
+    <div class="kicker" data-hero>Evidence</div>
+    <h1 data-hero>The output, exactly as the tools printed it</h1>
+    <p class="lede" data-hero>Every claim on this site ends in a command, and this is what those commands
+    returned. Nothing below is retyped: it is the captured output, including the failures that came before
+    the fix, published from a sanitised copy. Workstation paths, account names, certificate thumbprints and
+    process ids become bracketed tokens; engine versions, SQL error numbers, object names, timestamps and
+    measurements are unchanged.</p>
+    <div class="badges" data-hero><span class="badge">17 captures shown</span>
+    <span class="badge">Re-run on 2026-11-25</span><span class="badge">Copy, paste, repeat</span></div>
+  </div>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="49_encrypted_backup">
+      <h3>A stolen backup file is worthless</h3>
+      <p class="meta">The audit database was backed up with AES-256 under a server certificate. The certificate is then removed, exactly as it would be on a host the attacker controls, and the restore is attempted.</p>
+      <p class="meta"><b>Result.</b> Refused with SQL error 33111 until the certificate is imported; then the same file restores in 0.7 s.</p>
+      <pre class="term">=== Encrypted backup proof: AFS_Audit  2026-11-25T09:51:21 ===
+server      : Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64) 
+database    : AFS_Audit
+
+--- 1. master key and certificate
+master key  : 1
+certificate : AFS_BackupCert | expires 2036-11-30
+
+--- 2. BACKUP ... WITH ENCRYPTION, CHECKSUM
+backup file : &lt;backup-store&gt;\AFS_Audit_ENCRYPTED.bak  (1.2 MB, 0.1 s)
+
+--- 3. RESTORE VERIFYONLY WITH CHECKSUM
+verifyonly  : PASS in 0.1 s
+
+--- 4. restore with the certificate present
+restore ok  : AFS_EncProof in 0.5 s, db_id=11
+rows visible: 7
+
+--- 5. export the certificate, then remove it
+exported    : &lt;certificate-store&gt;\&lt;certificate&gt;.cer ; &lt;certificate-store&gt;\&lt;certificate&gt;.pvk
+certificate present now: 0
+
+--- 6. restore WITHOUT the certificate (the stolen-media case)
+restore refused as expected:
+  Exception calling "ExecuteNonQuery" with "0" argument(s): "Cannot find server certificate with thumbprint '0x&lt;redacted-thumbprint&gt;'. RESTORE DATABASE is terminating abnormally."
+
+--- 7. re-import the certificate and restore again
+restore ok  : AFS_EncProof in 0.5 s, 7 tables
+
+--- result
+  encrypted backup created with AES-256 under AFS_BackupCert
+  media verified with CHECKSUM
+  restore without the certificate: REFUSED
+  restore after re-importing the certificate: OK
+  proof database dropped; backup retained at &lt;backup-store&gt;\AFS_Audit_ENCRYPTED.bak</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="50_least_privilege">
+      <h3>One identity, one database</h3>
+      <p class="meta">The application identity is made to read the tables it should not see, then the tables it should.</p>
+      <p class="meta"><b>Result.</b> Permission denied (229) on customer and account, the reporting view returns 1,000 rows, and the stray connect-only login is removed from the payments database.</p>
+      <pre class="term">=== Least privilege: afs_app  2026-11-25T11:14:57 ===
+integrated security only: 1
+databases before: 13
+
+--- 1. one login, no server role, one database
+login roles : (none)
+sysadmin?   : 0
+test view   : account.vw_AccountSummary
+granted: SELECT on one view; DENY SELECT on Customer and Account
+
+--- 2. what the application can read (impersonated as the app user)
+view read        : 1000
+Customer read    : DENIED: The SELECT permission was denied on the object 'Customer', database 'AFS_CoreBanking', schema 'customer'.
+Account read     : DENIED: The SELECT permission was denied on the object 'Account', database 'AFS_CoreBanking', schema 'account'.
+
+--- 3. blast radius: the same login against the other databases
+AFS_Audit user mapped: 0
+AFS_Fraud user mapped: 0
+AFS_Payments user mapped: 0
+app identity has no user in AFS_Fraud: 0</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="51_failed_login_detection">
+      <h3>A rejected login leaves a record</h3>
+      <p class="meta">Five deliberate bad logins are attempted from a client machine while the extended-events session is running.</p>
+      <p class="meta"><b>Result.</b> The session records the rejection with its reason and the client host within seconds, and the audit table already holds 60 login events — the trail a breach investigation needs and rarely gets.</p>
+      <pre class="term">=== Failed-login detection  2026-11-25T11:14:57 ===
+instance log path: C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\
+session target   : C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\afs_logins.xel
+session started
+attempt 1 failed: Exception calling "Open" with "0" argument(s): "Login failed for user 'nosuchlogin'."
+attempt 2 failed: Exception calling "Open" with "0" argument(s): "Login failed for user 'nosuchlogin'."
+attempt 3 failed: Exception calling "Open" with "0" argument(s): "Login failed for user 'nosuchlogin'."
+attempt 4 failed: Exception calling "Open" with "0" argument(s): "Login failed for user 'nosuchlogin'."
+attempt 5 failed: Exception calling "Open" with "0" argument(s): "Login failed for user 'nosuchlogin'."
+attempts made    : 5
+events captured : 2
+  2026-11-25 11:14:57  Login failed for user 'nosuchlogin'.
+  2026-11-25 11:14:57  Login failed for user 'nosuchlogin'. Reason: An attempt to login using SQL authentication failed. Server is configured for Integrated authentication only. [CLIENT: &lt;local machine&gt;]
+events carrying the client host: 1
+existing SecurityEvent login rows: 60
+result: a failed login is recorded with its client and message within seconds</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="52_dataset_load">
+      <h3>The ledger is the balance</h3>
+      <p class="meta">Twenty thousand transfers were posted against 1,000 accounts, each writing a double entry into the ledger.</p>
+      <p class="meta"><b>Result.</b> Balance equals opening balance plus the summed ledger for every account: 0 mismatches, 0 negative balances.</p>
+      <pre class="term">=== dataset load verification 2026-11-25T08:47:17Z ===
+object_name rows
+----------- ----
+customer.Customer 1000
+customer.CustomerAddress 1020
+customer.CustomerContact 2000
+account.Account 1000
+account.Transfer 20000
+account.AccountLedgerEntry 40000
+account.TransferEvent 20000
+audit.AuditEvent 5793
+
+object_name rows
+----------- ----
+fraud.FraudAlert 2000
+fraud.FraudCase 500
+
+
+balance invariant: Balance = OpeningBalance + SUM(ledger)
+mismatches
+----------
+0
+
+accounts_with_negative_balance
+------------------------------
+0
+
+alerts_open
+-----------
+440
+
+--- warehouse dimensions refreshed 2026-11-25 ---
+first attempt rejected: DimCustomer/DimAccount keys are IDENTITY (Msg 544), so explicit keys need IDENTITY_INSERT
+corrected run with IDENTITY_INSERT: DimCustomer 1000, DimAccount 1000 (current rows)</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="53_capability_sweep">
+      <h3>Every capability measured on the same day</h3>
+      <p class="meta">One sweep collects blocking, capacity, plan, change and object counts from the live instance.</p>
+      <p class="meta"><b>Result.</b> A 2,520 ms lock wait surfaces as LCK_M_X; the reporting query is confined to the warehouse; every count is printed.</p>
+      <pre class="term">AFS-DBA-001 capability sweep  2026-11-25T11:58:47
+server: Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64)
+
+=== A. Blocking and isolation (was: observed) ===
+holder   : session A holds an exclusive lock inside an open transaction
+observed : session 75 waiting LCK_M_X for 926 ms, blocked by 74
+blocked  : 2,541 ms, then 
+           Exception calling "EndExecuteNonQuery" with "1" argument(s): "Lock request time out period exceeded. The statement has been terminated."
+after    : holder rolled back, amount is 100.00 (second update did not apply)
+
+=== B. Capacity and growth (was: partial) ===
+database               size_mb data_growth  log_growth log_used%
+AFS_Archive               80.0        8192        8192   7.7% of 72 MB
+AFS_Audit                192.0        8192        8192   22.6% of 64 MB
+AFS_Compliance            16.0        8192        8192   13.1% of 8 MB
+AFS_CoreBanking          384.0        8192        8192   9.6% of 128 MB
+AFS_CustomerService      192.0        8192        8192   15% of 64 MB
+AFS_Fraud                192.0        8192        8192   16.8% of 64 MB
+AFS_Identity              16.0        8192        8192   26.5% of 8 MB
+AFS_Payments             384.0        8192        8192   0.4% of 128 MB
+AFS_Reporting            192.0        8192        8192   9.4% of 64 MB
+total allocated: 1648.0 MB; every file grows in fixed 8,192 KB steps (no percentage growth)
+thresholds: log alert documented at 70% used; largest observed value above
+
+=== C. Reporting separation (was: partial) ===
+report query plan touches: AFS_Reporting
+core banking referenced: no
+warehouse rows served without core tables: DimAccount = 1000
+
+=== D. Failed-login detection (was: two events for three attempts) ===
+attempts: 5; events captured: 10
+events carrying a client address: 5
+first event: 2026-11-25 10:58:51 UTC
+message    : Login failed for user 'probe_login'. Reason: An attempt to login using SQL authentication failed. Server is configured for Integrated authentication only. [CLIENT: &lt;local machine&gt;]
+
+=== E. Query plan reading ===
+operators in plan: Compute Scalar, Constant Scan, Index Seek, Nested Loops, Top
+indexes referenced: IX_account_Transfer_CompletedAt
+
+=== G. Change management: apply, prove, roll back ===
+before change  : Value = before; columns = 2
+change applied : column Note present = 1
+proving query  : before / null
+rollback run   : column Note present = 0, row still readable = before
+
+=== F. Artefacts counted, not remembered ===
+powershell scripts : 29
+T-SQL files        : 50
+evidence captures  : 57
+change records     : 1 (with a rollback section: 31 documents mention rollback)
+application procs  : 12 in AFS_CoreBanking</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="54_host_loss_restore">
+      <h3>The estate rebuilds on another machine</h3>
+      <p class="meta">A fresh backup of both databases is restored onto a second SQL Server 2025 instance with its own service and files — the same operation as rebuilding after the original host is lost.</p>
+      <p class="meta"><b>Result.</b> Eleven objects match the live estate row for row, balances still reconcile, total restore 1.7 s.</p>
+      <pre class="term">=== Host-loss rebuild drill  2026-11-25T10:18:51 ===
+source instance : .  (SQL Server 17.0.1000.7)
+target instance : (localdb)\MSSQLLocalDB  (SQL Server 17.0.1000.7, separate engine)
+backup          : &lt;backup-store&gt;\hostloss\AFS_CoreBanking_hostloss.bak  (17.2 MB, CHECKSUM, COMPRESSION)
+                  &lt;backup-store&gt;\hostloss\AFS_Payments_hostloss.bak  (1 MB, CHECKSUM, COMPRESSION)
+backup time     : 0.7 s
+
+--- 1. restore onto the second instance
+AFS_HostLoss          ONLINE     384.0 MB
+AFS_Payments_HostLoss ONLINE     384.0 MB
+restore time    : 1.7 s (both databases, from cold files)
+
+--- 2. row counts, live vs rebuilt
+object                           live    rebuilt   match
+customer.Customer                  1000       1000   yes
+customer.CustomerAddress           1020       1020   yes
+customer.CustomerContact           2000       2000   yes
+account.Account                    1000       1000   yes
+account.Transfer                  20000      20000   yes
+account.AccountLedgerEntry        40000      40000   yes
+account.TransferEvent             20000      20000   yes
+audit.AuditEvent                   5793       5793   yes
+payment.Payment                     472        472   yes
+payment.PaymentEvent                472        472   yes
+settlement.SettlementItem           426        426   yes
+
+--- 3. integrity on the rebuilt copy
+balance mismatches : 0
+
+verdict         : PASS - the estate rebuilds on a different instance with identical data</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="55_standby_failover">
+      <h3>The estate runs on a second instance</h3>
+      <p class="meta">A second instance receives the backup stream: full restore with NORECOVERY, then the transaction log, so it stays consistent and unreadable until it is needed.</p>
+      <p class="meta"><b>Result.</b> Manual failover completes in 0.28 s, the standby comes online with 1,000 accounts, 20,000 transfers and 40,000 ledger entries, and the accounting invariant still holds.</p>
+      <pre class="term">=== Warm-standby failover drill  2026-11-25T10:26:52 ===
+primary     : . (SQL Server 2025 17.0.1000.7)
+standby     : (localdb)\MSSQLLocalDB (separate instance)
+backup pair : &lt;backup-store&gt;\hostloss\standby_full.bak + standby_log.trn (CHECKSUM)
+
+instance   : &lt;host&gt;\LOCALDB#A9D14F39
+version    : 17.0.1000.7
+reset      : prior AFS_Standby dropped
+RESTORE DATABASE successfully processed 6922 pages in 0.126 seconds (429.160 MB/sec).
+standby    : full restore with NORECOVERY (not readable, ready to receive logs)
+state      : RESTORING / IsInStandBy=0
+RESTORE LOG successfully processed 9 pages in 0.001 seconds (70.312 MB/sec).
+standby    : log restored with NORECOVERY, last log applied
+standby s  : 1.641000
+RESTORE DATABASE successfully processed 0 pages in 0.273 seconds (0.000 MB/sec).
+failover s : 0.273000
+state      : ONLINE
+object_name                rows_on_standby     
+-------------------------- --------------------
+customer.Customer                          1000
+account.Account                            1000
+account.Transfer                          20000
+account.AccountLedgerEntry                40000
+balance_mismatches  
+--------------------
+                   0
+
+verdict     : PASS - standby restored, log applied, manual failover in 0.28 s, counts and balances intact</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="56_governance_databases">
+      <h3>Identity, control testing and retention are queryable</h3>
+      <p class="meta">Three further databases model what most estates keep in spreadsheets: who holds which grant and when it was reviewed, which control answers which obligation and when it last failed, and which records are retained under hold.</p>
+      <p class="meta"><b>Result.</b> 240 grants and 4 reviews reconcile, 120 control tests produce findings with remediation, and the archive hash chain shows zero breaks until one row is deliberately altered — which the check catches.</p>
+      <pre class="term">=== Governance databases: structure, volume, integrity  2026-11-25T10:42:24 ===
+server: Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64)
+
+=== estate ===
+database_name                  size_mb     
+------------------------------ ------------
+AFS_Archive                             8.0
+AFS_Audit                             128.0
+AFS_Compliance                          8.0
+AFS_CoreBanking                       256.0
+AFS_CustomerService                   128.0
+AFS_Fraud                             128.0
+AFS_Identity                            8.0
+AFS_Payments                          256.0
+AFS_Reporting                         128.0
+ 
+=== tables and foreign keys per database ===
+database_name  tables      foreign_keys
+-------------- ----------- ------------
+AFS_Identity             7            7
+AFS_Compliance           6            5
+AFS_Archive              5            4
+ 
+=== seeded volume ===
+object_name               rows                
+------------------------- --------------------
+iam.Principal                               63
+iam.Role                                    10
+iam.RoleAssignment                         240
+iam.AccessRequest                          228
+iam.AccessReview                             4
+iam.AccessReviewDecision                   240
+iam.SessionEvent                          3000
+grc.Obligation                              24
+grc.Control                                 30
+grc.ControlObligation                       60
+grc.ControlTest                            120
+grc.Finding                                 12
+grc.Remediation                             12
+retention.ArchivedRecord                  2000
+retention.LegalHoldRecord                  120
+ 
+=== governance questions the model answers ===
+question                                 answer     
+---------------------------------------- -----------
+privileged grants still active                    45
+assignments revoked by the latest review           8
+grants with no matching access request             0
+controls with no obligation mapped                 0
+controls failing their last test                   3
+open high or critical findings                     3
+archived records under legal hold                 80
+purge runs blocked by a hold                      60
+ 
+=== archive hash chain ===
+broken_links
+------------
+           0
+payload_mismatches
+------------------
+                 0
+ 
+=== tamper test: alter one stored hash inside a transaction ===
+mismatches_after_tamper
+-----------------------
+                      1
+rolled back: the evidence is unchanged
+mismatches_after_rollback
+-------------------------
+                        0</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="59_automatic_failover">
+      <h3>Failover the application does not perform</h3>
+      <p class="meta">A LocalDB standby receives the log every second while a watchdog and a client probe run; the primary database is then taken offline without warning.</p>
+      <p class="meta"><b>Result.</b> Detection 969 ms, promotion 607 ms, client reads recovered after 4.4 s, and a row committed 1.3 s before the outage was present on the promoted standby.</p>
+      <pre class="term">=== Automatic failover  2026-11-25T11:25:42 ===
+primary instance  : &lt;host&gt; (SQL Server 17.0.1000.7)
+standby instance  : &lt;host&gt;\LOCALDB#EC7881CC (LocalDB 17.0.1000.7)
+watched database  : AFS_Payments on .
+standby database  : AFS_Payments_Standby on (localdb)\MSSQLLocalDB
+witness           : tools\ha\watchdog.ps1, polling every 250 ms, acts after 2 consecutive failures
+endpoint          : ha\active_target.json, the file a client resolves before it connects
+
+--- 1. seed the standby ---
+standby state     : RESTORING (not readable, receiving log)
+rows in the copy  : 472 in payment.Payment at the primary
+standby files     : &lt;home&gt;\AFS_Payments_Standby.mdf
+
+--- 2. start watchdog and client probe ---
+watchdog pid      : &lt;redacted&gt;
+probe pid         : &lt;redacted&gt;
+clients read      : primary, payment.Payment, every 200 ms
+
+--- 3. failure injection: database taken offline without warning ---
+healthy reads     : 8 before injection
+committed         : 11:25:50.209  marker FAILOVER-112550202 written to audit.AuditEvent
+injected          : 11:25:51.536  ALTER DATABASE [AFS_Payments] SET OFFLINE
+
+--- 4. watchdog result ---
+11:25:45.942  watchdog start   primary=.  standby=(localdb)\MSSQLLocalDB
+11:25:45.979  monitoring       AFS_Payments every 250 ms; log shipped every 1000 ms
+11:25:45.995  state            HEALTHY
+11:25:46.650  log shipped      #1 in 274 ms
+11:25:54.878  primary lost     status=OFFLINE
+11:25:55.900  PROMOTED         AFS_Payments_Standby on (localdb)\MSSQLLocalDB in 607 ms
+11:25:55.913  logs shipped     7 (last at 11:25:54.347)
+11:25:55.926  endpoint         &lt;workspace&gt;\ha\active_target.json -&gt; (localdb)\MSSQLLocalDB / AFS_Payments_Standby
+11:25:55.937  standby rows     472 (payment.Payment)
+11:25:55.948  state            FAILED OVER
+
+--- 5. client result ---
+11:25:47.181  probe start
+11:25:51.765  read failed    ./AFS_Payments : Exception calling "Open" with "0" argument(s): "Login failed for user '&lt;host&gt;\&lt;user&gt;'."
+11:25:56.159  read recovered (localdb)\MSSQLLocalDB/AFS_Payments_Standby : 472 rows after 4,367 ms
+summary        {"attempts":110,"failures":20,"first_failure":"11:25:51.760","last_failure":"11:25:55.882","recovered_at":"11:25:56.127","outage_ms":4367,"successful_reads_after_failure":71}
+
+--- 6. what the numbers mean ---
+client outage     : 4367 ms (4.37 s) from first failed read to first successful read
+failed reads      : 20 of 110
+reads after       : 71 successful reads against the promoted standby
+logs shipped      : 7, last at 11:25:54.347
+row before failure: marker FAILOVER-112550202 committed 1327 ms before the outage, present on the promoted standby: 1
+recovery point    : the standby applied every log shipped up to 11:25:54.347; the labelled row survived
+endpoint now      : {     "server":  "(localdb)\\MSSQLLocalDB",     "database":  "AFS_Payments_Standby",     "role":  "primary",     "promoted_at":  "2026-11-25T11:25:55",     "promote_ms":  607,     "detected_ms":  969,     "standby_rows":  472,     "logs_shipped":  7,     "last_ship_at":  "11:25:54.347",     "last_ship_ms":  142 }
+no human ran the promotion; the watchdog did, and the client found the new primary through the endpoint file.
+
+--- 7. restore the lab: primary online, standby reseeded, endpoint back to primary ---
+primary state     : ONLINE
+standby state     : RESTORING
+primary rows      : 472
+endpoint          : {     "server":  ".",     "database":  "AFS_Payments",     "role":  "primary",     "promoted_at":  "2026-11-25T11:26:18" }
+elapsed           : 35.3 s</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="60_key_custody">
+      <h3>A key you cannot get back is not a key</h3>
+      <p class="meta">TDE is enabled, its protector rotated and exported encrypted; an encrypted backup is read after the certificate is dropped from the instance.</p>
+      <p class="meta"><b>Result.</b> The restore is refused with a missing-thumbprint error, then succeeds from the custodied certificate with all 6,168 rows intact.</p>
+      <pre class="term">=== Key custody and rotation  2026-11-25T11:41:23 ===
+instance          : &lt;host&gt; (Enterprise Developer 17.0.1000.7)
+custody directory : &lt;custody-store&gt;
+custody boundary  : private keys exported encrypted under a 48-character &lt;passphrase-file&gt;
+&lt;passphrase-file&gt; store  : DPAPI-wrapped for &lt;user&gt;, outside every database and backup directory
+engine access     : NT Service\MSSQLSERVER can read the encrypted key files, not the &lt;passphrase-file&gt;
+hardware HSM      : not present on this machine; custody is software-enforced
+
+--- 1. TDE protector v1 ---
+existing          : AFS_TDE_Protector_v1
+encryption state  : 3 (3 = encrypted)
+protector v1      : 83F98FCD99D9490A22D8DFD6F02B2C790058E41F
+backed up         : &lt;certificate&gt;.cer and &lt;certificate&gt;.pvk
+
+--- 2. rotate to protector v2 ---
+existing          : AFS_TDE_Protector_v2
+database key      : re-wrapped under AFS_TDE_Protector_v2
+encryption state  : 3 (3 = encrypted)
+active protector  : 90313AF5F2C2643285364463462C89D2C5B3AE60
+v1 retired        : kept in custody, still required to read backups taken before the rotation
+
+--- 3. registry ---
+rows in registry  : 2 protector(s) recorded in AFS_Compliance.grc.KeyCustodyRecord
+
+--- 4. an encrypted backup without its key is noise ---
+source rows       : 6168 in AFS_Audit.audit.AuditRecord
+encrypted backup  : custody_test-20261125114122.bak (1.16 MB, AES-256, certificate &lt;certificate&gt;)
+certificate       : BDCBDCA9F710ADC14CEADC38455A36ECFB6B136C
+certificate       : dropped from the instance (simulating a host loss or a revoked protector)
+restore attempt   : refused - Exception calling "ExecuteNonQuery" with "0" argument(s): "Cannot find server certificate with thumbprint '0x&lt;redacted-thumbprint&gt;'.
+certificate       : re-imported from custody with the &lt;passphrase-file&gt;
+restore result    : AFS_CustodyRestore online with 6168 rows (source 6168)
+scratch database  : dropped after verification
+registry          : backup certificate recorded with the time its restore was verified
+
+--- 5. custody inventory ---
+  &lt;certificate&gt;.cer     1010 bytes
+  &lt;certificate&gt;.pvk     1788 bytes
+  &lt;certificate&gt;.cer      970 bytes
+  &lt;certificate&gt;.pvk     1788 bytes
+  &lt;certificate&gt;.cer      988 bytes
+  &lt;certificate&gt;.pvk     1788 bytes
+  &lt;passphrase-file&gt;                            657 bytes
+  custody_test-20261125114122.bak           1212416 bytes
+registry rows     : 3</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="61_telemetry">
+      <h3>A plant that reports in seconds, not transactions</h3>
+      <p class="meta">A Modbus TCP simulator serves three holding registers; the collector writes 1 Hz readings into the historian and the simulator is stopped for seven seconds mid-run.</p>
+      <p class="meta"><b>Result.</b> 189 readings at a 991 ms average interval, with the 5.7 s outage recorded as a gap of five missed samples rather than silently missing rows.</p>
+      <pre class="term">=== Operational telemetry  2026-11-25T11:54:49 ===
+schema            Changed database context to 'AFS_Archive'.
+schema            tags       
+schema            -----------
+schema                      3
+
+plant simulator   : tools\ot\plc_sim.py, pid &lt;redacted&gt;, 127.0.0.1:15020
+registers         : 0 wellhead pressure (bar), 1 separator flow (m3/h), 2 separator temperature (C)
+values            : synthetic, generated by the simulator; the Modbus exchange and the database write are real
+
+collector         : tools\ot\collector.ps1, pid &lt;redacted&gt;, 1 Hz for 70 s
+plant stopped     : 11:55:20.793  simulator killed, no readings possible
+plant restarted   : 11:55:27.844  simulator pid &lt;redacted&gt; after 7.0 s of outage
+
+--- collector log ---
+11:54:57.094  collector start  run=3  tags=3  interval=1000ms  target=127.0.0.1:15020
+11:55:23.512  plant unreachable Exception calling "Connect" with "2" argument(s): "No connection could be made because the target machine actively refused it 127.0.0.1:15020"
+11:55:29.149  gap recorded     5.7 s without a reading, 5 missed samples
+11:56:07.520  collector stop   run=3  readings=189  gaps=1
+11:56:07.531  summary          run=3 readings=189 gaps=1 interval_ms=1000
+
+--- run 3 in the historian ---
+run window        : 10:54:57.037 to 10:56:07.511 UTC
+readings written  : 189 rows at 1000 ms
+gaps recorded     : 1
+
+--- readings per tag ---
+  FLOW_RATE         63 readings      40.50 to    43.00 m3/h
+  SEP_TEMP          63 readings      63.46 to    64.10 C
+  WELLHEAD_PRESS    63 readings      72.58 to    74.65 bar
+
+--- gap recorded while the plant was down ---
+  10:55:23.467 to 10:55:29.135  5.7 s  5 missed samples
+
+--- sampling interval actually achieved (gap excluded) ---
+  183 intervals, min 40 ms, average 991 ms, max 1054 ms
+
+historian size    : 588 readings retained in AFS_Archive.telemetry.Reading
+the archive database already enforces retention, so time-series data lives where its policy already applies.</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="62_backup_coverage">
+      <h3>Every database, not just the first six</h3>
+      <p class="meta">VERIFYONLY is run against the most recent FULL backup of every AFS database, with the file list read from msdb rather than typed into the script.</p>
+      <p class="meta"><b>Result.</b> Nine databases checked, nine verified, zero missing. The three governance databases had no backup history when this audit began; that is the gap the next capture shows being caught.</p>
+      <pre class="term">=== Backup coverage and VERIFYONLY: every AFS database  2026-11-25T15:12:43Z ===
+
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+The backup set on file 1 is valid.
+DatabaseName|BackupFinish|VerifyResult|FilePath|Message
+------------|------------|------------|--------|-------
+AFS_Archive|2026-11-25 16:12:27|VERIFIED|&lt;backup-root&gt;\backups\full\AFS_Archive_20261125_151227.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Audit|2026-11-25 16:12:25|VERIFIED|&lt;backup-root&gt;\backups\full\AFS_Audit_20261125_151225.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Compliance|2026-11-25 16:12:27|VERIFIED|&lt;backup-root&gt;\backups\full\AFS_Compliance_20261125_151227.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_CoreBanking|2026-11-25 16:12:26|VERIFIED|&lt;backup-root&gt;\backups\full\AFS_CoreBanking_20261125_151225.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_CustomerService|2026-11-25 16:12:26|VERIFIED|&lt;backup-root&gt;\backups\full\AFS_CustomerService_20261125_151226.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Fraud|2026-11-25 16:12:26|VERIFIED|&lt;backup-root&gt;\backups\full\AFS_Fraud_20261125_151226.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Identity|2026-11-25 16:12:27|VERIFIED|&lt;backup-root&gt;\backups\full\AFS_Identity_20261125_151227.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Payments|2026-11-25 16:12:26|VERIFIED|&lt;backup-root&gt;\backups\full\AFS_Payments_20261125_151226.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+AFS_Reporting|2026-11-25 16:12:27|VERIFIED|&lt;backup-root&gt;\backups\full\AFS_Reporting_20261125_151226.bak|RESTORE VERIFYONLY WITH CHECKSUM succeeded
+databases_total|verified|failed|missing
+---------------|--------|------|-------
+9|9|0|0</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="63_restore_coverage">
+      <h3>The three newest databases restore</h3>
+      <p class="meta">Each governance database is restored under a scratch name with MOVE, compared table for table and row for row, then dropped.</p>
+      <p class="meta"><b>Result.</b> Identity, Compliance and Archive all restore identical: 7/9/7 tables and 3,785/261/2,737 rows, with the named detail table matching in every case.</p>
+      <pre class="term">=== Restore proof: the three governance databases  2026-11-25T15:13:31Z ===
+
+25 percent processed.
+50 percent processed.
+75 percent processed.
+100 percent processed.
+Processed 768 pages for database 'AFS_Archive_RESTORE', file 'AFS_Archive' on file 1.
+Processed 2 pages for database 'AFS_Archive_RESTORE', file 'AFS_Archive_log' on file 1.
+RESTORE DATABASE successfully processed 770 pages in 0.101 seconds (59.521 MB/sec).
+25 percent processed.
+50 percent processed.
+75 percent processed.
+100 percent processed.
+Processed 656 pages for database 'AFS_Compliance_RESTORE', file 'AFS_Compliance' on file 1.
+Processed 2 pages for database 'AFS_Compliance_RESTORE', file 'AFS_Compliance_log' on file 1.
+RESTORE DATABASE successfully processed 658 pages in 0.094 seconds (54.645 MB/sec).
+25 percent processed.
+50 percent processed.
+76 percent processed.
+100 percent processed.
+Processed 704 pages for database 'AFS_Identity_RESTORE', file 'AFS_Identity' on file 1.
+Processed 2 pages for database 'AFS_Identity_RESTORE', file 'AFS_Identity_log' on file 1.
+RESTORE DATABASE successfully processed 706 pages in 0.047 seconds (117.270 MB/sec).
+DatabaseName|LiveTables|RestoredTables|LiveRows|RestoredRows|LiveDetailRows|RestoredDetailRows|Result
+------------|----------|--------------|--------|------------|--------------|------------------|------
+AFS_Archive|9|9|2737|2737|2000|2000|IDENTICAL
+AFS_Compliance|7|7|261|261|120|120|IDENTICAL
+AFS_Identity|7|7|3785|3785|63|63|IDENTICAL
+databases_tested|identical|not_identical
+----------------|---------|-------------
+3|3|0</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="64_health_check_caught_gap">
+      <h3>The monitor caught the gap it was built for</h3>
+      <p class="meta">The hourly health check ran while three databases still had no full backup. This is the unedited result, including the failed log-backup job it exposed.</p>
+      <p class="meta"><b>Result.</b> Overall CRITICAL: one failed check, the 15-minute log job, because it tried to back up logs for databases with no full backup. The alert was correct, not a false positive.</p>
+      <pre class="term">=== Health check after backup coverage closed  2026-11-25T15:13:40Z ===
+
+DBCC execution completed. If DBCC printed error messages, contact your system administrator.
+OverallStatus|CriticalChecks|WarningChecks|OkChecks|CheckedAtUtc
+-------------|--------------|-------------|--------|------------
+CRITICAL|1|0|45|2026-11-25 15:13:44.5158932
+CheckId|Severity|CheckName|Details|CheckedAt
+-------|--------|---------|-------|---------
+JOB_AFS - Log Backup (15 min)|CRITICAL|Agent job: AFS - Log Backup (15 min)|last run 2026-11-25T16:05:00, run_status=0|2026-11-25 15:13:42.443
+BACKUP_FULL_AFS_Archive|OK|Full backup freshness: AFS_Archive|2026-11-25T16:12:27|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Audit|OK|Full backup freshness: AFS_Audit|2026-11-25T16:12:25|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Compliance|OK|Full backup freshness: AFS_Compliance|2026-11-25T16:12:27|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_CoreBanking|OK|Full backup freshness: AFS_CoreBanking|2026-11-25T16:12:26|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_CustomerService|OK|Full backup freshness: AFS_CustomerService|2026-11-25T16:12:26|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Fraud|OK|Full backup freshness: AFS_Fraud|2026-11-25T16:12:26|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Identity|OK|Full backup freshness: AFS_Identity|2026-11-25T16:12:27|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Payments|OK|Full backup freshness: AFS_Payments|2026-11-25T16:12:26|2026-11-25 15:13:42.160
+BACKUP_FULL_AFS_Reporting|OK|Full backup freshness: AFS_Reporting|2026-11-25T16:12:27|2026-11-25 15:13:42.160
+BACKUP_LOG_AFS_Archive|OK|Log backup freshness: AFS_Archive|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_Audit|OK|Log backup freshness: AFS_Audit|2026-11-25T16:12:27|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_Compliance|OK|Log backup freshness: AFS_Compliance|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_CoreBanking|OK|Log backup freshness: AFS_CoreBanking|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_CustomerService|OK|Log backup freshness: AFS_CustomerService|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_Fraud|OK|Log backup freshness: AFS_Fraud|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_Identity|OK|Log backup freshness: AFS_Identity|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BACKUP_LOG_AFS_Payments|OK|Log backup freshness: AFS_Payments|2026-11-25T16:12:28|2026-11-25 15:13:42.409
+BLOCKING|OK|Blocked sessions|0 blocked session(s)|2026-11-25 15:13:42.451
+DB_STATE_AFS_Archive|OK|Database state: AFS_Archive|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Audit|OK|Database state: AFS_Audit|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Compliance|OK|Database state: AFS_Compliance|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_CoreBanking|OK|Database state: AFS_CoreBanking|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_CustomerService|OK|Database state: AFS_CustomerService|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Fraud|OK|Database state: AFS_Fraud|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Identity|OK|Database state: AFS_Identity|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Payments|OK|Database state: AFS_Payments|ONLINE / recovery=FULL / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DB_STATE_AFS_Reporting|OK|Database state: AFS_Reporting|ONLINE / recovery=SIMPLE / log_reuse_wait=NOTHING|2026-11-25 15:13:41.595
+DEADLOCKS|OK|Deadlock reports in system_health|0 retained deadlock report(s)|2026-11-25 15:13:44.504
+DISK_C:\|OK|Disk free space on C:\|40.65 GB free of 237.50 GB|2026-11-25 15:13:41.721
+INSTANCE|OK|SQL Server instance reachable|&lt;host&gt; / Enterprise Developer Edition (64-bit)|2026-11-25 15:13:41.451
+JOB_AFS - Full Backup (nightly)|OK|Agent job: AFS - Full Backup (nightly)|last run 2026-11-25T08:29:22, run_status=1|2026-11-25 15:13:42.443
+JOB_AFS - Index and Statistics (weekly)|OK|Agent job: AFS - Index and Statistics (weekly)|last run 2026-11-24T12:34:13, run_status=1|2026-11-25 15:13:42.443
+JOB_AFS - Integrity Check (weekly)|OK|Agent job: AFS - Integrity Check (weekly)|last run 2026-11-24T12:34:13, run_status=1|2026-11-25 15:13:42.443
+JOB_AFS - Job Failure Watch (hourly)|OK|Agent job: AFS - Job Failure Watch (hourly)|last run 2026-11-25T16:05:00, run_status=1|2026-11-25 15:13:42.443
+JOB_syspolicy_purge_history|OK|Agent job: syspolicy_purge_history|last run 2026-11-25T08:29:22, run_status=1|2026-11-25 15:13:42.443
+LOG_USAGE_AFS_Archive|OK|Transaction log usage: AFS_Archive|4.93% used, 71.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Audit|OK|Transaction log usage: AFS_Audit|23.27% used, 63.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Compliance|OK|Transaction log usage: AFS_Compliance|15.30% used, 7.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_CoreBanking|OK|Transaction log usage: AFS_CoreBanking|9.78% used, 127.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_CustomerService|OK|Transaction log usage: AFS_CustomerService|15.38% used, 63.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Fraud|OK|Transaction log usage: AFS_Fraud|17.13% used, 63.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Identity|OK|Transaction log usage: AFS_Identity|4.69% used, 7.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Payments|OK|Transaction log usage: AFS_Payments|0.54% used, 127.99 MB|2026-11-25 15:13:42.479
+LOG_USAGE_AFS_Reporting|OK|Transaction log usage: AFS_Reporting|9.57% used, 63.99 MB|2026-11-25 15:13:42.479
+LONG_QUERIES|OK|Requests running longer than 60 seconds|0 request(s)|2026-11-25 15:13:42.455
+DatabaseName|LogicalFileName|PhysicalFileName|FileType|SizeMB|growth|is_percent_growth|is_read_only
+------------|---------------|----------------|--------|------|------|-----------------|------------
+AFS_Archive|AFS_Archive_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Archive_log.ldf|LOG|72.00|8192|0|0
+AFS_Archive|AFS_Archive|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Archive.mdf|ROWS|8.00|8192|0|0
+AFS_Audit|AFS_Audit_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Audit_log.ldf|LOG|64.00|8192|0|0
+AFS_Audit|AFS_Audit|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Audit.mdf|ROWS|128.00|8192|0|0
+AFS_Compliance|AFS_Compliance_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Compliance_log.ldf|LOG|8.00|8192|0|0
+AFS_Compliance|AFS_Compliance|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Compliance.mdf|ROWS|8.00|8192|0|0
+AFS_CoreBanking|AFS_CoreBanking_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf|LOG|128.00|8192|0|0
+AFS_CoreBanking|AFS_CoreBanking|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf|ROWS|256.00|8192|0|0
+AFS_CustomerService|AFS_CustomerService_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CustomerService_log.ldf|LOG|64.00|8192|0|0
+AFS_CustomerService|AFS_CustomerService|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CustomerService.mdf|ROWS|128.00|8192|0|0
+AFS_Fraud|AFS_Fraud_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Fraud_log.ldf|LOG|64.00|8192|0|0
+AFS_Fraud|AFS_Fraud|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Fraud.mdf|ROWS|128.00|8192|0|0
+AFS_Identity|AFS_Identity_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Identity_log.ldf|LOG|8.00|8192|0|0
+AFS_Identity|AFS_Identity|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Identity.mdf|ROWS|8.00|8192|0|0
+AFS_Payments|AFS_Payments_log|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Payments_log.ldf|LOG|128.00|8192|0|0
+AFS_Payments|AFS_Payments|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_Payments.mdf|ROWS|256.00|8192|0|0
+AFS_Reporting|AFS_Reporting_log|C:\Program Files\Microsof</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="65_health_check">
+      <h3>And then it went quiet for the right reason</h3>
+      <p class="meta">The same check after full backups were taken for all nine databases.</p>
+      <p class="meta"><b>Result.</b> Overall OK: 46 checks, zero critical, zero warnings, including full and log freshness for every database and every Agent job outcome.</p>
+      <pre class="term">=== Health check: all nine databases, after the gap was closed  2026-11-25T15:20:47Z ===
+
+DBCC execution completed. If DBCC printed error messages, contact your system administrator.
+OverallStatus|CriticalChecks|WarningChecks|OkChecks|CheckedAtUtc
+-------------|--------------|-------------|--------|------------
+OK|0|0|46|2026-11-25 15:20:50.3299956
+CheckId|Severity|CheckName|Details|CheckedAt
+-------|--------|---------|-------|---------
+BACKUP_FULL_AFS_Archive|OK|Full backup freshness: AFS_Archive|2026-11-25T16:12:27|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Audit|OK|Full backup freshness: AFS_Audit|2026-11-25T16:12:25|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Compliance|OK|Full backup freshness: AFS_Compliance|2026-11-25T16:12:27|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_CoreBanking|OK|Full backup freshness: AFS_CoreBanking|2026-11-25T16:12:26|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_CustomerService|OK|Full backup freshness: AFS_CustomerService|2026-11-25T16:12:26|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Fraud|OK|Full backup freshness: AFS_Fraud|2026-11-25T16:12:26|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Identity|OK|Full backup freshness: AFS_Identity|2026-11-25T16:12:27|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Payments|OK|Full backup freshness: AFS_Payments|2026-11-25T16:12:26|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Reporting|OK|Full backup freshness: AFS_Reporting|2026-11-25T16:12:27|2026-11-25 15:20:48.317
+BACKUP_LOG_AFS_Archive|OK|Log backup freshness: AFS_Archive|2026-11-25T16:20:01|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_Audit|OK|Log backup freshness: AFS_Audit|2026-11-25T16:20:00|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_Compliance|OK|Log backup freshness: AFS_Compliance|2026-11-25T16:20:01|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_CoreBanking|OK|Log backup freshness: AFS_CoreBanking|2026-11-25T16:20:00|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_CustomerService|OK|Log backup freshness: AFS_CustomerService|2026-11-25T16:20:01|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_Fraud|OK|Log backup freshness: AFS_Fraud|2026-11-25T16:20:01|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_Identity|OK|Log backup freshnes</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="58_lab_scale">
+      <h3>Oracle and MySQL carry the same estate, not a sample</h3>
+      <p class="meta">Both portability labs were reloaded to the size of the SQL Server core: 1,000 accounts and 20,000 double-entry transfers, then reconciled and dumped.</p>
+      <p class="meta"><b>Result.</b> Oracle and MySQL each report 1,000 accounts and 40,000 ledger entries with zero balance mismatches, and the MySQL dump restores into a scratch schema with identical counts.</p>
+      <pre class="term">=== Oracle and MySQL at estate scale  2026-11-25T11:07:44 ===
+
+--- Oracle 26ai Free, AFS_LAB in FREEPDB1 ---
+  ACCOUNTS LEDGER_ENTRIES BALANCE_MISMATCHES
+---------- -------------- ------------------
+      1000	    40000		   0
+1 row selected.
+  TABLE_MB
+----------
+       4.4
+1 row selected.
+
+--- MySQL 8.4.9, afs_lab ---
+version
+8.4.9
+accounts	ledger_entries	balance_mismatches	negative_running
+1000	40000	0	0
+
+--- MySQL dump and scratch restore ---
+dump file : afs_lab_scale_20261125_110423.sql  (2791269 bytes)
+restored_accounts	restored_entries	restored_mismatches
+1000	40000	0
+
+verdict   : PASS - both engines hold the same 1,000 accounts and 40,000 entries as the core, reconcile to zero, and the dump restores into a scratch schema with identical counts</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <article class="ev" id="57_three_engines">
+      <h3>All three engines answer, on the same day</h3>
+      <p class="meta">One check queries SQL Server, Oracle and MySQL: version, open mode, archive-log setting and the rowseach engine actually holds.</p>
+      <p class="meta"><b>Result.</b> SQL Server reports nine AFS databases, Oracle FREEPDB1 is READ WRITE in ARCHIVELOG with its AFS_LAB schema answering, and MySQL 8.4.9 returns its own schema and rows.</p>
+      <pre class="term">=== Three-engine connectivity check  2026-11-25T10:50:05 ===
+
+--- SQL Server 2025 (default instance) ---
+version
+-------
+Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64) 
+	Oct 21 2025 12:05:57 
+	Copyright (C) 2025 Microsoft Corporation
+	Enterprise Developer Edition (64-bit) on Windows 10 Pro 10.0 &lt;X64&gt; (Build 26200: ) (Hypervisor)
+afs_databases
+-------------
+9
+tables
+------
+21
+
+--- Oracle 26ai Free, FREEPDB1 ---
+DB_NAME   OPEN_MODE	       LOG_MODE
+--------- -------------------- ------------
+FREE	  READ WRITE	       ARCHIVELOG
+1 row selected.
+AFS_LAB_TABLES	 ACCOUNTS LEDGER_ENTRIES
+-------------- ---------- --------------
+	     3		2	       2
+1 row selected.
+
+--- MySQL 8.4.9 ---
+version	host
+8.4.9	&lt;host&gt;
+afs_lab_tables
+2
+accounts	ledger_entries
+2	2</pre>
+    </article>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head">
+      <div class="kicker">Honesty</div>
+      <h2>What this audit changed, including the parts that looked worse</h2>
+      <p>Three governance databases were added on 24 November, after the nightly full backup had already
+      run. They were online, constrained and queryable — and they had no backup history at all. The
+      scheduled log job then failed every 15 minutes because it cannot back up a log with no full backup
+      behind it. The health check caught exactly that and returned CRITICAL; it was not silenced. Full
+      backups were taken for all nine, VERIFYONLY passed 9/9, the three databases were restored to scratch
+      copies with identical row counts, and the check returned 46 OK. Both states are published above.</p>
+      <p>The public numbers were also rebuilt from one inventory rather than retyped: 64 application
+      tables (the six dbo.sysdiagrams support tables are excluded), 46 foreign keys, 11 views and nine
+      application procedures. Backup counts are stated with a timestamp because msdb grows every 15
+      minutes; a fixed total would be wrong by lunchtime. The 6/6 backup badge, the 24-discipline count
+      and the 202-versus-217 split were three different scopes being printed as one.</p>
+    </div>
+  </section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div class="foot-brand">
+          <img src="assets/brand/logo-mark.png" width="38" height="38" alt="">
+          <div><strong>Apex Financial Services</strong><span>Database engineering portfolio</span></div>
+        </div>
+        <p style="margin-top:14px;max-width:40ch">A nine-database SQL Server estate covering customers,
+        accounts, transfers, ledger, payments, settlement, fraud, service, reporting and governance &mdash;
+        with the constraints, controls and recovery procedures that keep it consistent.</p>
+      </div>
+      <div>
+        <h4>Technology</h4>
+        <p>SQL Server 2025 Developer<br>Oracle Database 26ai Free<br>MySQL 8.4.9<br>Python automation &middot; T-SQL</p>
+      </div>
+      <div>
+        <h4>Portfolio</h4>
+        <a href="verification.html">Evidence index</a>
+        <a href="investigations.html">Research and investigations</a>
+        <a href="context.html">Context</a>
+        <a href="about.html">About and contact</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>Inventory generated 2026-11-25; each operational figure keeps the timestamp of its capture. SQL Server: 9 databases &middot; 64 tables &middot; 46 foreign keys.</span>
+      <span class="foot-tag">Research. Engineer. Validate.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/vendor/gsap.min.js?v=47da594cbe" defer></script>
+<script src="assets/site.js?v=96e48b62b2" defer></script>
+</body>
+</html>

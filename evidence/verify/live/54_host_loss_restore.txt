@@ -1,0 +1,31 @@
+﻿=== Host-loss rebuild drill  2026-11-25T10:18:51 ===
+source instance : .  (SQL Server 17.0.1000.7)
+target instance : (localdb)\MSSQLLocalDB  (SQL Server 17.0.1000.7, separate engine)
+backup          : C:\Backups\hostloss\AFS_CoreBanking_hostloss.bak  (17.2 MB, CHECKSUM, COMPRESSION)
+                  C:\Backups\hostloss\AFS_Payments_hostloss.bak  (1 MB, CHECKSUM, COMPRESSION)
+backup time     : 0.7 s
+
+--- 1. restore onto the second instance
+AFS_HostLoss          ONLINE     384.0 MB
+AFS_Payments_HostLoss ONLINE     384.0 MB
+restore time    : 1.7 s (both databases, from cold files)
+
+--- 2. row counts, live vs rebuilt
+object                           live    rebuilt   match
+customer.Customer                  1000       1000   yes
+customer.CustomerAddress           1020       1020   yes
+customer.CustomerContact           2000       2000   yes
+account.Account                    1000       1000   yes
+account.Transfer                  20000      20000   yes
+account.AccountLedgerEntry        40000      40000   yes
+account.TransferEvent             20000      20000   yes
+audit.AuditEvent                   5793       5793   yes
+payment.Payment                     472        472   yes
+payment.PaymentEvent                472        472   yes
+settlement.SettlementItem           426        426   yes
+
+--- 3. integrity on the rebuilt copy
+balance mismatches : 0
+
+verdict         : PASS - the estate rebuilds on a different instance with identical data
+

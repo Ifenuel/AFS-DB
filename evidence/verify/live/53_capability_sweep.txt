@@ -1,0 +1,51 @@
+﻿AFS-DBA-001 capability sweep  2026-11-25T11:58:47
+server: Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64)
+
+=== A. Blocking and isolation (was: observed) ===
+holder   : session A holds an exclusive lock inside an open transaction
+observed : session 75 waiting LCK_M_X for 926 ms, blocked by 74
+blocked  : 2,541 ms, then 
+           Exception calling "EndExecuteNonQuery" with "1" argument(s): "Lock request time out period exceeded. The statement has been terminated."
+after    : holder rolled back, amount is 100.00 (second update did not apply)
+
+=== B. Capacity and growth (was: partial) ===
+database               size_mb data_growth  log_growth log_used%
+AFS_Archive               80.0        8192        8192   7.7% of 72 MB
+AFS_Audit                192.0        8192        8192   22.6% of 64 MB
+AFS_Compliance            16.0        8192        8192   13.1% of 8 MB
+AFS_CoreBanking          384.0        8192        8192   9.6% of 128 MB
+AFS_CustomerService      192.0        8192        8192   15% of 64 MB
+AFS_Fraud                192.0        8192        8192   16.8% of 64 MB
+AFS_Identity              16.0        8192        8192   26.5% of 8 MB
+AFS_Payments             384.0        8192        8192   0.4% of 128 MB
+AFS_Reporting            192.0        8192        8192   9.4% of 64 MB
+total allocated: 1648.0 MB; every file grows in fixed 8,192 KB steps (no percentage growth)
+thresholds: log alert documented at 70% used; largest observed value above
+
+=== C. Reporting separation (was: partial) ===
+report query plan touches: AFS_Reporting
+core banking referenced: no
+warehouse rows served without core tables: DimAccount = 1000
+
+=== D. Failed-login detection (was: two events for three attempts) ===
+attempts: 5; events captured: 10
+events carrying a client address: 5
+first event: 2026-11-25 10:58:51 UTC
+message    : Login failed for user 'probe_login'. Reason: An attempt to login using SQL authentication failed. Server is configured for Integrated authentication only. [CLIENT: <local machine>]
+
+=== E. Query plan reading ===
+operators in plan: Compute Scalar, Constant Scan, Index Seek, Nested Loops, Top
+indexes referenced: IX_account_Transfer_CompletedAt
+
+=== G. Change management: apply, prove, roll back ===
+before change  : Value = before; columns = 2
+change applied : column Note present = 1
+proving query  : before / null
+rollback run   : column Note present = 0, row still readable = before
+
+=== F. Artefacts counted, not remembered ===
+powershell scripts : 29
+T-SQL files        : 50
+evidence captures  : 57
+change records     : 1 (with a rollback section: 31 documents mention rollback)
+application procs  : 12 in AFS_CoreBanking

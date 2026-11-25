@@ -1,0 +1,7 @@
+job_id|name|enabled
+2f474249-50b1-4df0-b21b-bd1615e7562a|AFS - Full Backup (nightly)|1
+6fae772b-6057-4e4e-8703-b99005d9a123|AFS - Index and Statistics (weekly)|1
+75db1497-2ccb-4b52-9bf4-da4737de5eed|AFS - Integrity Check (weekly)|1
+52162f35-feae-43fd-8c06-76b1e30ceaf3|AFS - Job Failure Watch (hourly)|1
+291d48df-8b3c-499e-b0cb-62aa64a68c52|AFS - Log Backup (15 min)|1
+08664ced-4317-4c41-a238-028c2e2a6217|syspolicy_purge_history|1

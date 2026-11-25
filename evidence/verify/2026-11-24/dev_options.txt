@@ -1,0 +1,7 @@
+name|is_query_store_on|collation_name|snapshot_isolation_state_desc
+AFS_Audit|NULL|SQL_Latin1_General_CP1_CI_AS|OFF
+AFS_CoreBanking|NULL|SQL_Latin1_General_CP1_CI_AS|OFF
+AFS_CustomerService|NULL|SQL_Latin1_General_CP1_CI_AS|OFF
+AFS_Fraud|NULL|SQL_Latin1_General_CP1_CI_AS|OFF
+AFS_Payments|NULL|SQL_Latin1_General_CP1_CI_AS|OFF
+AFS_Reporting|NULL|SQL_Latin1_General_CP1_CI_AS|OFF

@@ -1,0 +1,13 @@
+# 2026-11-24 21:36 - Oracle live re-check BLOCKED: OS auth not in ORA_DBA, SYS password not in repo.
+# Authoritative Oracle inventory remains evidence/verify/2026-11-24/oracle_readonly_utf8.txt (21:15).
+ERROR:
+ORA-01017: invalid credential or not authorized; logon denied
+Help: https://docs.oracle.com/error-help/db/ora-01017/
+
+
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/
+SP2-0640: Not connected
+Help: https://docs.oracle.com/error-help/db/sp2-0640/

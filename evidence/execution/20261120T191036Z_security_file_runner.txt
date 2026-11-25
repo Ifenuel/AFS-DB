@@ -1,0 +1,25 @@
+Running C:\Users\<user>\.config\workspace\sql-server\tests\03_security_tests.sql (7 batch(es))
+CustomerId | EmailMasked
+-----------+------------
+1 | t***@***
+SummaryDate | CurrencyCode
+------------+-------------
+AuditRecordId | EventType
+--------------+----------
+TestId | TestName | Expected | Actual | Status
+-------+----------+----------+--------+-------
+T-SEC-001 | App can execute transfer procedure | 1 | 1 | PASS
+T-SEC-002 | App cannot select account.Account | Permission denied | Denied: 229 | PASS
+T-SEC-003 | App cannot update account.Account | Permission denied | Denied: 229 | PASS
+T-SEC-004 | App cannot select audit.AuditEvent | Permission denied | Denied: 229 | PASS
+T-SEC-005 | App can select masked customer profile | Success | Success | PASS
+T-SEC-006 | Developer cannot update account.Account | Permission denied | Denied: 229 | PASS
+T-SEC-007 | App can execute payment procedure | 1 | 1 | PASS
+T-SEC-008 | App cannot select payment.Payment | Permission denied | Denied: 229 | PASS
+T-SEC-009 | Reporting can select reporting view | Success | Success | PASS
+T-SEC-010 | Reporting cannot select Core account table | Permission denied | Denied: 916 | PASS
+T-SEC-011 | Auditor can select audit records | Success | Success | PASS
+T-SEC-012 | Auditor cannot update audit records | Permission denied | Denied: 229 | PASS
+TotalTests | Passed | Failed
+-----------+--------+-------
+12 | 12 | 0

@@ -1,0 +1,24 @@
+=== Health check: all nine databases, after the gap was closed  2026-11-25T15:20:47Z ===
+
+DBCC execution completed. If DBCC printed error messages, contact your system administrator.
+OverallStatus|CriticalChecks|WarningChecks|OkChecks|CheckedAtUtc
+-------------|--------------|-------------|--------|------------
+OK|0|0|46|2026-11-25 15:20:50.3299956
+CheckId|Severity|CheckName|Details|CheckedAt
+-------|--------|---------|-------|---------
+BACKUP_FULL_AFS_Archive|OK|Full backup freshness: AFS_Archive|2026-11-25T16:12:27|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Audit|OK|Full backup freshness: AFS_Audit|2026-11-25T16:12:25|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Compliance|OK|Full backup freshness: AFS_Compliance|2026-11-25T16:12:27|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_CoreBanking|OK|Full backup freshness: AFS_CoreBanking|2026-11-25T16:12:26|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_CustomerService|OK|Full backup freshness: AFS_CustomerService|2026-11-25T16:12:26|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Fraud|OK|Full backup freshness: AFS_Fraud|2026-11-25T16:12:26|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Identity|OK|Full backup freshness: AFS_Identity|2026-11-25T16:12:27|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Payments|OK|Full backup freshness: AFS_Payments|2026-11-25T16:12:26|2026-11-25 15:20:48.317
+BACKUP_FULL_AFS_Reporting|OK|Full backup freshness: AFS_Reporting|2026-11-25T16:12:27|2026-11-25 15:20:48.317
+BACKUP_LOG_AFS_Archive|OK|Log backup freshness: AFS_Archive|2026-11-25T16:20:01|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_Audit|OK|Log backup freshness: AFS_Audit|2026-11-25T16:20:00|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_Compliance|OK|Log backup freshness: AFS_Compliance|2026-11-25T16:20:01|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_CoreBanking|OK|Log backup freshness: AFS_CoreBanking|2026-11-25T16:20:00|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_CustomerService|OK|Log backup freshness: AFS_CustomerService|2026-11-25T16:20:01|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_Fraud|OK|Log backup freshness: AFS_Fraud|2026-11-25T16:20:01|2026-11-25 15:20:48.464
+BACKUP_LOG_AFS_Identity|OK|Log backup freshnes

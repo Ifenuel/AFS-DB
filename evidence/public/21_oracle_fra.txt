@@ -1,0 +1,28 @@
+
+System altered.
+
+
+System altered.
+
+
+System altered.
+
+=== spfile values now ===
+
+NAME
+--------------------------------------------------------------------------------
+VALUE
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+db_recovery_file_dest
+C:\app\oraclelab\fast_recovery_area
+
+db_recovery_file_dest_size
+6442450944
+
+log_archive_dest_1
+LOCATION=USE_DB_RECOVERY_FILE_DEST
+
+
+3 rows selected.
+
+

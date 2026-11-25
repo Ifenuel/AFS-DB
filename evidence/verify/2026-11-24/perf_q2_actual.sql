@@ -1,0 +1,6 @@
+SET STATISTICS XML ON;
+GO
+SELECT COUNT_BIG(*) AS NovCount FROM account.Transfer WHERE CompletedAt >= '2026-11-01' AND CompletedAt < '2026-12-01';
+GO
+SET STATISTICS XML OFF;
+GO

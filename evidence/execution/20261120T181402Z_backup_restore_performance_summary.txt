@@ -1,0 +1,77 @@
+[2026-11-20T18:13:48] Server: (localdb)\MSSQLLocalDB
+[2026-11-20T18:13:48] Version: Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64) 
+[2026-11-20T18:13:48] Edition: Express Edition (64-bit)
+[2026-11-20T18:13:48] Running sql-server/databases/01_create_databases.sql (17 batches)
+[2026-11-20T18:13:49] Running sql-server/schemas/02_create_schemas.sql (14 batches)
+[2026-11-20T18:13:50] Running sql-server/tables/03_create_tables_core.sql (17 batches)
+[2026-11-20T18:13:51] Running sql-server/tables/03_create_tables_payments.sql (12 batches)
+[2026-11-20T18:13:51] Running sql-server/tables/03_create_tables_customer_service.sql (9 batches)
+[2026-11-20T18:13:51] Running sql-server/tables/03_create_tables_audit.sql (10 batches)
+[2026-11-20T18:13:51] Running sql-server/tables/03_create_tables_reporting.sql (11 batches)
+[2026-11-20T18:13:51] Running sql-server/tables/03_create_tables_fraud.sql (8 batches)
+[2026-11-20T18:13:52] Running sql-server/tables/04_seed_reference.sql (16 batches)
+[2026-11-20T18:13:52] Running sql-server/indexes/04_create_indexes.sql (29 batches)
+[2026-11-20T18:13:53] Running sql-server/views/06_create_views.sql (16 batches)
+[2026-11-20T18:13:54] Running sql-server/functions/07_create_functions.sql (4 batches)
+[2026-11-20T18:13:54] Running sql-server/procedures/05_transfer_engine.sql (9 batches)
+[2026-11-20T18:13:54] Running sql-server/procedures/05_payment_procedures.sql (8 batches)
+[2026-11-20T18:13:54] Running sql-server/security/09_create_users_roles.sql (45 batches)
+[2026-11-20T18:13:56] Running sql-server/backup/20_backup_full.sql (2 batches)
+  3014: BACKUP DATABASE successfully processed 842 pages in 0.103 seconds (63.827 MB/sec).
+  AFS_CoreBanking | FULL | C:\AFS\Backups\AFS_CoreBanking\AFS_AFS_CoreBanking_FULL_20261120T181356Z.bak | VERIFIED
+[2026-11-20T18:13:57] Running sql-server/backup/20_backup_full.sql (2 batches)
+  3014: BACKUP DATABASE successfully processed 714 pages in 0.064 seconds (87.097 MB/sec).
+  AFS_Payments | FULL | C:\AFS\Backups\AFS_Payments\AFS_AFS_Payments_FULL_20261120T181357Z.bak | VERIFIED
+[2026-11-20T18:13:57] Running sql-server/backup/20_backup_full.sql (2 batches)
+  3014: BACKUP DATABASE successfully processed 442 pages in 0.061 seconds (56.544 MB/sec).
+  AFS_CustomerService | FULL | C:\AFS\Backups\AFS_CustomerService\AFS_AFS_CustomerService_FULL_20261120T181357Z.bak | VERIFIED
+[2026-11-20T18:13:58] Running sql-server/backup/20_backup_full.sql (2 batches)
+  3014: BACKUP DATABASE successfully processed 442 pages in 0.061 seconds (56.544 MB/sec).
+  AFS_Audit | FULL | C:\AFS\Backups\AFS_Audit\AFS_AFS_Audit_FULL_20261120T181358Z.bak | VERIFIED
+[2026-11-20T18:13:58] Running sql-server/backup/20_backup_full.sql (2 batches)
+  3014: BACKUP DATABASE successfully processed 442 pages in 0.071 seconds (48.580 MB/sec).
+  AFS_Reporting | FULL | C:\AFS\Backups\AFS_Reporting\AFS_AFS_Reporting_FULL_20261120T181358Z.bak | VERIFIED
+[2026-11-20T18:13:58] Running sql-server/backup/20_backup_full.sql (2 batches)
+  3014: BACKUP DATABASE successfully processed 442 pages in 0.065 seconds (53.064 MB/sec).
+  AFS_Fraud | FULL | C:\AFS\Backups\AFS_Fraud\AFS_AFS_Fraud_FULL_20261120T181358Z.bak | VERIFIED
+[2026-11-20T18:13:59] Running sql-server/backup/21_backup_differential.sql (2 batches)
+  3014: BACKUP DATABASE WITH DIFFERENTIAL successfully processed 58 pages in 0.036 seconds (12.478 MB/sec).
+  AFS_CoreBanking | DIFFERENTIAL | C:\AFS\Backups\AFS_CoreBanking\AFS_AFS_CoreBanking_DIFF_20261120T181359Z.bak | VERIFIED
+[2026-11-20T18:13:59] Running sql-server/backup/22_backup_log.sql (2 batches)
+  3014: BACKUP LOG successfully processed 104 pages in 0.054 seconds (14.973 MB/sec).
+  AFS_CoreBanking | LOG | C:\AFS\Backups\AFS_CoreBanking\AFS_AFS_CoreBanking_LOG_20261120T181359Z.trn | VERIFIED
+[2026-11-20T18:14:00] Running sql-server/backup/23_backup_verify.sql (2 batches)
+  C:\AFS\Backups\AFS_CoreBanking\AFS_AFS_CoreBanking_FULL_20261120T181356Z.bak | VERIFIED | 11/20/2026 18:14:00
+[2026-11-20T18:14:00] Running sql-server/backup/24_backup_history.sql (2 batches)
+[2026-11-20T18:14:00] Running sql-server/recovery/30_restore_full_core.sql (2 batches)
+  0: RESTORE DATABASE [AFS_CoreBanking_RestoreTest] FROM DISK = N'C:\AFS\Backups\AFS_CoreBanking\AFS_AFS_CoreBanking_FULL_20261120T181356Z.bak' WITH MOVE N'AFS_CoreBanking' TO N'C:\AFS\Data\AFS_CoreBanking_RestoreTest.mdf', MOVE N'AFS_CoreBanking_log' TO N'C:\AFS\Log\AFS_CoreBanking_RestoreTest.ldf', NORECOVERY, REPLACE, CHECKSUM, STATS = 10;
+  3014: RESTORE DATABASE successfully processed 842 pages in 0.196 seconds (33.541 MB/sec).
+[2026-11-20T18:14:00] Running sql-server/recovery/31_restore_log.sql (2 batches)
+  0: RESTORE LOG [AFS_CoreBanking_RestoreTest] FROM DISK = N'C:\AFS\Backups\AFS_CoreBanking\AFS_AFS_CoreBanking_LOG_20261120T181359Z.trn' WITH RECOVERY, CHECKSUM, STATS = 10;
+  3014: RESTORE LOG successfully processed 104 pages in 0.040 seconds (20.214 MB/sec).
+[2026-11-20T18:14:01] Running sql-server/recovery/32_restore_verify.sql (2 batches)
+  AccountsChecked | Mismatches
+  TransfersChecked | Mismatches
+  AFS_CoreBanking_RestoreTest | CHECKDB_AND_RECONCILIATION_COMPLETED | 11/20/2026 18:14:01 | 11/20/2026 18:14:01
+[2026-11-20T18:14:01] Running sql-server/recovery/33_restore_history.sql (2 batches)
+[2026-11-20T18:14:01] Running sql-server/performance/60_baseline.sql (2 batches)
+        SELECT @DatabaseName, 'DIFFERENTIAL', @BackupPath, @StartedAt, SYSUTCDATETIME(),
+[2026-11-20T18:14:02] Running sql-server/performance/61_case1_before.sql (3 batches)
+ SQL Server Execution Times:
+  3615: Table 'Transfer'. Scan count 1, logical reads 2, physical reads 1, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+ SQL Server Execution Times:
+[2026-11-20T18:14:02] Running sql-server/performance/62_case1_optimize.sql (3 batches)
+[2026-11-20T18:14:02] Running sql-server/performance/63_case1_after.sql (3 batches)
+ SQL Server Execution Times:
+  3615: Table 'Transfer'. Scan count 1, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+ SQL Server Execution Times:
+[2026-11-20T18:14:02] Running sql-server/performance/64_case2_before.sql (3 batches)
+ SQL Server Execution Times:
+  3615: Table 'Transfer'. Scan count 1, logical reads 2, physical reads 1, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+ SQL Server Execution Times:
+[2026-11-20T18:14:02] Running sql-server/performance/65_case2_after.sql (3 batches)
+ SQL Server Execution Times:
+ SQL Server Execution Times:
+  3615: Table 'Transfer'. Scan count 1, logical reads 2, physical reads 0, page server reads 0, read-ahead reads 0, page server read-ahead reads 0, lob logical reads 0, lob physical reads 0, lob page server reads 0, lob read-ahead reads 0, lob page server read-ahead reads 0.
+ SQL Server Execution Times:
+[2026-11-20T18:14:02] Completed. Review the result sets and log; a zero exit code alone is not proof that every assertion passed.

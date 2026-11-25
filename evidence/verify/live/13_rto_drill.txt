@@ -1,0 +1,13 @@
+﻿[21:44:49.306] source=AFS_CoreBanking target=AFS_RTO_Test server=.
+[21:44:49.516] full: 11/24/2026 1:51:24 PM (C:\AFS\Backups\drill\AFS_CoreBanking_DR.bak)
+[21:44:49.550] log chain: 19 file(s)
+[21:44:49.594] moves: MOVE N'AFS_CoreBanking' TO N'C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_RTO_Test.mdf'; MOVE N'AFS_CoreBanking_log' TO N'C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_RTO_Test_log.ldf'
+[21:44:50.259] full restored in 0.6 s
+[21:44:51.125] applied 5/19 logs
+[21:44:51.945] applied 10/19 logs
+[21:44:52.807] applied 15/19 logs
+[21:44:53.921] restore complete (full + 19 logs) in 4.3 s
+[21:44:56.289] DBCC CHECKDB clean; 2.4 s
+[21:44:56.398] restored counts: customers=562 accounts=725 transfers=17372 ledger=34744
+[21:44:56.402] TOTAL RTO 7.5 s (restore 4.3 s + checkdb 2.4 s)
+[21:44:56.474] target dropped

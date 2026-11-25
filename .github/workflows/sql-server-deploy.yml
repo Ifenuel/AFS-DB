@@ -1,0 +1,151 @@
+name: SQL Server deploy and test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "sql-server/**"
+      - "automation/**"
+      - ".github/workflows/sql-server-deploy.yml"
+  pull_request:
+    paths:
+      - "sql-server/**"
+      - "automation/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy-and-test:
+    name: Disposable SQL Server 2022 Developer
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Generate disposable test-only credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          make_password() {
+            printf '%sAa1!' "$(openssl rand -base64 48 | tr -dc 'A-Za-z0-9' | head -c 24)"
+          }
+          {
+            echo "SA_PASSWORD=$(make_password)"
+            echo "AFS_DBA_PASSWORD=$(make_password)"
+            echo "AFS_APP_PASSWORD=$(make_password)"
+            echo "AFS_DEVELOPER_PASSWORD=$(make_password)"
+            echo "AFS_REPORTING_PASSWORD=$(make_password)"
+            echo "AFS_AUDITOR_PASSWORD=$(make_password)"
+            echo "AFS_OPS_PASSWORD=$(make_password)"
+          } >> "$GITHUB_ENV"
+
+      - name: Start SQL Server container
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker run -d --name mssql \
+            -e ACCEPT_EULA=Y \
+            -e MSSQL_PID=Developer \
+            -e MSSQL_SA_PASSWORD="$SA_PASSWORD" \
+            -p 1433:1433 \
+            mcr.microsoft.com/mssql/server:2022-latest
+
+      - name: Wait for SQL Server readiness
+        shell: bash
+        run: |
+          set -euo pipefail
+          SQLCMD=$(docker exec mssql bash -lc 'if [ -x /opt/mssql-tools18/bin/sqlcmd ]; then echo /opt/mssql-tools18/bin/sqlcmd; else echo /opt/mssql-tools/bin/sqlcmd; fi')
+          echo "SQLCMD=$SQLCMD" >> "$GITHUB_ENV"
+          for attempt in $(seq 1 60); do
+            if docker exec mssql "$SQLCMD" -S localhost -U sa -P "$SA_PASSWORD" -C -Q "SELECT 1" >/dev/null 2>&1; then
+              echo "SQL Server is ready after ${attempt} attempt(s)."
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "SQL Server did not become ready in time."
+          docker logs mssql
+          exit 1
+
+      - name: Copy scripts and prepare directories
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker exec -u root mssql mkdir -p /workspace /var/opt/mssql/backup/AFS_CoreBanking /var/opt/mssql/audit
+          docker cp "$GITHUB_WORKSPACE/." mssql:/workspace/
+          docker exec -u root mssql chown -R mssql:mssql /workspace /var/opt/mssql/backup /var/opt/mssql/audit
+
+      - name: Deploy schema and security
+        shell: bash
+        run: |
+          set -euo pipefail
+          run_sql() {
+            local file="$1"; shift
+            echo "::group::$file"
+            docker exec mssql "$SQLCMD" -S localhost -U sa -P "$SA_PASSWORD" -C -b -I \
+              -i "/workspace/$file" "$@"
+            echo "::endgroup::"
+          }
+          common=(-v DataRoot=/var/opt/mssql/data -v LogRoot=/var/opt/mssql/data -v BackupRoot=/var/opt/mssql/backup -v AuditRoot=/var/opt/mssql/audit)
+          run_sql sql-server/databases/01_create_databases.sql "${common[@]}"
+          run_sql sql-server/schemas/02_create_schemas.sql "${common[@]}"
+          run_sql sql-server/tables/03_create_tables_core.sql "${common[@]}"
+          run_sql sql-server/tables/03_create_tables_payments.sql "${common[@]}"
+          run_sql sql-server/tables/03_create_tables_customer_service.sql "${common[@]}"
+          run_sql sql-server/tables/03_create_tables_audit.sql "${common[@]}"
+          run_sql sql-server/tables/03_create_tables_reporting.sql "${common[@]}"
+          run_sql sql-server/tables/03_create_tables_fraud.sql "${common[@]}"
+          run_sql sql-server/tables/04_seed_reference.sql "${common[@]}"
+          run_sql sql-server/indexes/04_create_indexes.sql "${common[@]}"
+          run_sql sql-server/views/06_create_views.sql "${common[@]}"
+          run_sql sql-server/functions/07_create_functions.sql "${common[@]}"
+          run_sql sql-server/procedures/05_transfer_engine.sql "${common[@]}"
+          run_sql sql-server/procedures/05_payment_procedures.sql "${common[@]}"
+          run_sql sql-server/security/08_create_logins.sql "${common[@]}" \
+            -v AFS_DBA_PASSWORD="$AFS_DBA_PASSWORD" \
+            -v AFS_APP_PASSWORD="$AFS_APP_PASSWORD" \
+            -v AFS_DEVELOPER_PASSWORD="$AFS_DEVELOPER_PASSWORD" \
+            -v AFS_REPORTING_PASSWORD="$AFS_REPORTING_PASSWORD" \
+            -v AFS_AUDITOR_PASSWORD="$AFS_AUDITOR_PASSWORD" \
+            -v AFS_OPS_PASSWORD="$AFS_OPS_PASSWORD"
+          run_sql sql-server/security/09_create_users_roles.sql "${common[@]}"
+          run_sql sql-server/security/10_configure_audit.sql "${common[@]}"
+
+      - name: Run schema, transfer, payment and security tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          run_sql() {
+            local file="$1"; shift
+            echo "::group::$file"
+            docker exec mssql "$SQLCMD" -S localhost -U sa -P "$SA_PASSWORD" -C -b -I \
+              -i "/workspace/$file" "$@"
+            echo "::endgroup::"
+          }
+          run_sql sql-server/tests/01_schema_tests.sql
+          run_sql sql-server/tests/02_transfer_tests.sql
+          run_sql sql-server/tests/04_payment_tests.sql
+          run_sql sql-server/tests/03_security_tests.sql
+
+      - name: Full backup and verification smoke test
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker exec mssql "$SQLCMD" -S localhost -U sa -P "$SA_PASSWORD" -C -b -I \
+            -v DatabaseName=AFS_CoreBanking \
+            -v BackupRoot=/var/opt/mssql/backup \
+            -i /workspace/sql-server/backup/20_backup_full.sql
+          docker exec mssql bash -lc 'ls -lh /var/opt/mssql/backup/AFS_CoreBanking/'
+
+      - name: Capture SQL Server log on failure
+        if: failure()
+        shell: bash
+        run: docker logs mssql
+
+      - name: Stop container
+        if: always()
+        shell: bash
+        run: docker rm -f mssql || true

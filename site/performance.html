@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Performance — Apex Financial Services</title>
+<meta name="description" content="Apex Financial Services: a nine-database SQL Server estate, built and operated end to end — schema, migration, security, backups, tuning, incidents and recovery.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#060a11">
+<link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/app.css?v=76dd2ae4f2">
+<link rel="stylesheet" href="assets/nav.css?v=43e61470bd">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="Apex Financial Services — home">
+      <img class="brand-logo" src="assets/brand/logo-mark.png" width="34" height="34" alt="">
+      <span class="brand-text">
+        <span class="brand-name">Apex Financial Services</span>
+        <span class="brand-tag">Database platform</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Sections"><a class="nav-link" href="index.html">Estate</a><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-platform">Platform<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-platform"><a class="nav-item" href="capabilities.html"><span class="ni-title">Capabilities</span><span class="ni-sub">What this proves, discipline by discipline</span></a><a class="nav-item" href="architecture.html"><span class="ni-title">Schema</span><span class="ni-sub">Tables, keys and entity relationships</span></a><a class="nav-item" href="explorer.html"><span class="ni-title">Explorer</span><span class="ni-sub">Browse every table and column</span></a><a class="nav-item" href="diagrams.html"><span class="ni-title">Diagrams</span><span class="ni-sub">Foreign keys drawn per database</span></a><a class="nav-item" href="oracle.html"><span class="ni-title">Oracle</span><span class="ni-sub">26ai Free lab and exercises</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-operations">Operations<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-operations"><a class="nav-item" href="operations.html"><span class="ni-title">Operations</span><span class="ni-sub">Jobs, maintenance and history</span></a><a class="nav-item" href="backup.html"><span class="ni-title">Backup</span><span class="ni-sub">Restores tested end to end</span></a><a class="nav-item" href="monitoring.html"><span class="ni-title">Monitoring</span><span class="ni-sub">Capacity and health</span></a><a class="nav-item" href="incidents.html"><span class="ni-title">Incidents</span><span class="ni-sub">Ten drilled failures</span></a><a class="nav-item" href="change.html"><span class="ni-title">Change</span><span class="ni-sub">Migrations with rollbacks</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-investigations">Investigations<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-investigations"><a class="nav-item" href="investigations.html"><span class="ni-title">Research and investigations</span><span class="ni-sub">Four documented failures, reproduced and fixed</span></a><a class="nav-item" href="case-p01.html"><span class="ni-title">P-01 Payment integrity</span><span class="ni-sub">Dry posting, duplicates and concurrency</span></a><a class="nav-item" href="case-p02.html"><span class="ni-title">P-02 Telemetry quality</span><span class="ni-sub">Missing, late, duplicate and invalid readings</span></a><a class="nav-item" href="case-p03.html"><span class="ni-title">P-03 Change and recovery</span><span class="ni-sub">Unbounded update, blocking and PITR</span></a><a class="nav-item" href="case-p04.html"><span class="ni-title">P-04 Security and audit</span><span class="ni-sub">Least privilege and an evidence trail</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger is-current" type="button" aria-expanded="false" aria-controls="nav-assurance">Assurance<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-assurance"><a class="nav-item" href="security.html"><span class="ni-title">Security</span><span class="ni-sub">Access control and audit</span></a><a class="nav-item is-current" href="performance.html"><span class="ni-title">Performance</span><span class="ni-sub">Measured before and after</span></a><a class="nav-item" href="verification.html"><span class="ni-title">Evidence</span><span class="ni-sub">Every claim sourced</span></a></div></div><a class="nav-link" href="context.html">Context</a><a class="nav-link" href="about.html">About</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <span></span>
+    </button>
+  </div>
+</header>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="brand-name">Apex Financial Services</span>
+    <button class="drawer-close" type="button" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="drawer-nav" aria-label="Sections"><a class="drawer-link" href="index.html">Estate<small>Overview of the estate</small></a><p class="drawer-group">Platform</p><a class="drawer-link" href="capabilities.html">Capabilities<small>What this proves, discipline by discipline</small></a><a class="drawer-link" href="architecture.html">Schema<small>Tables, keys and entity relationships</small></a><a class="drawer-link" href="explorer.html">Explorer<small>Browse every table and column</small></a><a class="drawer-link" href="diagrams.html">Diagrams<small>Foreign keys drawn per database</small></a><a class="drawer-link" href="oracle.html">Oracle<small>26ai Free lab and exercises</small></a><p class="drawer-group">Operations</p><a class="drawer-link" href="operations.html">Operations<small>Jobs, maintenance and history</small></a><a class="drawer-link" href="backup.html">Backup<small>Restores tested end to end</small></a><a class="drawer-link" href="monitoring.html">Monitoring<small>Capacity and health</small></a><a class="drawer-link" href="incidents.html">Incidents<small>Ten drilled failures</small></a><a class="drawer-link" href="change.html">Change<small>Migrations with rollbacks</small></a><p class="drawer-group">Investigations</p><a class="drawer-link" href="investigations.html">Research and investigations<small>Four documented failures, reproduced and fixed</small></a><a class="drawer-link" href="case-p01.html">P-01 Payment integrity<small>Dry posting, duplicates and concurrency</small></a><a class="drawer-link" href="case-p02.html">P-02 Telemetry quality<small>Missing, late, duplicate and invalid readings</small></a><a class="drawer-link" href="case-p03.html">P-03 Change and recovery<small>Unbounded update, blocking and PITR</small></a><a class="drawer-link" href="case-p04.html">P-04 Security and audit<small>Least privilege and an evidence trail</small></a><p class="drawer-group">Assurance</p><a class="drawer-link" href="security.html">Security<small>Access control and audit</small></a><a class="drawer-link is-current" aria-current="page" href="performance.html">Performance<small>Measured before and after</small></a><a class="drawer-link" href="verification.html">Evidence<small>Every claim sourced</small></a><p class="drawer-group">About</p><a class="drawer-link" href="context.html">Context<small>Why this project exists</small></a><a class="drawer-link" href="about.html">About<small>The engineer behind it</small></a></nav>
+</div>
+<main id="main">
+  <div class="wrap page-head">
+    <div class="kicker" data-hero>Performance tuning</div>
+    <h1 data-hero>A measured 2.5× read reduction on the Developer estate</h1>
+    <p class="lede" data-hero>One predicate rewritten, measured with actual execution plans on 20,000 transfers.
+    The scan and the seek return the same 6,695 rows; the difference is 156 logical reads against 63.</p>
+    <div class="badges" data-hero><span class="badge">156 → 63 reads</span><span class="badge">20,000 rows scanned → 6,695 seeked</span><span class="badge">Actual plans captured</span></div>
+  </div>
+
+  <section data-reveal class="wrap section">
+    <div class="stat-grid">
+      <div class="stat"><span class="stat-label">Logical reads</span><strong>156 → 63</strong><span class="stat-note">2.5× fewer pages</span></div>
+      <div class="stat"><span class="stat-label">Elapsed (warm, repeats)</span><strong>12–32 → 5–8 ms</strong><span class="stat-note">varies with cache; reads do not</span></div>
+      <div class="stat"><span class="stat-label">Technique</span><strong>SARGable</strong><span class="stat-note">half-open date range</span></div>
+      <div class="stat"><span class="stat-label">Rows returned</span><strong>6,695</strong><span class="stat-note">identical in both runs</span></div>
+    </div>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head"><div class="kicker">Case 1</div><h2>The predicate, not the server</h2>
+      <p>A transfer/account join filtered by year and month: <span class="mono">YEAR(CompletedAt) = 2026 AND
+      MONTH(CompletedAt) = 11</span> is not searchable, because the column is wrapped in a function. Rewriting it
+      as a half-open range restores the seek.</p></div>
+    <div class="panel"><svg class="chart" viewBox="0 0 520 190" role="img" aria-label="comparison chart"><rect x="104.0" y="20.0" width="52" height="130.0" rx="4" class="c-bar"/><text x="130.0" y="12.0" class="c-value" text-anchor="middle">156 reads</text><text x="130.0" y="168" class="c-label" text-anchor="middle">Scan</text><rect x="364.0" y="137.5" width="52" height="12.5" rx="4" class="c-bar-alt"/><text x="390.0" y="129.5" class="c-value" text-anchor="middle">63 reads</text><text x="390.0" y="168" class="c-label" text-anchor="middle">Seek</text></svg></div>
+    <pre class="code">-- scan: 156 logical reads, 20,000 rows read, 6,695 rows matched
+WHERE YEAR(CompletedAt) = 2026 AND MONTH(CompletedAt) = 11
+
+-- seek: 63 logical reads, 6,695 rows read, 6,695 rows matched
+WHERE CompletedAt &gt;= '2026-11-01' AND CompletedAt &lt; '2026-12-01'</pre>
+    <p class="muted small">Source: actual execution plans captured on <span class="mono">Adeola</span> (Enterprise
+    Developer 17.0.1000.7) on 2026-11-24, against <span class="mono">AFS_CoreBanking.account.Transfer</span> with
+    20,000 rows and a warm cache, via <span class="mono">SET STATISTICS XML ON</span>. Raw plans and counters:
+    <span class="mono">a timing run against the live instance on 2026-11-24</span> and
+    <span class="mono">dev_perf_q2_actual.txt</span>. Logical reads repeated exactly across three runs; elapsed time
+    moved between 5 and 32 ms, so reads are the figure quoted. Earlier measurements on LocalDB and on
+    <span class="mono">AccountLedgerEntry</span> gave different absolute numbers, which is why the environment and
+    table are named here.</p>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head"><div class="kicker">Method</div><h2>What was measured, and how</h2></div>
+    <div class="table-wrap"><table class="data"><thead><tr><th>Step</th><th>Tool</th><th>What it showed</th></tr></thead><tbody><tr><td data-label="Step">Capture the query</td><td data-label="Tool">SET STATISTICS IO/TIME ON</td><td data-label="What it showed">Logical reads, CPU and elapsed per statement</td></tr><tr><td data-label="Step">Capture the plan</td><td data-label="Tool">Actual execution plan</td><td data-label="What it showed">Scan on the ledger, predicate not SARGable</td></tr><tr><td data-label="Step">Change one thing</td><td data-label="Tool">T-SQL rewrite</td><td data-label="What it showed">Range predicate instead of functions on the column</td></tr><tr><td data-label="Step">Re-measure</td><td data-label="Tool">Same counters, three runs</td><td data-label="What it showed">156 → 63 logical reads; rows read 20,000 → 6,695</td></tr><tr><td data-label="Step">Trade-off</td><td data-label="Tool">Readability and index choice</td><td data-label="What it showed">Range needs a boundary convention; both are indexed</td></tr></tbody></table></div>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head"><div class="kicker">Maintenance</div><h2>Index and statistics health</h2></div>
+    <div class="grid-2">
+      <div class="panel"><h3>Unused since restart</h3>
+        <p class="muted">Four indexes had zero seeks, scans and lookups while still paying update cost:
+        <span class="mono">IX_account_Account_Status</span>,
+        <span class="mono">UQ_account_Account_AccountNumber</span>,
+        <span class="mono">IX_account_Transfer_CompletedAt</span>,
+        <span class="mono">IX_account_Transfer_Currency_CompletedAt</span>.</p>
+        <p class="muted">They are not dropped: a small test workload is not evidence that an index will stay
+        unused once real reporting runs.</p></div>
+      <div class="panel"><h3>Missing-index suggestions</h3>
+        <p class="muted">None returned by <span class="mono">sys.dm_db_missing_index_details</span> for the
+        workload executed so far, so no index has been added on the strength of one small read. Candidates
+        are revisited when the workload is large enough to rank them.</p></div>
+    </div>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head"><div class="kicker">At volume</div><h2>What an index actually did at one million rows</h2>
+      <p>The 20,000-row estate cannot show an index's effect, so the same month filter was run against a
+      throwaway table of 1,000,000 transfers spanning 37 months. Reads come from
+      <span class="mono">SET STATISTICS IO</span> and the plan shape from
+      <span class="mono">SHOWPLAN_TEXT</span>, both per statement.</p>
+    </div>
+    <div class="table-wrap"><table class="data"><thead><tr><th>Configuration</th><th>Plan</th><th>Logical reads</th><th>Elapsed</th></tr></thead><tbody><tr><td data-label="Configuration">No index on CompletedAt</td><td data-label="Plan">Clustered Index Scan</td><td data-label="Logical reads">6,700</td><td data-label="Elapsed">303 ms</td></tr><tr><td data-label="Configuration">Index on (CompletedAt)</td><td data-label="Plan">Clustered Index Scan — index ignored</td><td data-label="Logical reads">6,700</td><td data-label="Elapsed">410 ms</td></tr><tr><td data-label="Configuration">Index on (CompletedAt) INCLUDE (Amount)</td><td data-label="Plan">Index Seek</td><td data-label="Logical reads">164</td><td data-label="Elapsed">205 ms</td></tr></tbody></table></div>
+    <p class="muted">The obvious change did nothing. The query also reads <span class="mono">Amount</span>,
+    so a seek on a narrow index needs a lookup per row and the optimizer kept the scan. Only a covering
+    index moved it: 6,700 reads to 164, a 40× reduction, with the plan switching from scan to seek.
+    Adding an index and adding the right index are different operations.</p>
+    <p class="muted">Scope: one synthetic table, warm cache, single session, aggregate over one month
+    (27,000 of 1,000,000 rows). The lab database was dropped after the run.</p>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head"><div class="kicker">Concurrency</div><h2>Blocking, measured</h2></div>
+    <p class="muted">Two sessions updated the same row. The first held the update in an open transaction;
+    the second waited until its three-second timeout expired and was cancelled. The wait was observed,
+    not inferred from documentation, and the transaction was rolled back afterwards.</p>
+  </section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <span>Apex Financial Services — built on SQL Server 2025. Catalog and operational figures captured 2026-11-25.</span>
+    <span class="mono">9 databases · 64 tables · 46 foreign keys</span>
+  </div>
+</footer>
+<script src="assets/vendor/gsap.min.js?v=28033e449a" defer></script>
+<script src="assets/site.js?v=c24e9374b6" defer></script>
+<script src="assets/explorer.js?v=b693472d0f" defer></script>
+
+<script src="assets/nav.js?v=e9b90b3f5c" defer></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "editor.formatOnSave": false,
+  "editor.rulers": [100, 120],
+  "editor.tabSize": 4,
+  "editor.insertSpaces": true,
+  "sql.saveAsFileEncoding": "utf8",
+  "sql.copyIncludeHeaders": true,
+  "mssql.intelliSense.enableErrorChecking": true,
+  "mssql.enableQueryHistoryCapture": false,
+  "mssql.saveAsCsv.includeHeaders": true,
+  "mssql.resultsFontFamily": "Cascadia Mono, Consolas, monospace",
+  "mssql.connections": [
+    {
+      "id": "a5f0e4d2-4c2a-4f7b-9c1e-000000000001",
+      "profileName": "AFS LocalDB - Core Banking",
+      "server": "(localdb)\\MSSQLLocalDB",
+      "database": "AFS_CoreBanking",
+      "authenticationType": "Integrated",
+      "encrypt": "Optional",
+      "trustServerCertificate": true,
+      "connectTimeout": 30,
+      "commandTimeout": 60,
+      "applicationName": "vscode-mssql-afs-lab",
+      "groupId": "ROOT"
+    }
+  ],
+  "python.defaultInterpreterPath": "python",
+  "python.analysis.typeCheckingMode": "basic",
+  "yaml.format.enable": true,
+  "markdownlint.config": {
+    "MD013": false,
+    "MD024": { "siblings_only": true },
+    "MD033": false
+  },
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/test-data/generated": true,
+    "**/backups": true
+  }
+}

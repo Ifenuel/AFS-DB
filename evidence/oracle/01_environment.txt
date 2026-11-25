@@ -1,0 +1,39 @@
+
+BANNER_FULL
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Oracle AI Database 26ai Free Release 23.26.4.0.0 - Develop, Learn, and Run for Free
+Version 23.26.4.0.0
+
+
+NAME	  OPEN_MODE	       DATABASE_ROLE	LOG_MODE
+--------- -------------------- ---------------- ------------
+FREE	  READ WRITE	       PRIMARY		NOARCHIVELOG
+
+NAME																 OPEN_MODE
+-------------------------------------------------------------------------------------------------------------------------------- ----------
+FREEPDB1															 READ WRITE
+
+USERNAME
+--------------------------------------------------------------------------------------------------------------------------------
+ACCOUNT_STATUS			 DEFAULT_TABLESPACE
+-------------------------------- ------------------------------
+AFS_LAB
+OPEN				 USERS
+
+
+PRIVILEGE
+----------------------------------------
+CREATE PROCEDURE
+CREATE SEQUENCE
+CREATE SESSION
+CREATE TABLE
+CREATE VIEW
+
+ACCOUNT_ROWS
+------------
+	   2
+
+LEDGER_ROWS
+-----------
+	  2
+rc=0

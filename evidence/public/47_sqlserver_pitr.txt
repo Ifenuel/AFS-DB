@@ -1,0 +1,9 @@
+== setup ==
+marker row id=1 inserted and logged
+row deleted at 11/25/2026 8:16:01 AM; rows now 0
+== restore to STOPAT 2026-11-25T08:16:00.465 ==
+rows recovered: 1 (note: survives point-in-time recovery)
+restore elapsed: 0.75 s
+== cleanup ==
+note: backup files left in <backup-root>\pitr (owned by the SQL Server service): Access to the path is denied.
+PASS: point-in-time recovery restored exactly one deleted row

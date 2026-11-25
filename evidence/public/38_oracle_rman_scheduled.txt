@@ -1,0 +1,14 @@
+== scheduled Oracle RMAN run log (task AFS Oracle RMAN Backup) ==
+Starting backup at 25-NOV-26
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:15
+Finished backup at 25-NOV-26
+Starting backup at 25-NOV-26
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:45
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:25
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:25
+Finished backup at 25-NOV-26
+Starting backup at 25-NOV-26
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:01
+Finished backup at 25-NOV-26
+no obsolete backups found
+Recovery Manager complete.

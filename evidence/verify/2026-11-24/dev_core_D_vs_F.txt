@@ -1,0 +1,23 @@
+database_name|backup_start_date|TypeCode|file_type|differential_base_lsn|physical_name
+AFS_CoreBanking|11/24/2026 11:55:45|D|D|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CoreBanking|11/24/2026 11:55:45|D|L|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf
+AFS_CoreBanking|11/24/2026 12:23:46|D|D|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CoreBanking|11/24/2026 12:23:46|D|L|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf
+AFS_CoreBanking|11/24/2026 12:23:47|D|D|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CoreBanking|11/24/2026 12:23:47|D|L|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf
+AFS_CoreBanking|11/24/2026 12:23:48|L|D|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CoreBanking|11/24/2026 12:23:48|L|L|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf
+AFS_CoreBanking|11/24/2026 12:24:39|D|D|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CoreBanking|11/24/2026 12:24:39|D|L|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf
+AFS_CoreBanking|11/24/2026 12:24:43|D|D|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CoreBanking|11/24/2026 12:24:43|D|L|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf
+AFS_CoreBanking|11/24/2026 12:24:54|L|D|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CoreBanking|11/24/2026 12:24:54|L|L|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf
+AFS_CoreBanking|11/24/2026 12:34:16|L|D|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CoreBanking|11/24/2026 12:34:16|L|L|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf
+AFS_CoreBanking|11/24/2026 12:34:16|D|D|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CoreBanking|11/24/2026 12:34:16|D|L|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf
+AFS_CoreBanking|11/24/2026 12:35:00|L|D|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CoreBanking|11/24/2026 12:35:00|L|L|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf
+AFS_CoreBanking|11/24/2026 12:50:00|L|D|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking.mdf
+AFS_CoreBanking|11/24/2026 12:50:00|L|L|NULL|C:\Program Files\Microsoft SQL Server\MSSQL17.MSSQLSERVER\MSSQL\DATA\AFS_CoreBanking_log.ldf

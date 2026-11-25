@@ -1,0 +1,40 @@
+
+NAME																 OPEN_MODE
+-------------------------------------------------------------------------------------------------------------------------------- ----------
+PDB$SEED															 READ ONLY
+FREEPDB1															 READ WRITE
+
+2 rows selected.
+
+
+LOG_MODE     OPEN_MODE		  CURRENT_SCN
+------------ -------------------- -----------
+ARCHIVELOG   READ WRITE 	      2171590
+
+1 row selected.
+
+
+Session altered.
+
+
+MARKER_ROWS_AFTER_RECOVERY
+--------------------------
+			 1
+
+1 row selected.
+
+
+	ID NOTE 									    CREATED_AT
+---------- -------------------------------------------------------------------------------- -----------------------
+	 1 survives point-in-time recovery						    2026-11-24 22:12:24.410
+
+1 row selected.
+
+
+CHECKED_AT
+-------------------
+2026-11-25 08:36:12
+
+1 row selected.
+
+

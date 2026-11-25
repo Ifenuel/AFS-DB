@@ -1,0 +1,13 @@
+COLUMN_NAME|DATA_TYPE
+TransferId|uniqueidentifier
+RequestId|uniqueidentifier
+FromAccountId|bigint
+ToAccountId|bigint
+Amount|decimal
+CurrencyCode|char
+Status|varchar
+Description|nvarchar
+CorrelationId|uniqueidentifier
+CreatedAt|datetime2
+CompletedAt|datetime2
+RowVersion|timestamp

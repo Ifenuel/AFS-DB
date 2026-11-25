@@ -1,0 +1,7 @@
+Found Sqlcmd Tools [Microsoft.Sqlcmd] Version 1.10.0
+This application is licensed to you by its owner.
+Microsoft is not responsible for, nor does it grant any licenses to, third-party packages.
+Downloading https://github.com/microsoft/go-sqlcmd/releases/download/v1.10.0/sqlcmd-amd64.msi
+Successfully verified installer hash
+Starting package install...
+The installer will request to run as administrator. Expect a prompt.

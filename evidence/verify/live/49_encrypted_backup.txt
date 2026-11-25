@@ -1,0 +1,35 @@
+﻿=== Encrypted backup proof: AFS_Audit  2026-11-25T09:51:21 ===
+server      : Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64) 
+database    : AFS_Audit
+
+--- 1. master key and certificate
+master key  : 1
+certificate : AFS_BackupCert | expires 2036-11-30
+
+--- 2. BACKUP ... WITH ENCRYPTION, CHECKSUM
+backup file : C:\Backups\AFS_Audit_ENCRYPTED.bak  (1.2 MB, 0.1 s)
+
+--- 3. RESTORE VERIFYONLY WITH CHECKSUM
+verifyonly  : PASS in 0.1 s
+
+--- 4. restore with the certificate present
+restore ok  : AFS_EncProof in 0.5 s, db_id=11
+rows visible: 7
+
+--- 5. export the certificate, then remove it
+exported    : C:\Backups\certs\AFS_BackupCert_20261125095121.cer ; C:\Backups\certs\AFS_BackupCert_20261125095121.pvk
+certificate present now: 0
+
+--- 6. restore WITHOUT the certificate (the stolen-media case)
+restore refused as expected:
+  Exception calling "ExecuteNonQuery" with "0" argument(s): "Cannot find server certificate with thumbprint '0x5DED2FDC461812B982A27CEB8EC099D9E2C81C3D'. RESTORE DATABASE is terminating abnormally."
+
+--- 7. re-import the certificate and restore again
+restore ok  : AFS_EncProof in 0.5 s, 7 tables
+
+--- result
+  encrypted backup created with AES-256 under AFS_BackupCert
+  media verified with CHECKSUM
+  restore without the certificate: REFUSED
+  restore after re-importing the certificate: OK
+  proof database dropped; backup retained at C:\Backups\AFS_Audit_ENCRYPTED.bak

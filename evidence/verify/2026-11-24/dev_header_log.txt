@@ -1,0 +1,2 @@
+BackupName|BackupType|Compressed
+NULL|2|1

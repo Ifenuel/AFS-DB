@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About — Awoyo Emmanuel Ifeoluwa</title>
+<meta name="description" content="Awoyo Emmanuel Ifeoluwa: database administration and engineering across SQL Server, Oracle and MySQL, with measured recovery, least privilege and tamper-evident audit from a nine-database estate.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#060a11">
+<link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/app.css?v=76dd2ae4f2">
+<link rel="stylesheet" href="assets/nav.css?v=43e61470bd">
+<script src="assets/nav.js?v=e9b90b3f5c" defer></script>
+<style>
+.about-hero{padding:118px 0 26px;position:relative;overflow:clip}
+.about-hero:before{content:"";position:absolute;inset:-20% 40% 30% -10%;pointer-events:none;
+ background:radial-gradient(50% 50% at 30% 30%,rgba(61,187,247,.16),transparent 70%),
+            radial-gradient(45% 45% at 80% 60%,rgba(177,140,248,.14),transparent 72%);filter:blur(10px)}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:64px;align-items:center;position:relative}
+.about-name{font-size:clamp(38px,5vw,62px);line-height:1.02;letter-spacing:-.04em;margin:16px 0 0}
+.about-name em{font-style:normal;background:linear-gradient(94deg,#7ee0d1,#8b93f8 52%,#c4a6ff);
+ -webkit-background-clip:text;background-clip:text;color:transparent}
+.about-role{margin:18px 0 0;font:500 13px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#8fa4bd}
+.about-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.about-chips span{border:1px solid var(--line-2);border-radius:999px;padding:6px 12px;
+ font:11.5px/1 var(--mono);color:#a9bacf;background:rgba(255,255,255,.02)}
+.about-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.about-actions .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;
+ border:1px solid var(--line-2);font:500 13.5px/1 var(--display);letter-spacing:-.01em}
+.about-actions .btn.solid{background:linear-gradient(180deg,rgba(61,187,247,.22),rgba(61,187,247,.10));
+ border-color:rgba(61,187,247,.45);color:#eaf6ff}
+.portrait{position:relative;margin:0;--mx:0;--my:0}
+.portrait-glow{position:absolute;inset:-46px;border-radius:50%;z-index:0;pointer-events:none;
+ background:radial-gradient(50% 50% at 50% 45%,rgba(61,187,247,.30),rgba(139,147,248,.12) 45%,transparent 72%);
+ filter:blur(28px);opacity:.9}
+.portrait-frame{position:relative;z-index:1;border-radius:22px;padding:1px;overflow:hidden;
+ background:linear-gradient(150deg,rgba(126,224,209,.75),rgba(139,147,248,.35) 45%,rgba(255,255,255,.06) 75%);
+ transform:perspective(900px) rotateX(calc(var(--my) * -4deg)) rotateY(calc(var(--mx) * 5deg));
+ transition:transform .35s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.portrait-frame img{display:block;width:100%;height:auto;border-radius:21px;
+ filter:contrast(1.04) saturate(.95)}
+.portrait figcaption{margin-top:14px;font:11.5px/1.5 var(--mono);color:#8fa4bd;display:flex;
+ justify-content:space-between;gap:12px}
+.portrait figcaption b{color:#cfe0f2;font-weight:500}
+.about-tag{position:absolute;z-index:2;left:16px;bottom:70px;display:flex;align-items:center;gap:8px;
+ background:rgba(6,10,17,.82);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+ padding:8px 12px;font:11px/1 var(--mono);color:#d9e6f5;backdrop-filter:blur(10px)}
+.about-tag i{width:6px;height:6px;border-radius:50%;background:#3ddc97;box-shadow:0 0 0 3px rgba(61,220,151,.16)}
+.about-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:44px 0 0}
+.about-facts .stat{padding:18px 20px}
+.about-facts .stat strong{font-family:var(--display);font-weight:500;font-size:30px;letter-spacing:-.03em}
+.about-split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.about-split .section-head{margin:0;position:sticky;top:108px}
+.about-stages{display:grid;gap:14px}
+.stage{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:20px 22px;border:1px solid var(--line);
+ border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0));}
+.stage .n{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+ font:600 12px/1 var(--mono);color:#7ee0d1;border:1px solid rgba(126,224,209,.32);background:rgba(126,224,209,.07)}
+.stage h3{margin:2px 0 6px;font-size:16.5px}
+.stage p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.62}
+.about-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.about-card{position:relative;padding:24px 26px;border:1px solid var(--line);border-radius:16px;
+ background:var(--panel);overflow:hidden;transition:transform .3s ease,border-color .3s ease}
+.about-card:after{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;opacity:0;
+ background:radial-gradient(60% 60% at 20% 0%,rgba(61,187,247,.14),transparent 70%);transition:opacity .3s ease}
+.about-card:hover{transform:translateY(-3px);border-color:rgba(61,187,247,.35)}
+.about-card:hover:after{opacity:1}
+.about-card h3{margin:0 0 8px;font-size:17px}
+.about-card p{margin:0;color:var(--muted);font-size:14.5px;line-height:1.62}
+.about-card .tag{display:inline-block;margin-bottom:12px;font:11px/1 var(--mono);letter-spacing:.12em;
+ text-transform:uppercase;color:#7ee0d1}
+.about-stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.about-stack span{padding:8px 14px;border:1px solid var(--line-2);border-radius:10px;
+ font:12px/1 var(--mono);color:#b7c6d9;background:rgba(255,255,255,.02)}
+.about-cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+@media(max-width:980px){
+ .about-grid{grid-template-columns:1fr;gap:34px}
+ .portrait{max-width:420px}
+ .about-split{grid-template-columns:1fr;gap:26px}
+ .about-split .section-head{position:static}
+ .about-cards{grid-template-columns:1fr}
+ .about-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(prefers-reduced-motion:reduce){.portrait-frame{transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="Apex Financial Services — home">
+      <img class="brand-logo" src="assets/brand/logo-mark.png" width="34" height="34" alt="">
+      <span class="brand-text">
+        <span class="brand-name">Apex Financial Services</span>
+        <span class="brand-tag">Database platform</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Sections"><a class="nav-link" href="index.html">Estate</a><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-platform">Platform<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-platform"><a class="nav-item" href="capabilities.html"><span class="ni-title">Capabilities</span><span class="ni-sub">What this proves, discipline by discipline</span></a><a class="nav-item" href="architecture.html"><span class="ni-title">Schema</span><span class="ni-sub">Tables, keys and entity relationships</span></a><a class="nav-item" href="explorer.html"><span class="ni-title">Explorer</span><span class="ni-sub">Browse every table and column</span></a><a class="nav-item" href="diagrams.html"><span class="ni-title">Diagrams</span><span class="ni-sub">Foreign keys drawn per database</span></a><a class="nav-item" href="oracle.html"><span class="ni-title">Oracle</span><span class="ni-sub">26ai Free lab and exercises</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-operations">Operations<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-operations"><a class="nav-item" href="operations.html"><span class="ni-title">Operations</span><span class="ni-sub">Jobs, maintenance and history</span></a><a class="nav-item" href="backup.html"><span class="ni-title">Backup</span><span class="ni-sub">Restores tested end to end</span></a><a class="nav-item" href="monitoring.html"><span class="ni-title">Monitoring</span><span class="ni-sub">Capacity and health</span></a><a class="nav-item" href="incidents.html"><span class="ni-title">Incidents</span><span class="ni-sub">Ten drilled failures</span></a><a class="nav-item" href="change.html"><span class="ni-title">Change</span><span class="ni-sub">Migrations with rollbacks</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-investigations">Investigations<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-investigations"><a class="nav-item" href="investigations.html"><span class="ni-title">Research and investigations</span><span class="ni-sub">Four documented failures, reproduced and fixed</span></a><a class="nav-item" href="case-p01.html"><span class="ni-title">P-01 Payment integrity</span><span class="ni-sub">Dry posting, duplicates and concurrency</span></a><a class="nav-item" href="case-p02.html"><span class="ni-title">P-02 Telemetry quality</span><span class="ni-sub">Missing, late, duplicate and invalid readings</span></a><a class="nav-item" href="case-p03.html"><span class="ni-title">P-03 Change and recovery</span><span class="ni-sub">Unbounded update, blocking and PITR</span></a><a class="nav-item" href="case-p04.html"><span class="ni-title">P-04 Security and audit</span><span class="ni-sub">Least privilege and an evidence trail</span></a></div></div><div class="nav-group" data-open="false"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="nav-assurance">Assurance<span class="chev" aria-hidden="true"></span></button><div class="nav-panel" id="nav-assurance"><a class="nav-item" href="security.html"><span class="ni-title">Security</span><span class="ni-sub">Access control and audit</span></a><a class="nav-item" href="performance.html"><span class="ni-title">Performance</span><span class="ni-sub">Measured before and after</span></a><a class="nav-item" href="verification.html"><span class="ni-title">Evidence</span><span class="ni-sub">Every claim sourced</span></a></div></div><a class="nav-link" href="context.html">Context</a><a class="nav-link active" href="about.html">About</a></nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <span></span>
+    </button>
+  </div>
+</header>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="brand-name">Apex Financial Services</span>
+    <button class="drawer-close" type="button" aria-label="Close menu">&times;</button>
+  </div>
+  <nav class="drawer-nav" aria-label="Sections"><a class="drawer-link" href="index.html">Estate<small>Overview of the estate</small></a><p class="drawer-group">Platform</p><a class="drawer-link" href="capabilities.html">Capabilities<small>What this proves, discipline by discipline</small></a><a class="drawer-link" href="architecture.html">Schema<small>Tables, keys and entity relationships</small></a><a class="drawer-link" href="explorer.html">Explorer<small>Browse every table and column</small></a><a class="drawer-link" href="diagrams.html">Diagrams<small>Foreign keys drawn per database</small></a><a class="drawer-link" href="oracle.html">Oracle<small>26ai Free lab and exercises</small></a><p class="drawer-group">Operations</p><a class="drawer-link" href="operations.html">Operations<small>Jobs, maintenance and history</small></a><a class="drawer-link" href="backup.html">Backup<small>Restores tested end to end</small></a><a class="drawer-link" href="monitoring.html">Monitoring<small>Capacity and health</small></a><a class="drawer-link" href="incidents.html">Incidents<small>Ten drilled failures</small></a><a class="drawer-link" href="change.html">Change<small>Migrations with rollbacks</small></a><p class="drawer-group">Investigations</p><a class="drawer-link" href="investigations.html">Research and investigations<small>Four documented failures, reproduced and fixed</small></a><a class="drawer-link" href="case-p01.html">P-01 Payment integrity<small>Dry posting, duplicates and concurrency</small></a><a class="drawer-link" href="case-p02.html">P-02 Telemetry quality<small>Missing, late, duplicate and invalid readings</small></a><a class="drawer-link" href="case-p03.html">P-03 Change and recovery<small>Unbounded update, blocking and PITR</small></a><a class="drawer-link" href="case-p04.html">P-04 Security and audit<small>Least privilege and an evidence trail</small></a><p class="drawer-group">Assurance</p><a class="drawer-link" href="security.html">Security<small>Access control and audit</small></a><a class="drawer-link" href="performance.html">Performance<small>Measured before and after</small></a><a class="drawer-link" href="verification.html">Evidence<small>Every claim sourced</small></a><p class="drawer-group">About</p><a class="drawer-link" href="context.html">Context<small>Why this project exists</small></a><a class="drawer-link is-current" href="about.html">About<small>The engineer behind it</small></a></nav>
+</div>
+<main id="main">
+
+  <section class="about-hero wrap">
+    <div class="about-grid">
+      <div>
+        <p class="kicker">About</p>
+        <h1 class="about-name" data-hero>Awoyo Emmanuel<br><em>Ifeoluwa</em></h1>
+        <p class="about-role" data-hero>Database administration &middot; database engineering &middot; full-stack</p>
+        <p class="lede" data-hero style="margin-top:20px">I build and run the database layer: nine databases
+        across SQL Server, Oracle and MySQL, with the constraints, recovery proofs and privilege boundaries
+        that keep money consistent.</p>
+        <p class="lede" data-hero style="margin-top:14px">I am looking for a database administration or
+        database engineering role. The failures worth designing for are the quiet ones &mdash; an untested
+        restore, a grant nobody reviewed, a report that queries production &mdash; and the work on this site
+        is the evidence that I can meet them.</p>
+        <div class="about-chips" data-hero>
+          <span>SQL Server 2025</span><span>Oracle 26ai</span><span>MySQL 8.4</span>
+          <span>T-SQL</span><span>RMAN</span><span>PowerShell</span>
+        </div>
+        <div class="about-actions" data-hero>
+          <a class="btn solid" href="verification.html">See the captured evidence</a>
+          <a class="btn" href="capabilities.html">What is proven</a>
+          <a class="btn" href="mailto:awoyoemmanuel12@gmail.com?subject=Database%20role%20%E2%80%94%20portfolio">Email me</a>
+          <a class="btn" href="https://github.com/Ifenuel" rel="me noopener" target="_blank">GitHub</a>
+        </div>
+        <div class="about-contact">
+          <a href="mailto:awoyoemmanuel12@gmail.com">awoyoemmanuel12@gmail.com</a>
+          <span aria-hidden="true">&middot;</span>
+          <a href="https://github.com/Ifenuel" rel="me noopener" target="_blank">github.com/Ifenuel</a>
+        </div>
+      </div>
+      <figure class="portrait" data-tilt>
+        <div class="portrait-glow"></div>
+        <div class="portrait-frame">
+          <img src="assets/brand/awoyo-emmanuel.webp" alt="Awoyo Emmanuel Ifeoluwa" width="864" height="925">
+        </div>
+        <div class="about-tag"><i></i>Awoyo Emmanuel Ifeoluwa</div>
+        <figcaption><b>Portrait</b><span>Database administration &middot; 2026</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="about-facts" data-reveal>
+      <div class="stat"><span class="stat-label">Databases</span><strong>9</strong><span class="stat-note">built and operated</span></div>
+      <div class="stat"><span class="stat-label">Engines</span><strong>3</strong><span class="stat-note">SQL Server, Oracle, MySQL</span></div>
+      <div class="stat"><span class="stat-label">Tables</span><strong>64</strong><span class="stat-note">with constraints</span></div>
+      <div class="stat"><span class="stat-label">Captures</span><strong>17</strong><span class="stat-note">sanitised output</span></div>
+    </div>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="about-split">
+      <div class="section-head">
+        <div class="kicker">Background</div>
+        <h2>Systems thinking, applied where mistakes are expensive</h2>
+        <p>A database either reconciles or it does not. I read it the way I read any system: change one
+        variable, follow the consequence, and defend the conclusion with output rather than opinion. That is
+        why every claim on this site has a capture behind it.</p>
+      </div>
+      <div class="about-stages">
+        <article class="stage"><div class="n">01</div><div><h3>Software, built end to end</h3>
+          <p>Two years of interfaces, services, scripts and data flows. Building the application first is why
+          I know how easily it produces rows that nobody can explain later.</p></div></article>
+        <article class="stage"><div class="n">02</div><div><h3>Then the layer that outlives the feature</h3>
+          <p>Constraints, recovery, privilege and audit. The work below was built schema by schema over
+          several months, and every drill was repeated until it could be reproduced from a clean start.</p></div></article>
+        <article class="stage"><div class="n">03</div><div><h3>Months on this estate</h3>
+          <p>Nine databases, 64 constrained tables, three engines, encrypted backups, least privilege, access
+          reviews, control testing, a hash-chained archive and two recovery drills. Built schema by schema,
+          not assembled for a screenshot.</p></div></article>
+        <article class="stage"><div class="n">04</div><div><h3>Next: database administration</h3>
+          <p>I want the role where recovery time, privilege boundaries and audit evidence are the job
+          description rather than an afterthought.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head">
+      <div class="kicker">What the months produced</div>
+      <h2>Proof instead of promise</h2>
+      <p>Every number below is generated by a command and kept on the evidence page, including the ones that
+      failed first. That is the standard I want to be held to.</p>
+    </div>
+    <div class="about-cards">
+      <article class="about-card"><span class="tag">Recovery</span><h3>A backup is a hypothesis</h3>
+        <p>Restores are drilled to a chosen second, the estate is rebuilt on a second instance in 1.7 s, and a
+        warm standby is promoted by a watchdog in 0.6 s, without a human. If it has not been restored, it is not a backup.</p></article>
+      <article class="about-card"><span class="tag">Privilege</span><h3>Reach one database, not nine</h3>
+        <p>The application identity is denied the tables it should not read. Grants are reviewed quarterly and
+        the revoke decision actually removes the grant.</p></article>
+      <article class="about-card"><span class="tag">Audit</span><h3>Evidence that survives the admin</h3>
+        <p>Failed logins are captured with client detail, and archived records are hash-chained so a single
+        altered row is provable rather than suspected.</p></article>
+      <article class="about-card"><span class="tag">Honesty</span><h3>Name the gap</h3>
+        <p>A watchdog promotes the warm standby in 0.6 s while a client sees 4.4 s of failed reads, the TDE protector is rotated with its key held outside the instance, and a Modbus collector records plant data &mdash; gaps included. What a lab cannot fake is a hardware HSM, and that is the one absence still named.</p></article>
+    </div>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head">
+      <div class="kicker">Toolkit</div>
+      <h2>What I actually use</h2>
+      <p>Not a logo wall. These are the tools behind the numbers on this site, each exercised in a capture.</p>
+    </div>
+    <div class="about-stack">
+      <span>SQL Server 2025</span><span>T-SQL</span><span>Query plans</span><span>Extended Events</span>
+      <span>Oracle 26ai</span><span>RMAN</span><span>PL/SQL</span><span>MySQL 8.4</span>
+      <span>PowerShell</span><span>Python</span><span>JavaScript</span><span>Git</span><span>Bash</span>
+    </div>
+  </section>
+
+  <section data-reveal class="wrap section">
+    <div class="section-head">
+      <div class="kicker">Next</div>
+      <h2>Give me the estate and I will keep it recoverable</h2>
+      <p>I am applying for database administration and database engineering roles in financial services or
+      energy &mdash; and I am equally comfortable starting on the application side, because I have built
+      both. What I want is a team that will judge me on the work: an untested restore, a shared administrator
+      account, a log nobody reads, a report that quietly queries production. Those are the problems I have
+      spent months learning to solve properly.</p>
+    </div>
+    <div class="about-cta">
+      <a class="btn solid" href="verification.html">The captured output</a>
+      <a class="btn" href="capabilities.html">The capability matrix</a>
+      <a class="btn" href="context.html">The problem this answers</a>
+    </div>
+  </section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div class="foot-brand">
+          <img src="assets/brand/logo-mark.png" width="38" height="38" alt="">
+          <div><strong>Apex Financial Services</strong><span>Database engineering portfolio</span></div>
+        </div>
+        <p style="margin-top:14px;max-width:40ch">A nine-database SQL Server estate covering customers,
+        accounts, transfers, ledger, payments, settlement, fraud, service, reporting and governance &mdash;
+        with the constraints, controls and recovery procedures that keep it consistent.</p>
+      </div>
+      <div>
+        <h4>Technology</h4>
+        <p>SQL Server 2025 Developer<br>Oracle Database 26ai Free<br>MySQL 8.4.9<br>Python automation &middot; T-SQL</p>
+      </div>
+      <div>
+        <h4>Portfolio</h4>
+        <a href="verification.html">Evidence index</a>
+        <a href="investigations.html">Research and investigations</a>
+        <a href="context.html">Context</a>
+        <a href="about.html">About and contact</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>Inventory generated 2026-11-25; each operational figure keeps the timestamp of its capture. SQL Server: 9 databases &middot; 64 tables &middot; 46 foreign keys.</span>
+      <span class="foot-tag">Research. Engineer. Validate.</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/vendor/gsap.min.js?v=47da594cbe" defer></script>
+<script src="assets/site.js?v=96e48b62b2" defer></script>
+</body>
+</html>

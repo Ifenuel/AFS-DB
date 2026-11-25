@@ -1,0 +1,33 @@
+=== Three-engine connectivity check  2026-11-25T10:50:05 ===
+
+--- SQL Server 2025 (default instance) ---
+version
+-------
+Microsoft SQL Server 2025 (RTM) - 17.0.1000.7 (X64) 
+	Oct 21 2025 12:05:57 
+	Copyright (C) 2025 Microsoft Corporation
+	Enterprise Developer Edition (64-bit) on Windows 10 Pro 10.0 <X64> (Build 26200: ) (Hypervisor)
+afs_databases
+-------------
+9
+tables
+------
+21
+
+--- Oracle 26ai Free, FREEPDB1 ---
+DB_NAME   OPEN_MODE	       LOG_MODE
+--------- -------------------- ------------
+FREE	  READ WRITE	       ARCHIVELOG
+1 row selected.
+AFS_LAB_TABLES	 ACCOUNTS LEDGER_ENTRIES
+-------------- ---------- --------------
+	     3		2	       2
+1 row selected.
+
+--- MySQL 8.4.9 ---
+version	host
+8.4.9	<host>
+afs_lab_tables
+2
+accounts	ledger_entries
+2	2

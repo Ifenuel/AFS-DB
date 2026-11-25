@@ -1,0 +1,9 @@
+[2026-11-25T09:13:16] AFS backup health
+OK       SQL Server   log backup: AFS_Audit            8 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_CoreBanking      8 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_CustomerService  8 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_Fraud            8 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_Payments         8 min since last log backup (warn 30m / crit 120m)
+OK       Oracle       fast recovery area               41.9% used (warn 80% / crit 90%)
+OK       Oracle       scheduled RMAN run               last run 0.1 h ago, result 0
+OK       MySQL        newest dump                      afs_lab_20261125_091144.sql, 0 h old

@@ -1,0 +1,20 @@
+
+Area      Check                        Status Details                                                                  
+----      -----                        ------ -------                                                                  
+OS        Operating system             PASS   Microsoft Windows 11 Pro 10.0.26200 64-bit                               
+CPU       Processor                    PASS   Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz; 4 cores / 8 threads            
+Memory    Physical memory              PASS   15.85 GB visible                                                         
+Storage   C: free space                PASS   68.42 GB free                                                            
+Privilege Elevated administrator token WARN   Identity ADEOLA\<user>; elevated=False                                 
+Client    git                          PASS   C:\Users\<user>\AppData\Local\Programs\@codebufflocal-workspace\res...
+Client    python                       PASS   C:\Users\<user>\AppData\Local\Microsoft\WindowsApps\python.exe         
+Client    code                         PASS   C:\Users\<user>\AppData\Local\Programs\Microsoft VS Code\bin\code.cmd  
+Client    sqlcmd                       PASS                                                                            
+Service   LocalDB instance             INFO   MSSQLLocalDB                                                             
+Service   postgresql-x64-18            INFO   Running / Automatic                                                      
+Port      Port 5432                    INFO   Listening on ::                                                          
+Port      Port 5432                    INFO   Listening on 0.0.0.0                                                     
+SQL       SQL Server connection        PASS   Express Edition (64-bit)|17.0.1000.7                                     
+
+
+Failures: 0; warnings: 1

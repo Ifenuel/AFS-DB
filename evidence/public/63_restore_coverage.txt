@@ -1,0 +1,31 @@
+=== Restore proof: the three governance databases  2026-11-25T15:13:31Z ===
+
+25 percent processed.
+50 percent processed.
+75 percent processed.
+100 percent processed.
+Processed 768 pages for database 'AFS_Archive_RESTORE', file 'AFS_Archive' on file 1.
+Processed 2 pages for database 'AFS_Archive_RESTORE', file 'AFS_Archive_log' on file 1.
+RESTORE DATABASE successfully processed 770 pages in 0.101 seconds (59.521 MB/sec).
+25 percent processed.
+50 percent processed.
+75 percent processed.
+100 percent processed.
+Processed 656 pages for database 'AFS_Compliance_RESTORE', file 'AFS_Compliance' on file 1.
+Processed 2 pages for database 'AFS_Compliance_RESTORE', file 'AFS_Compliance_log' on file 1.
+RESTORE DATABASE successfully processed 658 pages in 0.094 seconds (54.645 MB/sec).
+25 percent processed.
+50 percent processed.
+76 percent processed.
+100 percent processed.
+Processed 704 pages for database 'AFS_Identity_RESTORE', file 'AFS_Identity' on file 1.
+Processed 2 pages for database 'AFS_Identity_RESTORE', file 'AFS_Identity_log' on file 1.
+RESTORE DATABASE successfully processed 706 pages in 0.047 seconds (117.270 MB/sec).
+DatabaseName|LiveTables|RestoredTables|LiveRows|RestoredRows|LiveDetailRows|RestoredDetailRows|Result
+------------|----------|--------------|--------|------------|--------------|------------------|------
+AFS_Archive|9|9|2737|2737|2000|2000|IDENTICAL
+AFS_Compliance|7|7|261|261|120|120|IDENTICAL
+AFS_Identity|7|7|3785|3785|63|63|IDENTICAL
+databases_tested|identical|not_identical
+----------------|---------|-------------
+3|3|0

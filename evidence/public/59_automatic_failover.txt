@@ -1,0 +1,57 @@
+=== Automatic failover  2026-11-25T11:25:42 ===
+primary instance  : <host> (SQL Server 17.0.1000.7)
+standby instance  : <host>\LOCALDB#EC7881CC (LocalDB 17.0.1000.7)
+watched database  : AFS_Payments on .
+standby database  : AFS_Payments_Standby on (localdb)\MSSQLLocalDB
+witness           : tools\ha\watchdog.ps1, polling every 250 ms, acts after 2 consecutive failures
+endpoint          : ha\active_target.json, the file a client resolves before it connects
+
+--- 1. seed the standby ---
+standby state     : RESTORING (not readable, receiving log)
+rows in the copy  : 472 in payment.Payment at the primary
+standby files     : <home>\AFS_Payments_Standby.mdf
+
+--- 2. start watchdog and client probe ---
+watchdog pid      : <redacted>
+probe pid         : <redacted>
+clients read      : primary, payment.Payment, every 200 ms
+
+--- 3. failure injection: database taken offline without warning ---
+healthy reads     : 8 before injection
+committed         : 11:25:50.209  marker FAILOVER-112550202 written to audit.AuditEvent
+injected          : 11:25:51.536  ALTER DATABASE [AFS_Payments] SET OFFLINE
+
+--- 4. watchdog result ---
+11:25:45.942  watchdog start   primary=.  standby=(localdb)\MSSQLLocalDB
+11:25:45.979  monitoring       AFS_Payments every 250 ms; log shipped every 1000 ms
+11:25:45.995  state            HEALTHY
+11:25:46.650  log shipped      #1 in 274 ms
+11:25:54.878  primary lost     status=OFFLINE
+11:25:55.900  PROMOTED         AFS_Payments_Standby on (localdb)\MSSQLLocalDB in 607 ms
+11:25:55.913  logs shipped     7 (last at 11:25:54.347)
+11:25:55.926  endpoint         <workspace>\ha\active_target.json -> (localdb)\MSSQLLocalDB / AFS_Payments_Standby
+11:25:55.937  standby rows     472 (payment.Payment)
+11:25:55.948  state            FAILED OVER
+
+--- 5. client result ---
+11:25:47.181  probe start
+11:25:51.765  read failed    ./AFS_Payments : Exception calling "Open" with "0" argument(s): "Login failed for user '<host>\<user>'."
+11:25:56.159  read recovered (localdb)\MSSQLLocalDB/AFS_Payments_Standby : 472 rows after 4,367 ms
+summary        {"attempts":110,"failures":20,"first_failure":"11:25:51.760","last_failure":"11:25:55.882","recovered_at":"11:25:56.127","outage_ms":4367,"successful_reads_after_failure":71}
+
+--- 6. what the numbers mean ---
+client outage     : 4367 ms (4.37 s) from first failed read to first successful read
+failed reads      : 20 of 110
+reads after       : 71 successful reads against the promoted standby
+logs shipped      : 7, last at 11:25:54.347
+row before failure: marker FAILOVER-112550202 committed 1327 ms before the outage, present on the promoted standby: 1
+recovery point    : the standby applied every log shipped up to 11:25:54.347; the labelled row survived
+endpoint now      : {     "server":  "(localdb)\\MSSQLLocalDB",     "database":  "AFS_Payments_Standby",     "role":  "primary",     "promoted_at":  "2026-11-25T11:25:55",     "promote_ms":  607,     "detected_ms":  969,     "standby_rows":  472,     "logs_shipped":  7,     "last_ship_at":  "11:25:54.347",     "last_ship_ms":  142 }
+no human ran the promotion; the watchdog did, and the client found the new primary through the endpoint file.
+
+--- 7. restore the lab: primary online, standby reseeded, endpoint back to primary ---
+primary state     : ONLINE
+standby state     : RESTORING
+primary rows      : 472
+endpoint          : {     "server":  ".",     "database":  "AFS_Payments",     "role":  "primary",     "promoted_at":  "2026-11-25T11:26:18" }
+elapsed           : 35.3 s

@@ -1,0 +1,28 @@
+=== Warm-standby failover drill  2026-11-25T10:26:52 ===
+primary     : . (SQL Server 2025 17.0.1000.7)
+standby     : (localdb)\MSSQLLocalDB (separate instance)
+backup pair : C:\Backups\hostloss\standby_full.bak + standby_log.trn (CHECKSUM)
+
+instance   : Adeola\LOCALDB#A9D14F39
+version    : 17.0.1000.7
+reset      : prior AFS_Standby dropped
+RESTORE DATABASE successfully processed 6922 pages in 0.126 seconds (429.160 MB/sec).
+standby    : full restore with NORECOVERY (not readable, ready to receive logs)
+state      : RESTORING / IsInStandBy=0
+RESTORE LOG successfully processed 9 pages in 0.001 seconds (70.312 MB/sec).
+standby    : log restored with NORECOVERY, last log applied
+standby s  : 1.641000
+RESTORE DATABASE successfully processed 0 pages in 0.273 seconds (0.000 MB/sec).
+failover s : 0.273000
+state      : ONLINE
+object_name                rows_on_standby     
+-------------------------- --------------------
+customer.Customer                          1000
+account.Account                            1000
+account.Transfer                          20000
+account.AccountLedgerEntry                40000
+balance_mismatches  
+--------------------
+                   0
+
+verdict     : PASS - standby restored, log applied, manual failover in 0.28 s, counts and balances intact

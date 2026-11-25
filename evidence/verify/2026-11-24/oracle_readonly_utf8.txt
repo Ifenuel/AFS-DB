@@ -1,0 +1,126 @@
+﻿
+SQL*Plus: Release 23.26.4.0.0 - Production on Tue Nov 24 21:15:57 2026
+Version 23.26.4.0.0
+
+Copyright (c) 1982, 2026, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle AI Database 26ai Free Release 23.26.4.0.0 - Develop, Learn, and Run for Free
+Version 23.26.4.0.0
+
+SQL> SELECT banner FROM v$version;
+
+BANNER
+--------------------------------------------------------------------------------
+Oracle AI Database 26ai Free Release 23.26.4.0.0 - Develop, Learn, and Run for F
+ree
+
+
+SQL> SELECT name, open_mode, database_role FROM v$database;
+
+NAME	  OPEN_MODE	       DATABASE_ROLE
+--------- -------------------- ----------------
+FREE	  READ WRITE	       PRIMARY
+
+SQL> SELECT log_mode FROM v$database;
+
+LOG_MODE
+------------
+NOARCHIVELOG
+
+SQL> SELECT instance_name, version, status FROM v$instance;
+
+INSTANCE_NAME	 VERSION	   STATUS
+---------------- ----------------- ------------
+free		 23.0.0.0.0	   OPEN
+
+SQL> SELECT con_id, name, open_mode FROM v$pdbs;
+
+    CON_ID
+----------
+NAME
+--------------------------------------------------------------------------------
+OPEN_MODE
+----------
+	 3
+FREEPDB1
+READ WRITE
+
+
+SQL> SELECT parameter, value FROM v$parameter WHERE name IN ('db_block_size','sga_target','pga_aggregate_target','processes','sessions','undo_tablespaces');
+SELECT parameter, value FROM v$parameter WHERE name IN ('db_block_size','sga_target','pga_aggregate_target','processes','sessions','undo_tablespaces')
+       *
+ERROR at line 1:
+ORA-00904: "PARAMETER": invalid identifier
+Help: https://docs.oracle.com/error-help/db/ora-00904/
+
+
+SQL> SELECT tablespace_name, status, block_size FROM dba_tablespaces ORDER BY tablespace_name;
+
+TABLESPACE_NAME 	       STATUS	 BLOCK_SIZE
+------------------------------ --------- ----------
+SYSAUX			       ONLINE	       8192
+SYSTEM			       ONLINE	       8192
+TEMP			       ONLINE	       8192
+UNDOTBS1		       ONLINE	       8192
+USERS			       ONLINE	       8192
+
+SQL> SELECT username, account_status, default_tablespace FROM dba_users WHERE username='AFS_LAB';
+
+USERNAME
+--------------------------------------------------------------------------------
+ACCOUNT_STATUS			 DEFAULT_TABLESPACE
+-------------------------------- ------------------------------
+AFS_LAB
+OPEN				 USERS
+
+
+SQL> SELECT privilege FROM dba_sys_privs WHERE grantee='AFS_LAB' ORDER BY privilege;
+
+PRIVILEGE
+----------------------------------------
+CREATE PROCEDURE
+CREATE SEQUENCE
+CREATE SESSION
+CREATE TABLE
+CREATE VIEW
+
+SQL> SELECT owner, table_name, num_rows FROM dba_tables WHERE owner='AFS_LAB' ORDER BY table_name;
+
+OWNER
+--------------------------------------------------------------------------------
+TABLE_NAME
+--------------------------------------------------------------------------------
+  NUM_ROWS
+----------
+AFS_LAB
+ACCOUNT
+
+
+AFS_LAB
+LEDGER_ENTRY
+
+
+OWNER
+--------------------------------------------------------------------------------
+TABLE_NAME
+--------------------------------------------------------------------------------
+  NUM_ROWS
+----------
+
+
+SQL> SELECT COUNT(*) AS AFS_LAB_TABLES FROM dba_tables WHERE owner='AFS_LAB';
+
+AFS_LAB_TABLES
+--------------
+	     2
+
+SQL> SELECT session_id, username, program, status FROM v$session WHERE username='AFS_LAB';
+SELECT session_id, username, program, status FROM v$session WHERE username='AFS_LAB'
+       *
+ERROR at line 1:
+ORA-00904: "SESSION_ID": invalid identifier
+Help: https://docs.oracle.com/error-help/db/ora-00904/
+
+

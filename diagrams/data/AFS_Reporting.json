@@ -1,0 +1,512 @@
+{
+  "database": "AFS_Reporting",
+  "tables": [
+    {
+      "name": "reporting.DailyAccountSummary",
+      "columns": [
+        {
+          "name": "AccountId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "SummaryDate",
+          "type": "date",
+          "nullable": false,
+          "identity": false,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "ClosingBalance",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CreditTotal",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "DebitTotal",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "LoadedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "OpeningBalance",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TransferCount",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "reporting.TransferVolume",
+      "columns": [
+        {
+          "name": "CurrencyCode",
+          "type": "char(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "SummaryDate",
+          "type": "date",
+          "nullable": false,
+          "identity": false,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "LoadedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TotalAmount",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TransferCount",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "staging.StgTransaction",
+      "columns": [
+        {
+          "name": "StgTransactionId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "AccountId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "Amount",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "BalanceAfter",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CurrencyCode",
+          "type": "char(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "EntryType",
+          "type": "varchar(6)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "LoadedAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "OccurredAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "SourceDatabase",
+          "type": "sysname",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TransferId",
+          "type": "uniqueidentifier",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "warehouse.DimAccount",
+      "columns": [
+        {
+          "name": "AccountKey",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "AccountId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "AccountNumber",
+          "type": "char(12)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "AccountType",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CurrencyCode",
+          "type": "char(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CustomerId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "IsCurrent",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ValidFrom",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ValidTo",
+          "type": "datetime2(3)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "warehouse.DimCustomer",
+      "columns": [
+        {
+          "name": "CustomerKey",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "CustomerId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CustomerNumber",
+          "type": "char(10)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CustomerStatus",
+          "type": "varchar(20)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "IsCurrent",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "RiskRating",
+          "type": "varchar(10)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ValidFrom",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "ValidTo",
+          "type": "datetime2(3)",
+          "nullable": true,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "warehouse.DimDate",
+      "columns": [
+        {
+          "name": "DateKey",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "DayNumber",
+          "type": "tinyint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "FullDate",
+          "type": "date",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "IsBusinessDay",
+          "type": "bit",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "MonthNumber",
+          "type": "tinyint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "QuarterNumber",
+          "type": "tinyint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "YearNumber",
+          "type": "smallint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    },
+    {
+      "name": "warehouse.FactTransaction",
+      "columns": [
+        {
+          "name": "FactTransactionId",
+          "type": "bigint",
+          "nullable": false,
+          "identity": true,
+          "pk": true,
+          "fk": false
+        },
+        {
+          "name": "AccountKey",
+          "type": "bigint",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "Amount",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "BalanceAfter",
+          "type": "decimal(19,4)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "CurrencyCode",
+          "type": "char(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "DateKey",
+          "type": "int",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": true
+        },
+        {
+          "name": "EntryType",
+          "type": "varchar(6)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "OccurredAt",
+          "type": "datetime2(3)",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        },
+        {
+          "name": "TransferId",
+          "type": "uniqueidentifier",
+          "nullable": false,
+          "identity": false,
+          "pk": false,
+          "fk": false
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "name": "FK_warehouse_FactTransaction_Account",
+      "child": "warehouse.FactTransaction",
+      "parent": "warehouse.DimAccount",
+      "pairs": [
+        {
+          "child_column": "AccountKey",
+          "parent_column": "AccountKey"
+        }
+      ]
+    },
+    {
+      "name": "FK_warehouse_FactTransaction_Date",
+      "child": "warehouse.FactTransaction",
+      "parent": "warehouse.DimDate",
+      "pairs": [
+        {
+          "child_column": "DateKey",
+          "parent_column": "DateKey"
+        }
+      ]
+    }
+  ]
+}

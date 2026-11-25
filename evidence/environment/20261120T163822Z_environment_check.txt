@@ -1,0 +1,18 @@
+
+Area      Check                        Status Details                                                                  
+----      -----                        ------ -------                                                                  
+OS        Operating system             PASS   Microsoft Windows 11 Pro 10.0.26200 64-bit                               
+CPU       Processor                    PASS   Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz; 4 cores / 8 threads            
+Memory    Physical memory              PASS   15.85 GB visible                                                         
+Storage   C: free space                PASS   74.44 GB free                                                            
+Privilege Elevated administrator token WARN   Identity LAB\standard-user; elevated=False                                 
+Client    git                          PASS   <workspace>\AppData\Local\Programs\@codebufflocal-workspace\res...
+Client    python                       PASS   <workspace>\AppData\Local\Microsoft\WindowsApps\python.exe         
+Client    code                         PASS   <workspace>\AppData\Local\Programs\Microsoft VS Code\bin\code.cmd  
+Client    sqlcmd                       FAIL   not found; install Microsoft.Sqlcmd                                      
+Service   postgresql-x64-18            INFO   Running / Automatic                                                      
+Port      Port 5432                    INFO   Listening on ::                                                          
+Port      Port 5432                    INFO   Listening on 0.0.0.0                                                     
+
+
+Failures: 1; warnings: 1

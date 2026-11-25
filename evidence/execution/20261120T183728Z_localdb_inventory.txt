@@ -1,0 +1,47 @@
+=== AFS LocalDB inventory ===
+
+Edition | ProductVersion | ServerName
+--------+----------------+-----------
+Express Edition (64-bit) | 17.0.1000.7 | Adeola\LOCALDB#AEAB9879
+
+name | recovery_model_desc | state_desc | compatibility_level
+-----+---------------------+------------+--------------------
+AFS_Audit | FULL | ONLINE | 160
+AFS_CoreBanking | FULL | ONLINE | 160
+AFS_CoreBanking_RestoreTest | FULL | ONLINE | 160
+AFS_CustomerService | FULL | ONLINE | 160
+AFS_Fraud | FULL | ONLINE | 160
+AFS_Payments | FULL | ONLINE | 160
+AFS_Reporting | SIMPLE | ONLINE | 160
+
+TableName | Rows
+----------+-----
+customer.Customer | 2
+account.Account | 5
+account.Transfer | 2
+account.AccountLedgerEntry | 4
+audit.AuditEvent | 25
+
+AccountId | AccountNumber | Balance | OpeningBalance | StatusCode
+----------+---------------+---------+----------------+-----------
+1 | ACC999999991 | 900.0000 | 1000.0000 | ACTIVE
+2 | ACC999999992 | 600.0000 | 500.0000 | ACTIVE
+3 | ACC999999993 | 1000.0000 | 1000.0000 | ACTIVE
+4 | ACC999999981 | 900.0000 | 1000.0000 | ACTIVE
+5 | ACC999999982 | 600.0000 | 500.0000 | ACTIVE
+
+BackupHistoryId | DatabaseName | BackupType | IsVerified | SizeMB | CompletedAt
+----------------+--------------+------------+------------+--------+------------
+17 | AFS_CoreBanking | LOG | True | 15.21 | 11/20/2026 18:14:00
+16 | AFS_CoreBanking | DIFFERENTIAL | True | 14.38 | 11/20/2026 18:13:59
+15 | AFS_Fraud | FULL | True | 7.05 | 11/20/2026 18:13:59
+14 | AFS_Reporting | FULL | True | 7.05 | 11/20/2026 18:13:58
+13 | AFS_Audit | FULL | True | 7.05 | 11/20/2026 18:13:58
+12 | AFS_CustomerService | FULL | True | 7.05 | 11/20/2026 18:13:58
+11 | AFS_Payments | FULL | True | 11.30 | 11/20/2026 18:13:57
+10 | AFS_CoreBanking | FULL | True | 13.85 | 11/20/2026 18:13:57
+9 | AFS_CoreBanking | LOG | True | 7.20 | 11/20/2026 18:13:23
+7 | AFS_Fraud | FULL | True | 3.52 | 11/20/2026 18:13:22
+
+To run your own read-only query:
+  .\Show-AfsLocalDb.ps1 -Database AFS_CoreBanking -Query "SELECT TOP 5 * FROM account.Transfer;"
