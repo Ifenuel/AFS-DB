@@ -116,3 +116,7 @@ diagrams/
 *.code-workspace
 
 docs/
+
+# Local QA backup and captured pages
+_backup-pre-qa/
+_qa/
