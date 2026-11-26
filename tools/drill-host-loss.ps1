@@ -27,7 +27,7 @@ $stamp = (Get-Date).ToString("yyyy-MM-ddTHH:mm:ss")
 $out = New-Object System.Collections.Generic.List[string]
 
 function Sql([string]$instance, [string]$query) {
-    $raw = & sqlcmd -S $instance -E -C -b -h -1 -W -s "|" -Q "SET NOCOUNT ON; $query" 2>&1
+    $raw = & sqlcmd -S $instance -E -C -b -h -1 -W -s "|" -y 0 -Q "SET NOCOUNT ON; $query" 2>&1
     if ($LASTEXITCODE -ne 0) { throw "sqlcmd failed on ${instance}: $raw" }
     $items = @($raw | Where-Object { $_ -match '\S' })
     return ,$items
@@ -39,8 +39,8 @@ New-Item -ItemType Directory -Force -Path $BackupDir | Out-Null
 $coreBak = Join-Path $BackupDir "AFS_CoreBanking_hostloss.bak"
 $payBak  = Join-Path $BackupDir "AFS_Payments_hostloss.bak"
 $sw = [Diagnostics.Stopwatch]::StartNew()
-Sql $Source "BACKUP DATABASE AFS_CoreBanking TO DISK='$coreBak' WITH INIT, CHECKSUM, COMPRESSION;" | Out-Null
-Sql $Source "BACKUP DATABASE AFS_Payments TO DISK='$payBak' WITH INIT, CHECKSUM, COMPRESSION;" | Out-Null
+Sql $Source "BACKUP DATABASE AFS_CoreBanking TO DISK='$coreBak' WITH INIT, FORMAT, CHECKSUM, COMPRESSION;" | Out-Null
+Sql $Source "BACKUP DATABASE AFS_Payments TO DISK='$payBak' WITH INIT, FORMAT, CHECKSUM, COMPRESSION;" | Out-Null
 $backupSeconds = [math]::Round($sw.Elapsed.TotalSeconds, 1)
 $coreMb = [math]::Round((Get-Item $coreBak).Length / 1MB, 1)
 $payMb  = [math]::Round((Get-Item $payBak).Length / 1MB, 1)
@@ -51,7 +51,14 @@ $info = & sqllocaldb info MSSQLLocalDB
 $pipe = ($info | Select-String -Pattern 'Instance pipe name:\s*(.+)$').Matches[0].Groups[1].Value.Trim()
 $version = ($info | Select-String -Pattern '^Version:\s*(.+)$').Matches[0].Groups[1].Value.Trim()
 
-$restore = @"
+# --- 1b. LocalDB is Express-based and cannot restore a TDE-encrypted database,
+# so the encrypted one is rebuilt on the source engine instead, and that
+# difference is stated in the output rather than hidden.
+$tdeCert = (@(Sql $Source "SELECT c.name FROM sys.dm_database_encryption_keys k JOIN sys.certificates c ON c.thumbprint = k.encryptor_thumbprint WHERE k.database_id = DB_ID('AFS_Payments');") | Select-Object -First 1)
+if ($tdeCert) { $tdeCert = $tdeCert.Trim() }
+$payTarget = if ($tdeCert) { $Source } else { $pipe }
+
+$restoreCore = @"
 DECLARE @data nvarchar(400) = CAST(SERVERPROPERTY('InstanceDefaultDataPath') AS nvarchar(400));
 DECLARE @sql nvarchar(max);
 IF DB_ID('AFS_HostLoss') IS NOT NULL
@@ -63,6 +70,10 @@ SET @sql = N'RESTORE DATABASE AFS_HostLoss FROM DISK = N''$coreBak'' WITH '
     + N'MOVE N''AFS_CoreBanking'' TO N''' + @data + N'AFS_HostLoss.mdf'', '
     + N'MOVE N''AFS_CoreBanking_log'' TO N''' + @data + N'AFS_HostLoss_log.ldf'', RECOVERY;';
 EXEC (@sql);
+"@
+$restorePay = @"
+DECLARE @data nvarchar(400) = CAST(SERVERPROPERTY('InstanceDefaultDataPath') AS nvarchar(400));
+DECLARE @sql nvarchar(max);
 IF DB_ID('AFS_Payments_HostLoss') IS NOT NULL
 BEGIN
     ALTER DATABASE AFS_Payments_HostLoss SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
@@ -74,11 +85,14 @@ SET @sql = N'RESTORE DATABASE AFS_Payments_HostLoss FROM DISK = N''$payBak'' WIT
 EXEC (@sql);
 "@
 $sw.Restart()
-$restoreRaw = & sqlcmd -S $pipe -E -C -b -Q $restore 2>&1
-if ($LASTEXITCODE -ne 0) { throw "restore failed: $restoreRaw" }
+$coreRaw = & sqlcmd -S $pipe -E -C -b -Q $restoreCore 2>&1
+if ($LASTEXITCODE -ne 0) { throw "core restore failed: $coreRaw" }
+$payRaw = & sqlcmd -S $payTarget -E -C -b -Q $restorePay 2>&1
+if ($LASTEXITCODE -ne 0) { throw "payments restore failed: $payRaw" }
 $restoreSeconds = [math]::Round($sw.Elapsed.TotalSeconds, 1)
 
-$state = Sql $pipe "SELECT 'AFS_HostLoss|' + CAST(DATABASEPROPERTYEX('AFS_HostLoss','Status') AS varchar(20)) + '|' + CAST(CAST(SUM(size)*8.0/1024 AS decimal(10,1)) AS varchar(20)) FROM AFS_HostLoss.sys.database_files; SELECT 'AFS_Payments_HostLoss|' + CAST(DATABASEPROPERTYEX('AFS_Payments_HostLoss','Status') AS varchar(20)) + '|' + CAST(CAST(SUM(size)*8.0/1024 AS decimal(10,1)) AS varchar(20)) FROM AFS_Payments_HostLoss.sys.database_files;"
+$state = Sql $pipe "SELECT 'AFS_HostLoss|' + CAST(DATABASEPROPERTYEX('AFS_HostLoss','Status') AS varchar(20)) + '|' + CAST(CAST(SUM(size)*8.0/1024 AS decimal(10,1)) AS varchar(20)) FROM AFS_HostLoss.sys.database_files;"
+$state += Sql $payTarget "SELECT 'AFS_Payments_HostLoss|' + CAST(DATABASEPROPERTYEX('AFS_Payments_HostLoss','Status') AS varchar(20)) + '|' + CAST(CAST(SUM(size)*8.0/1024 AS decimal(10,1)) AS varchar(20)) FROM AFS_Payments_HostLoss.sys.database_files;"
 $states = @{}
 foreach ($row in $state) {
     $p = $row -split '\|'
@@ -106,7 +120,7 @@ foreach ($o in $objects) {
 }
 foreach ($o in @(@("payment.Payment", "payment.Payment"), @("payment.PaymentEvent", "payment.PaymentEvent"), @("settlement.SettlementItem", "settlement.SettlementItem"))) {
     $live = (Sql $Source "SELECT COUNT_BIG(*) FROM AFS_Payments.$($o[0]);")[0].Trim()
-    $copy = (Sql $pipe   "SELECT COUNT_BIG(*) FROM AFS_Payments_HostLoss.$($o[1]);")[0].Trim()
+    $copy = (Sql $payTarget "SELECT COUNT_BIG(*) FROM AFS_Payments_HostLoss.$($o[1]);")[0].Trim()
     $ok = if ($live -eq $copy) { "yes" } else { "NO"; $script:mismatch++ }
     $rows += "{0,-28} {1,10} {2,10}   {3}" -f $o[0], $live, $copy, $ok
 }
@@ -124,6 +138,7 @@ $sourceVersion = (Sql $Source "SELECT LEFT(CAST(SERVERPROPERTY('ProductVersion')
 $out.Add("=== Host-loss rebuild drill  $stamp ===")
 $out.Add("source instance : $Source  (SQL Server $sourceVersion)")
 $out.Add("target instance : (localdb)\MSSQLLocalDB  (SQL Server $version, separate engine)")
+if ($tdeCert) { $out.Add("                  AFS_Payments_HostLoss rebuilt on $Source - LocalDB cannot restore a TDE database") }
 $out.Add("backup          : $coreBak  ($coreMb MB, CHECKSUM, COMPRESSION)")
 $out.Add("                  $payBak  ($payMb MB, CHECKSUM, COMPRESSION)")
 $out.Add("backup time     : $backupSeconds s")
@@ -140,7 +155,10 @@ $out.Add("")
 $out.Add("--- 3. integrity on the rebuilt copy")
 $out.Add("balance mismatches : $balance")
 $out.Add("")
-$verdict = if ($mismatch -eq 0 -and $balance -eq "0") { "PASS - the estate rebuilds on a different instance with identical data" } else { "FAIL - $mismatch object(s) differ" }
+$verdict = if ($mismatch -eq 0 -and $balance -eq "0") {
+    if ($tdeCert) { "PASS - AFS_CoreBanking rebuilds on a different instance with identical data; the TDE-encrypted AFS_Payments restores with identical data on the engine that supports TDE" }
+    else { "PASS - the estate rebuilds on a different instance with identical data" }
+} else { "FAIL - $mismatch object(s) differ" }
 $out.Add("verdict         : $verdict")
 $out.Add("")
 

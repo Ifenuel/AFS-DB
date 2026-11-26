@@ -259,20 +259,21 @@ application procs  : 12 in AFS_CoreBanking</pre>
 
   <section data-reveal class="wrap section">
     <article class="ev" id="54_host_loss_restore">
-      <h3>The estate rebuilds on another machine</h3>
-      <p class="meta">A fresh backup of both databases is restored onto a second SQL Server 2025 instance with its own service and files — the same operation as rebuilding after the original host is lost.</p>
-      <p class="meta"><b>Result.</b> Eleven objects match the live estate row for row, balances still reconcile, total restore 1.7 s.</p>
-      <pre class="term">=== Host-loss rebuild drill  2026-11-25T10:18:51 ===
+      <h3>The estate rebuilds from backup</h3>
+      <p class="meta">A fresh backup of both databases is restored and compared. <code>AFS_CoreBanking</code> goes onto a second SQL Server 2025 instance with its own service and files — the same operation as rebuilding after the original host is lost. <code>AFS_Payments</code> is TDE-encrypted, which LocalDB cannot open, so it is restored on the TDE-capable engine instead; the output states that difference.</p>
+      <p class="meta"><b>Result.</b> Eleven objects match the live estate row for row, balances still reconcile, total restore 3 s.</p>
+      <pre class="term">=== Host-loss rebuild drill  2026-11-26T08:32:02 ===
 source instance : .  (SQL Server 17.0.1000.7)
 target instance : (localdb)\MSSQLLocalDB  (SQL Server 17.0.1000.7, separate engine)
+                  AFS_Payments_HostLoss rebuilt on . - LocalDB cannot restore a TDE database
 backup          : &lt;backup-store&gt;\hostloss\AFS_CoreBanking_hostloss.bak  (17.2 MB, CHECKSUM, COMPRESSION)
-                  &lt;backup-store&gt;\hostloss\AFS_Payments_hostloss.bak  (1 MB, CHECKSUM, COMPRESSION)
-backup time     : 0.7 s
+                  &lt;backup-store&gt;\hostloss\AFS_Payments_hostloss.bak  (1.3 MB, CHECKSUM, COMPRESSION)
+backup time     : 1.5 s
 
 --- 1. restore onto the second instance
 AFS_HostLoss          ONLINE     384.0 MB
 AFS_Payments_HostLoss ONLINE     384.0 MB
-restore time    : 1.7 s (both databases, from cold files)
+restore time    : 3 s (both databases, from cold files)
 
 --- 2. row counts, live vs rebuilt
 object                           live    rebuilt   match
@@ -291,7 +292,7 @@ settlement.SettlementItem           426        426   yes
 --- 3. integrity on the rebuilt copy
 balance mismatches : 0
 
-verdict         : PASS - the estate rebuilds on a different instance with identical data</pre>
+verdict         : PASS - AFS_CoreBanking rebuilds on a different instance with identical data; the TDE-encrypted AFS_Payments restores with identical data on the engine that supports TDE</pre>
     </article>
   </section>
 
