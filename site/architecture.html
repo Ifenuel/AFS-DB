@@ -100,141 +100,15 @@
           <a href="assets/erds/AFS_Compliance.html">Open the diagram on its own page</a>.</figcaption>
       </figure>
     </section>
-    <section data-reveal class="wrap section" id="archive">
-      <div class="section-head">
-        <div class="kicker">Archive</div>
-        <h2 class="mono">AFS_Archive</h2>
-        <p>9 tables &middot; 0 views &middot; 0 procedures &middot;
-        7 foreign keys &middot; 2,737 rows</p>
-      </div>
-      <p class="muted">Retention policy, legal hold, archived records with a SHA-256 chain, and the plant historian.</p>
-      <div class="table-wrap"><table class="data"><thead><tr><th>Schema</th><th>Table</th><th>Rows</th><th>Columns</th><th>Indexes</th></tr></thead><tbody><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">ArchivedRecord</span></td><td class="num" data-label="Rows">2,000</td><td class="num" data-label="Columns">9</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">LegalHold</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">5</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">LegalHoldRecord</span></td><td class="num" data-label="Rows">120</td><td class="num" data-label="Columns">3</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">PurgeRun</span></td><td class="num" data-label="Rows">12</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">RetentionPolicy</span></td><td class="num" data-label="Rows">6</td><td class="num" data-label="Columns">5</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">CollectorRun</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">Gap</span></td><td class="num" data-label="Rows">2</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">Reading</span></td><td class="num" data-label="Rows">588</td><td class="num" data-label="Columns">5</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">Tag</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">3</td></tr></tbody></table></div>
-      <figure class="erd">
-        <img src="assets/erds/AFS_Archive.svg?v=615e2bbdaf" alt="Entity relationship diagram for AFS_Archive, generated from the live catalog" loading="lazy">
-        <figcaption>Generated from the catalog export; every line is a declared foreign key.
-          <a href="assets/erds/AFS_Archive.html">Open the diagram on its own page</a>.</figcaption>
-      </figure>
-    </section>
-    <section data-reveal class="wrap section" id="audit">
-      <div class="section-head">
-        <div class="kicker">Audit</div>
-        <h2 class="mono">AFS_Audit</h2>
-        <p>6 tables &middot; 0 views &middot; 0 procedures &middot;
-        0 foreign keys &middot; 6,769 rows</p>
-      </div>
-      <p class="muted">The central audit record, administrative actions, security events and operational history.</p>
-      <div class="table-wrap"><table class="data"><thead><tr><th>Schema</th><th>Table</th><th>Rows</th><th>Columns</th><th>Indexes</th></tr></thead><tbody><tr><td data-label="Schema"><span class="mono">administration</span></td><td data-label="Table"><span class="mono">AdminAction</span></td><td class="num" data-label="Rows">30</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">audit</span></td><td data-label="Table"><span class="mono">AuditRecord</span></td><td class="num" data-label="Rows">6,168</td><td class="num" data-label="Columns">10</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">dbo</span></td><td data-label="Table"><span class="mono">DbaOpsLog</span></td><td class="num" data-label="Rows">314</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">operational</span></td><td data-label="Table"><span class="mono">BackupHistory</span></td><td class="num" data-label="Rows">24</td><td class="num" data-label="Columns">10</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">operational</span></td><td data-label="Table"><span class="mono">JobRun</span></td><td class="num" data-label="Rows">48</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">security</span></td><td data-label="Table"><span class="mono">SecurityEvent</span></td><td class="num" data-label="Rows">120</td><td class="num" data-label="Columns">8</td><td class="num" data-label="Indexes">2</td></tr></tbody></table></div>
-      <figure class="erd">
-        <img src="assets/erds/AFS_Audit.svg?v=4472ac01e5" alt="Entity relationship diagram for AFS_Audit, generated from the live catalog" loading="lazy">
-        <figcaption>Generated from the catalog export; every line is a declared foreign key.
-          <a href="assets/erds/AFS_Audit.html">Open the diagram on its own page</a>.</figcaption>
-      </figure>
-    </section>
-    <section data-reveal class="wrap section" id="compliance">
-      <div class="section-head">
-        <div class="kicker">Compliance</div>
-        <h2 class="mono">AFS_Compliance</h2>
-        <p>7 tables &middot; 0 views &middot; 0 procedures &middot;
-        5 foreign keys &middot; 261 rows</p>
-      </div>
-      <p class="muted">Obligations, controls, tests, findings, remediation and key-custody records.</p>
-      <div class="table-wrap"><table class="data"><thead><tr><th>Schema</th><th>Table</th><th>Rows</th><th>Columns</th><th>Indexes</th></tr></thead><tbody><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Control</span></td><td class="num" data-label="Rows">30</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">ControlObligation</span></td><td class="num" data-label="Rows">60</td><td class="num" data-label="Columns">3</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">ControlTest</span></td><td class="num" data-label="Rows">120</td><td class="num" data-label="Columns">8</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Finding</span></td><td class="num" data-label="Rows">12</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">KeyCustodyRecord</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">9</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Obligation</span></td><td class="num" data-label="Rows">24</td><td class="num" data-label="Columns">4</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Remediation</span></td><td class="num" data-label="Rows">12</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr></tbody></table></div>
-      <figure class="erd">
-        <img src="assets/erds/AFS_Compliance.svg?v=79906838fa" alt="Entity relationship diagram for AFS_Compliance, generated from the live catalog" loading="lazy">
-        <figcaption>Generated from the catalog export; every line is a declared foreign key.
-          <a href="assets/erds/AFS_Compliance.html">Open the diagram on its own page</a>.</figcaption>
-      </figure>
-    </section>
-    <section data-reveal class="wrap section" id="archive">
-      <div class="section-head">
-        <div class="kicker">Archive</div>
-        <h2 class="mono">AFS_Archive</h2>
-        <p>9 tables &middot; 0 views &middot; 0 procedures &middot;
-        7 foreign keys &middot; 2,737 rows</p>
-      </div>
-      <p class="muted">Retention policy, legal hold, archived records with a SHA-256 chain, and the plant historian.</p>
-      <div class="table-wrap"><table class="data"><thead><tr><th>Schema</th><th>Table</th><th>Rows</th><th>Columns</th><th>Indexes</th></tr></thead><tbody><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">ArchivedRecord</span></td><td class="num" data-label="Rows">2,000</td><td class="num" data-label="Columns">9</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">LegalHold</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">5</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">LegalHoldRecord</span></td><td class="num" data-label="Rows">120</td><td class="num" data-label="Columns">3</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">PurgeRun</span></td><td class="num" data-label="Rows">12</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">RetentionPolicy</span></td><td class="num" data-label="Rows">6</td><td class="num" data-label="Columns">5</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">CollectorRun</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">Gap</span></td><td class="num" data-label="Rows">2</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">Reading</span></td><td class="num" data-label="Rows">588</td><td class="num" data-label="Columns">5</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">Tag</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">3</td></tr></tbody></table></div>
-      <figure class="erd">
-        <img src="assets/erds/AFS_Archive.svg?v=615e2bbdaf" alt="Entity relationship diagram for AFS_Archive, generated from the live catalog" loading="lazy">
-        <figcaption>Generated from the catalog export; every line is a declared foreign key.
-          <a href="assets/erds/AFS_Archive.html">Open the diagram on its own page</a>.</figcaption>
-      </figure>
-    </section>
-    <section data-reveal class="wrap section" id="audit">
-      <div class="section-head">
-        <div class="kicker">Audit</div>
-        <h2 class="mono">AFS_Audit</h2>
-        <p>6 tables &middot; 0 views &middot; 0 procedures &middot;
-        0 foreign keys &middot; 6,769 rows</p>
-      </div>
-      <p class="muted">The central audit record, administrative actions, security events and operational history.</p>
-      <div class="table-wrap"><table class="data"><thead><tr><th>Schema</th><th>Table</th><th>Rows</th><th>Columns</th><th>Indexes</th></tr></thead><tbody><tr><td data-label="Schema"><span class="mono">administration</span></td><td data-label="Table"><span class="mono">AdminAction</span></td><td class="num" data-label="Rows">30</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">audit</span></td><td data-label="Table"><span class="mono">AuditRecord</span></td><td class="num" data-label="Rows">6,168</td><td class="num" data-label="Columns">10</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">dbo</span></td><td data-label="Table"><span class="mono">DbaOpsLog</span></td><td class="num" data-label="Rows">314</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">operational</span></td><td data-label="Table"><span class="mono">BackupHistory</span></td><td class="num" data-label="Rows">24</td><td class="num" data-label="Columns">10</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">operational</span></td><td data-label="Table"><span class="mono">JobRun</span></td><td class="num" data-label="Rows">48</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">security</span></td><td data-label="Table"><span class="mono">SecurityEvent</span></td><td class="num" data-label="Rows">120</td><td class="num" data-label="Columns">8</td><td class="num" data-label="Indexes">2</td></tr></tbody></table></div>
-      <figure class="erd">
-        <img src="assets/erds/AFS_Audit.svg?v=4472ac01e5" alt="Entity relationship diagram for AFS_Audit, generated from the live catalog" loading="lazy">
-        <figcaption>Generated from the catalog export; every line is a declared foreign key.
-          <a href="assets/erds/AFS_Audit.html">Open the diagram on its own page</a>.</figcaption>
-      </figure>
-    </section>
-    <section data-reveal class="wrap section" id="compliance">
-      <div class="section-head">
-        <div class="kicker">Compliance</div>
-        <h2 class="mono">AFS_Compliance</h2>
-        <p>7 tables &middot; 0 views &middot; 0 procedures &middot;
-        5 foreign keys &middot; 261 rows</p>
-      </div>
-      <p class="muted">Obligations, controls, tests, findings, remediation and key-custody records.</p>
-      <div class="table-wrap"><table class="data"><thead><tr><th>Schema</th><th>Table</th><th>Rows</th><th>Columns</th><th>Indexes</th></tr></thead><tbody><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Control</span></td><td class="num" data-label="Rows">30</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">ControlObligation</span></td><td class="num" data-label="Rows">60</td><td class="num" data-label="Columns">3</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">ControlTest</span></td><td class="num" data-label="Rows">120</td><td class="num" data-label="Columns">8</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Finding</span></td><td class="num" data-label="Rows">12</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">KeyCustodyRecord</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">9</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Obligation</span></td><td class="num" data-label="Rows">24</td><td class="num" data-label="Columns">4</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Remediation</span></td><td class="num" data-label="Rows">12</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr></tbody></table></div>
-      <figure class="erd">
-        <img src="assets/erds/AFS_Compliance.svg?v=79906838fa" alt="Entity relationship diagram for AFS_Compliance, generated from the live catalog" loading="lazy">
-        <figcaption>Generated from the catalog export; every line is a declared foreign key.
-          <a href="assets/erds/AFS_Compliance.html">Open the diagram on its own page</a>.</figcaption>
-      </figure>
-    </section>
-    <section data-reveal class="wrap section" id="archive">
-      <div class="section-head">
-        <div class="kicker">Archive</div>
-        <h2 class="mono">AFS_Archive</h2>
-        <p>9 tables &middot; 0 views &middot; 0 procedures &middot;
-        7 foreign keys &middot; 2,737 rows</p>
-      </div>
-      <p class="muted">Retention policy, legal hold, archived records with a SHA-256 chain, and the plant historian.</p>
-      <div class="table-wrap"><table class="data"><thead><tr><th>Schema</th><th>Table</th><th>Rows</th><th>Columns</th><th>Indexes</th></tr></thead><tbody><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">ArchivedRecord</span></td><td class="num" data-label="Rows">2,000</td><td class="num" data-label="Columns">9</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">LegalHold</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">5</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">LegalHoldRecord</span></td><td class="num" data-label="Rows">120</td><td class="num" data-label="Columns">3</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">PurgeRun</span></td><td class="num" data-label="Rows">12</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">retention</span></td><td data-label="Table"><span class="mono">RetentionPolicy</span></td><td class="num" data-label="Rows">6</td><td class="num" data-label="Columns">5</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">CollectorRun</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">Gap</span></td><td class="num" data-label="Rows">2</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">Reading</span></td><td class="num" data-label="Rows">588</td><td class="num" data-label="Columns">5</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">telemetry</span></td><td data-label="Table"><span class="mono">Tag</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">3</td></tr></tbody></table></div>
-      <figure class="erd">
-        <img src="assets/erds/AFS_Archive.svg?v=615e2bbdaf" alt="Entity relationship diagram for AFS_Archive, generated from the live catalog" loading="lazy">
-        <figcaption>Generated from the catalog export; every line is a declared foreign key.
-          <a href="assets/erds/AFS_Archive.html">Open the diagram on its own page</a>.</figcaption>
-      </figure>
-    </section>
-    <section data-reveal class="wrap section" id="audit">
-      <div class="section-head">
-        <div class="kicker">Audit</div>
-        <h2 class="mono">AFS_Audit</h2>
-        <p>6 tables &middot; 0 views &middot; 0 procedures &middot;
-        0 foreign keys &middot; 6,769 rows</p>
-      </div>
-      <p class="muted">The central audit record, administrative actions, security events and operational history.</p>
-      <div class="table-wrap"><table class="data"><thead><tr><th>Schema</th><th>Table</th><th>Rows</th><th>Columns</th><th>Indexes</th></tr></thead><tbody><tr><td data-label="Schema"><span class="mono">administration</span></td><td data-label="Table"><span class="mono">AdminAction</span></td><td class="num" data-label="Rows">30</td><td class="num" data-label="Columns">7</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">audit</span></td><td data-label="Table"><span class="mono">AuditRecord</span></td><td class="num" data-label="Rows">6,168</td><td class="num" data-label="Columns">10</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">dbo</span></td><td data-label="Table"><span class="mono">DbaOpsLog</span></td><td class="num" data-label="Rows">371</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">operational</span></td><td data-label="Table"><span class="mono">BackupHistory</span></td><td class="num" data-label="Rows">24</td><td class="num" data-label="Columns">10</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">operational</span></td><td data-label="Table"><span class="mono">JobRun</span></td><td class="num" data-label="Rows">48</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr><tr><td data-label="Schema"><span class="mono">security</span></td><td data-label="Table"><span class="mono">SecurityEvent</span></td><td class="num" data-label="Rows">120</td><td class="num" data-label="Columns">8</td><td class="num" data-label="Indexes">2</td></tr></tbody></table></div>
-      <figure class="erd">
-        <img src="assets/erds/AFS_Audit.svg?v=4472ac01e5" alt="Entity relationship diagram for AFS_Audit, generated from the live catalog" loading="lazy">
-        <figcaption>Generated from the catalog export; every line is a declared foreign key.
-          <a href="assets/erds/AFS_Audit.html">Open the diagram on its own page</a>.</figcaption>
-      </figure>
-    </section>
-    <section data-reveal class="wrap section" id="compliance">
-      <div class="section-head">
-        <div class="kicker">Compliance</div>
-        <h2 class="mono">AFS_Compliance</h2>
-        <p>7 tables &middot; 0 views &middot; 0 procedures &middot;
-        5 foreign keys &middot; 261 rows</p>
-      </div>
-      <p class="muted">Obligations, controls, tests, findings, remediation and key-custody records.</p>
-      <div class="table-wrap"><table class="data"><thead><tr><th>Schema</th><th>Table</th><th>Rows</th><th>Columns</th><th>Indexes</th></tr></thead><tbody><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Control</span></td><td class="num" data-label="Rows">30</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">ControlObligation</span></td><td class="num" data-label="Rows">60</td><td class="num" data-label="Columns">3</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">ControlTest</span></td><td class="num" data-label="Rows">120</td><td class="num" data-label="Columns">8</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Finding</span></td><td class="num" data-label="Rows">12</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">KeyCustodyRecord</span></td><td class="num" data-label="Rows">3</td><td class="num" data-label="Columns">9</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Obligation</span></td><td class="num" data-label="Rows">24</td><td class="num" data-label="Columns">4</td><td class="num" data-label="Indexes">2</td></tr><tr><td data-label="Schema"><span class="mono">grc</span></td><td data-label="Table"><span class="mono">Remediation</span></td><td class="num" data-label="Rows">12</td><td class="num" data-label="Columns">6</td><td class="num" data-label="Indexes">1</td></tr></tbody></table></div>
-      <figure class="erd">
-        <img src="assets/erds/AFS_Compliance.svg?v=79906838fa" alt="Entity relationship diagram for AFS_Compliance, generated from the live catalog" loading="lazy">
-        <figcaption>Generated from the catalog export; every line is a declared foreign key.
-          <a href="assets/erds/AFS_Compliance.html">Open the diagram on its own page</a>.</figcaption>
-      </figure>
-    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <section data-reveal class="wrap section" id="corebanking">
       <div class="section-head">
         <div class="kicker">CoreBanking</div>
