@@ -828,3 +828,34 @@ pre, .code { max-width: 100%; overflow-x: auto; }
 @media (max-width: 760px) {
   .case-body pre, .case-body pre code { font-size: 12.5px; line-height: 1.6; }
 }
+
+/* Readability: prose keeps a comfortable measure even on wide screens.
+   Tables, code, diagrams and cards keep their full width. */
+main p, main li, main .meta, main .muted { max-width: 36em; }
+main .case-body { max-width: 660px; margin-left: auto; margin-right: auto; padding-left: 32px; padding-right: 32px; box-sizing: border-box; }
+main .case-body p, main .case-body li { max-width: none; }
+
+/* Touch targets: standalone controls are at least 40px tall. */
+.btn, a.btn, button.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; }
+.menu-btn, .nav-trigger { min-width: 44px; min-height: 44px; }
+@media (max-width: 820px) {
+  .xp-tab { min-height: 40px; }
+  .badge-link { min-height: 32px; display: inline-flex; align-items: center; }
+}
+@media (max-width: 720px) {
+  .erd-tools button { min-height: 40px; padding: 9px 14px; }
+}
+
+@media (max-width: 820px) {
+  .icon-btn { min-width: 40px; min-height: 40px; }
+  .chip { min-height: 36px; }
+  .badge, .badge-link { min-height: 34px; display: inline-flex; align-items: center; }
+  .foot a { display: inline-block; padding: 4px 0; }
+  .brand { min-height: 44px; }
+}
+
+/* Hero ledes follow the same reading measure as body prose. */
+main .lede { max-width: 36em; }
+
+/* Case-study pages read as one centred article: title, status and body share a column. */
+body:has(.case-body) .page-head { max-width: 660px; margin-left: auto; margin-right: auto; }
