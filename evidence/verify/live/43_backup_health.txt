@@ -1,9 +1,13 @@
-[2026-11-25T09:13:16] AFS backup health
-OK       SQL Server   log backup: AFS_Audit            8 min since last log backup (warn 30m / crit 120m)
-OK       SQL Server   log backup: AFS_CoreBanking      8 min since last log backup (warn 30m / crit 120m)
-OK       SQL Server   log backup: AFS_CustomerService  8 min since last log backup (warn 30m / crit 120m)
-OK       SQL Server   log backup: AFS_Fraud            8 min since last log backup (warn 30m / crit 120m)
-OK       SQL Server   log backup: AFS_Payments         8 min since last log backup (warn 30m / crit 120m)
-OK       Oracle       fast recovery area               41.9% used (warn 80% / crit 90%)
-OK       Oracle       scheduled RMAN run               last run 0.1 h ago, result 0
-OK       MySQL        newest dump                      afs_lab_20261125_091144.sql, 0 h old
+[2026-11-26T14:11:56] AFS backup health
+OK       SQL Server   log backup: AFS_Audit            6 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_CoreBanking      6 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_CustomerService  6 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_Fraud            6 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_Payments         6 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_Identity         6 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_Compliance       6 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_Archive          6 min since last log backup (warn 30m / crit 120m)
+OK       SQL Server   log backup: AFS_Payments_HostLoss 6 min since last log backup (warn 30m / crit 120m)
+OK       Oracle       fast recovery area               55.5% used (warn 80% / crit 90%)
+OK       Oracle       scheduled RMAN run               last run 6.7 h ago, result 0
+OK       MySQL        newest dump                      afs_lab_20261126_072738.sql, 6.7 h old

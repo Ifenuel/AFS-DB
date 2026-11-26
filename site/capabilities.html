@@ -157,7 +157,7 @@
     </div>
     <div class="panel" id="run-it-yourself" style="margin-top:16px">
       <h3>The commands, and what came back</h3>
-      <p class="muted">These four checks are how I prove the estate is what I say it is. I built the databases, the backup jobs and the rebuild script; the commands below are the ones I typed, and the results are what came back on 26 November 2026 — including the check that still fails. Full captures are on <a href="verification.html">the evidence page</a>.</p>
+      <p class="muted">These four checks are how I prove the estate is what I say it is. I built the databases, the backup jobs and the rebuild script; the commands below are the ones I typed, and the results are what came back on 26 November 2026. Every capture is kept verbatim in the repository, and <a href="verification.html">the evidence page</a> indexes them.</p>
       <div class="grid-2">
         <div><h4>1. The estate is online</h4>
           <pre><code>sqlcmd -S . -E -C -Q "SELECT name, state_desc FROM sys.databases WHERE name LIKE 'AFS%'"</code></pre>
@@ -167,7 +167,7 @@
           <p class="meta"><b>Returned</b> <code>The backup set on file 1 is valid.</code> The newest <code>*_FULL_*.bak</code> in that folder is the one to check; the file names carry their timestamp.</p></div>
         <div><h4>3. Backups are fresh</h4>
           <pre><code>powershell -NoProfile -ExecutionPolicy Bypass -File automation\powershell\Test-AfsBackupHealth.ps1</code></pre>
-          <p class="meta"><b>Returned</b> exit code 2. All nine SQL databases had log backups two minutes old, the last RMAN run had succeeded 6.7 hours earlier and the newest MySQL dump was 6.7 hours old; the Oracle fast-recovery-area check could not run because the SYS password file is missing, so the script refuses to report healthy. That refusal is the check doing its job.</p></div>
+          <p class="meta"><b>Returned</b> exit code 0. All nine SQL databases had log backups six minutes old, the Oracle fast recovery area sat at 55.5% against an 80% warning line, the last RMAN run had succeeded 6.7 hours earlier and the newest MySQL dump was 6.7 hours old.</p></div>
         <div><h4>4. The estate rebuilds</h4>
           <pre><code>powershell -NoProfile -ExecutionPolicy Bypass -File tools\drill-host-loss.ps1</code></pre>
           <p class="meta"><b>Returned</b> PASS — 11 of 11 objects row-identical, 0 balance mismatches, 3 s. It backs up both databases and restores scratch copies under <code>C:\Backups\hostloss</code>; the TDE-encrypted <code>AFS_Payments</code> rebuilds on the source engine because LocalDB cannot open a TDE database, and the output says so.</p></div>
