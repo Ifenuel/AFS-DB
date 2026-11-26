@@ -859,3 +859,6 @@ main .lede { max-width: 36em; }
 
 /* Case-study pages read as one centred article: title, status and body share a column. */
 body:has(.case-body) .page-head { max-width: 660px; margin-left: auto; margin-right: auto; }
+@media (max-width: 720px) {
+  main .case-body { padding-left: 20px; padding-right: 20px; }
+}
