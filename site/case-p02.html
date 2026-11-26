@@ -84,7 +84,7 @@
 <h2>10. Engineering solution</h2>
 <p>Staging separates arrival from acceptance. Validation normalises units, rejects implausible values, detects duplicate tag/source/timestamp triples, and classifies late and out-of-order arrivals instead of discarding them. Quarantine keeps the raw payload. Corrections preserve originals. Completeness is scored per run from the configured cadence.</p>
 <h2>11. Limitations</h2>
-<ul><li>Three tags on one simulated wellhead; no OPC-UA, no real SCADA, no multi-site clock skew.</li><li>The collector and historian are on the same host, so network delay is simulated, not observed.</li><li>The completeness probability is a simplified gap-tail estimate.</li><li>Drift is injected, not detected by a model; the lab shows the data-quality consequence, not drift detection.</li><li>No claim is made about Seplat or any operator's telemetry.</li></ul>
+<ul><li>Three tags on one simulated wellhead; no OPC-UA, no real SCADA, no multi-site clock skew.</li><li>The collector and historian are on the same host, so network delay is simulated, not observed.</li><li>The completeness probability is a simplified gap-tail estimate.</li><li>Drift is injected, not detected by a model; the lab shows the data-quality consequence, not drift detection.</li><li>I make no claim about Seplat or any operator's telemetry.</li></ul>
 <h2>12. Residual risk</h2>
 <p>Quarantine requires an owner and a review process; otherwise it becomes a silent graveyard. A sustained unit error would be normalised every time and remain invisible unless the rate is alarmed. Corrections are manual, so a correction rate is itself a quality indicator.</p>
 <h2>13. Production considerations</h2>

@@ -40,7 +40,7 @@
   <div class="wrap page-head">
     <div class="kicker" data-hero>Backup and recovery</div>
     <h1 data-hero>Backups that were restored, not just written</h1>
-    <p class="lede" data-hero>Full and log backups run under the Agent, are compressed and checksummed, and are verified. The migration itself is the largest restore test in the project.</p>
+    <p class="lede" data-hero>I run full and log backups under the Agent, compress and checksum every set, and verify it before counting it as a backup. The migration itself was the largest restore test in the project.</p>
     <div class="badges" data-hero><span class="badge">3.43× compression</span><span class="badge">15-minute log schedule</span><span class="badge">Rehearsed restore</span></div>
   </div>
 
@@ -93,7 +93,7 @@
       <tr><td data-label="Claim">VERIFYONLY</td><td data-label="What is true here">9 of 9 latest full backups verified with CHECKSUM; the file list is read from msdb, not typed</td><td data-label="Evidence"><a href="verification.html#62_backup_coverage">capture 62</a></td></tr>
       <tr><td data-label="Claim">Actual restore</td><td data-label="What is true here">Three governance databases restored to scratch copies with identical table and row counts; CoreBanking restored full + 19 logs, three runs</td><td data-label="Evidence"><a href="verification.html#63_restore_coverage">capture 63</a>; timed drill below</td></tr>
       <tr><td data-label="Claim">Tested point-in-time</td><td data-label="What is true here">STOPAT to a chosen second on SQL Server (0.75 s); FREEPDB1 recovered by RMAN to before a deleted marker row on Oracle</td><td data-label="Evidence">captures 47, 30</td></tr>
-      <tr><td data-label="Claim">RPO / RTO</td><td data-label="What is true here">RPO target is 15 minutes; it is not claimed as continuously achieved (a 3 h 19 m gap is in the history). RTO measured for the database restore only: 7.2–8.4 s for 28 MB; the service-level target stays 60 minutes</td><td data-label="Evidence">msdb history; timed drill</td></tr>
+      <tr><td data-label="Claim">RPO / RTO</td><td data-label="What is true here">RPO target is 15 minutes, and I do not claim it held continuously: a 3 h 19 m gap is in the history. RTO measured for the database restore only: 7.2–8.4 s for 28 MB; the service-level target stays 60 minutes</td><td data-label="Evidence">msdb history; timed drill</td></tr>
     </tbody></table></div>
   </section>
 

@@ -58,12 +58,12 @@
     <div class="grid-2">
       <div class="panel"><h3>Backup media is ciphertext</h3><p class="muted">Full backups are written with AES-256 under a server certificate. Restoring the encrypted
       file with the certificate removed is <strong>refused</strong> (SQL error 33111); re-importing the key restores it in 0.7 s.
-      A stolen dump is not a data breach.</p><p class="muted"><a href="verification.html#49_encrypted_backup">See the captured output</a></p></div>
+      A stolen dump is not a data breach.</p><p class="muted"><a href="verification.html#49_encrypted_backup">The captured output</a></p></div>
       <div class="panel"><h3>A failed login is a record</h3><p class="muted">Deliberate bad logins are captured by an extended-events session within seconds, with the client
-      machine and the rejection reason — the answer to a nine-day detection gap.</p><p class="muted"><a href="verification.html#51_failed_login_detection">See the captured output</a></p></div>
+      machine and the rejection reason — the answer to a nine-day detection gap.</p><p class="muted"><a href="verification.html#51_failed_login_detection">The captured output</a></p></div>
       <div class="panel"><h3>One identity, one database</h3><p class="muted">The application identity holds no server role, reads one reporting view, and is <strong>denied</strong>
       SELECT on the customer and account tables. A blast-radius audit found a connect-only mapping in the payments
-      database from earlier work; it was removed.</p><p class="muted"><a href="verification.html#50_least_privilege">See the captured output</a></p></div>
+      database from earlier work; it was removed.</p><p class="muted"><a href="verification.html#50_least_privilege">The captured output</a></p></div>
       <div class="panel"><h3>No credential in source</h3><p class="muted">The build scans every tracked file for keys, passwords and connection strings. Zero findings across
       200+ files, and a planted secret fails the build — so the hardcoded-credential step in the 2026 chain cannot
       be reintroduced quietly.</p><p class="mono muted">automation/python/validate_repo.py</p></div>
