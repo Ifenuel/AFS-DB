@@ -91,3 +91,11 @@ that are conceptual and used for vocabulary only.
 ## Contact
 
 Awoyo Emmanuel Ifeoluwa — [About and contact](site/about.html).
+
+## Snapshot policy
+
+Every published figure comes from `site/data/inventory.json`, captured on 25 November 2026 at
+17:49 UTC. Test runs keep writing rows and backups, so the database has moved on since; the site
+reports the capture, not the current instance. Refresh deliberately with
+`python tools/audit/build_inventory.py --refresh`, then rebuild the pages — figures are never edited
+by hand. Operational figures keep their own capture time.
