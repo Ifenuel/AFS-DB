@@ -149,15 +149,15 @@
   <section data-reveal class="wrap section">
     <div class="section-head">
       <div class="kicker">Verify it</div>
-      <h2>Four checks, and the output each one produced</h2>
+      <h2>Four checks I run on the estate</h2>
     </div>
     <div class="grid-2">
       <div class="panel"><h3>Read the estate</h3><p class="muted">Every table, row count and relationship on this site is read from the running catalog, not typed in.</p><p><a href="architecture.html">Schema</a> · <a href="explorer.html">Explorer</a> · <a href="diagrams.html">Diagrams</a></p></div>
       <div class="panel"><h3>Check the recovery</h3><p class="muted">Backup sets, verification results and the two point-in-time recoveries, each with its captured output.</p><p><a href="backup.html">Backup</a> · <a href="oracle.html">Oracle</a> · <a href="verification.html">Evidence</a></p></div>
     </div>
     <div class="panel" id="run-it-yourself" style="margin-top:16px">
-      <h3>The commands, and what they returned</h3>
-      <p class="muted">These are the four checks I would put in front of a reviewer first. They ran against the lab instance on my workstation, so they cannot be run from this page — and you should not have to rebuild my laptop to check my work. Each command sits beside the output it produced on 26 November 2026; the full captures, failures included, are on <a href="verification.html">the evidence page</a>.</p>
+      <h3>The commands, and what came back</h3>
+      <p class="muted">These four checks are how I prove the estate is what I say it is. I built the databases, the backup jobs and the rebuild script; the commands below are the ones I typed, and the results are what came back on 26 November 2026 — including the check that still fails. Full captures are on <a href="verification.html">the evidence page</a>.</p>
       <div class="grid-2">
         <div><h4>1. The estate is online</h4>
           <pre><code>sqlcmd -S . -E -C -Q "SELECT name, state_desc FROM sys.databases WHERE name LIKE 'AFS%'"</code></pre>
@@ -167,7 +167,7 @@
           <p class="meta"><b>Returned</b> <code>The backup set on file 1 is valid.</code> The newest <code>*_FULL_*.bak</code> in that folder is the one to check; the file names carry their timestamp.</p></div>
         <div><h4>3. Backups are fresh</h4>
           <pre><code>powershell -NoProfile -ExecutionPolicy Bypass -File automation\powershell\Test-AfsBackupHealth.ps1</code></pre>
-          <p class="meta"><b>Returned</b> exit 0, with every engine answering: SQL log backups inside 30 minutes, the last RMAN run successful, the newest MySQL dump under 36 hours. The Oracle FRA check needs <code>.secrets\oracle_sys_password.txt</code>; without it the script exits 2 instead of reporting healthy.</p></div>
+          <p class="meta"><b>Returned</b> exit code 2. All nine SQL databases had log backups two minutes old, the last RMAN run had succeeded 6.7 hours earlier and the newest MySQL dump was 6.7 hours old; the Oracle fast-recovery-area check could not run because the SYS password file is missing, so the script refuses to report healthy. That refusal is the check doing its job.</p></div>
         <div><h4>4. The estate rebuilds</h4>
           <pre><code>powershell -NoProfile -ExecutionPolicy Bypass -File tools\drill-host-loss.ps1</code></pre>
           <p class="meta"><b>Returned</b> PASS — 11 of 11 objects row-identical, 0 balance mismatches, 3 s. It backs up both databases and restores scratch copies under <code>C:\Backups\hostloss</code>; the TDE-encrypted <code>AFS_Payments</code> rebuilds on the source engine because LocalDB cannot open a TDE database, and the output says so.</p></div>

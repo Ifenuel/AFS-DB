@@ -105,8 +105,8 @@
   <section data-reveal class="wrap section">
     <div class="section-head">
       <div class="kicker">Check it in five minutes</div>
-      <h2>Three commands, run against the live instance</h2>
-      <p>Each check below is a command you can run on this instance. Remove the control and it fails; that is what makes it a control rather than a claim.</p>
+      <h2>Three controls I demonstrated on the instance</h2>
+      <p>Each row is a check I ran against the live instance. Remove the control and it fails; that is what makes it a control rather than a claim.</p>
     </div>
     <div class="table-wrap"><table class="data"><thead><tr><th>Check</th><th>Command</th><th>What proves it</th></tr></thead><tbody>
       <tr><td data-label="Check">Encryption is real</td><td data-label="Command"><code class="mono">RESTORE DATABASE proof FROM DISK='&lt;backup-root&gt;\AFS_Audit_ENCRYPTED.bak'</code></td><td data-label="What proves it">Fails with <strong>33111</strong> until the certificate is imported. No key, no data.</td></tr>
