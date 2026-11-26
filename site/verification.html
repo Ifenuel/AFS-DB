@@ -262,10 +262,10 @@ application procs  : 12 in AFS_CoreBanking</pre>
       <h3>The estate rebuilds from backup</h3>
       <p class="meta">A fresh backup of both databases is restored and compared. <code>AFS_CoreBanking</code> goes onto a second SQL Server 2025 instance with its own service and files — the same operation as rebuilding after the original host is lost. <code>AFS_Payments</code> is TDE-encrypted, which LocalDB cannot open, so it is restored on the TDE-capable engine instead; the output states that difference.</p>
       <p class="meta"><b>Result.</b> Eleven objects match the live estate row for row, balances still reconcile, total restore 3 s.</p>
-      <pre class="term">=== Host-loss rebuild drill  2026-11-26T08:32:02 ===
+      <pre class="term">=== Host-loss rebuild drill  2026-11-26T08:33:38 ===
 source instance : .  (SQL Server 17.0.1000.7)
 target instance : (localdb)\MSSQLLocalDB  (SQL Server 17.0.1000.7, separate engine)
-                  AFS_Payments_HostLoss rebuilt on . - LocalDB cannot restore a TDE database
+                  AFS_Payments_HostLoss rebuilt on the source engine - LocalDB cannot restore a TDE database
 backup          : &lt;backup-store&gt;\hostloss\AFS_CoreBanking_hostloss.bak  (17.2 MB, CHECKSUM, COMPRESSION)
                   &lt;backup-store&gt;\hostloss\AFS_Payments_hostloss.bak  (1.3 MB, CHECKSUM, COMPRESSION)
 backup time     : 1.5 s

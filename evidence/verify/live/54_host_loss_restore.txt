@@ -1,7 +1,7 @@
-﻿=== Host-loss rebuild drill  2026-11-26T08:32:02 ===
+﻿=== Host-loss rebuild drill  2026-11-26T08:33:38 ===
 source instance : .  (SQL Server 17.0.1000.7)
 target instance : (localdb)\MSSQLLocalDB  (SQL Server 17.0.1000.7, separate engine)
-                  AFS_Payments_HostLoss rebuilt on . - LocalDB cannot restore a TDE database
+                  AFS_Payments_HostLoss rebuilt on the source engine - LocalDB cannot restore a TDE database
 backup          : C:\Backups\hostloss\AFS_CoreBanking_hostloss.bak  (17.2 MB, CHECKSUM, COMPRESSION)
                   C:\Backups\hostloss\AFS_Payments_hostloss.bak  (1.3 MB, CHECKSUM, COMPRESSION)
 backup time     : 1.5 s

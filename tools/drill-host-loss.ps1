@@ -138,7 +138,7 @@ $sourceVersion = (Sql $Source "SELECT LEFT(CAST(SERVERPROPERTY('ProductVersion')
 $out.Add("=== Host-loss rebuild drill  $stamp ===")
 $out.Add("source instance : $Source  (SQL Server $sourceVersion)")
 $out.Add("target instance : (localdb)\MSSQLLocalDB  (SQL Server $version, separate engine)")
-if ($tdeCert) { $out.Add("                  AFS_Payments_HostLoss rebuilt on $Source - LocalDB cannot restore a TDE database") }
+if ($tdeCert) { $out.Add("                  AFS_Payments_HostLoss rebuilt on the source engine - LocalDB cannot restore a TDE database") }
 $out.Add("backup          : $coreBak  ($coreMb MB, CHECKSUM, COMPRESSION)")
 $out.Add("                  $payBak  ($payMb MB, CHECKSUM, COMPRESSION)")
 $out.Add("backup time     : $backupSeconds s")
