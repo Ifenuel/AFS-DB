@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#060a11">
 <link rel="icon" href="assets/brand/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
-<link rel="stylesheet" href="assets/app.css?v=37739bc1fa">
+<link rel="stylesheet" href="assets/app.css?v=95a8594b53">
 <link rel="stylesheet" href="assets/nav.css?v=43e61470bd">
 <script src="assets/nav.js?v=e9b90b3f5c" defer></script>
 <style>
@@ -149,17 +149,29 @@
   <section data-reveal class="wrap section">
     <div class="section-head">
       <div class="kicker">Verify it</div>
-      <h2>Ten minutes, three commands, no trust required</h2>
+      <h2>Ten minutes, four commands, no trust required</h2>
     </div>
     <div class="grid-2">
       <div class="panel"><h3>Read the estate</h3><p class="muted">Every table, row count and relationship on this site is read from the running catalog, not typed in.</p><p><a href="architecture.html">Schema</a> · <a href="explorer.html">Explorer</a> · <a href="diagrams.html">Diagrams</a></p></div>
       <div class="panel"><h3>Check the recovery</h3><p class="muted">Backup sets, verification results and the two point-in-time recoveries, each with its captured output.</p><p><a href="backup.html">Backup</a> · <a href="oracle.html">Oracle</a> · <a href="verification.html">Evidence</a></p></div>
     </div>
-    <div class="panel" style="margin-top:16px"><h3>Run it yourself</h3>
-      <p class="mono muted">sqlcmd -S . -E -C -Q "SELECT name, state_desc FROM sys.databases WHERE name LIKE 'AFS%'"</p>
-      <p class="mono muted">sqlcmd -S . -E -C -Q "RESTORE VERIFYONLY FROM DISK='&lt;backup-root&gt;\AFS_CoreBanking_FULL.bak' WITH CHECKSUM"</p>
-      <p class="mono muted">powershell -NoProfile -ExecutionPolicy Bypass -File automation\powershell\Test-AfsBackupHealth.ps1</p>
-      <p class="mono muted">powershell -NoProfile -ExecutionPolicy Bypass -File tools\drill-host-loss.ps1</p>
+    <div class="panel" id="run-it-yourself" style="margin-top:16px">
+      <h3>Run it yourself</h3>
+      <p class="muted">Run these from the repository root on the machine that holds the lab. Outputs quoted are from the runs captured on <a href="verification.html">the evidence page</a> on 26 November 2026; nothing here is retyped from a summary.</p>
+      <div class="grid-2">
+        <div><h4>1. The estate is online</h4>
+          <pre><code>sqlcmd -S . -E -C -Q "SELECT name, state_desc FROM sys.databases WHERE name LIKE 'AFS%'"</code></pre>
+          <p class="meta">Nine rows, every one <code>ONLINE</code>: Archive, Audit, Compliance, CoreBanking, CustomerService, Fraud, Identity, Payments, Reporting.</p></div>
+        <div><h4>2. A backup verifies</h4>
+          <pre><code>sqlcmd -S . -E -C -Q "RESTORE VERIFYONLY FROM DISK='C:\AFS\Backups\AFS_CoreBanking\AFS_AFS_CoreBanking_FULL_&lt;timestamp&gt;.bak' WITH CHECKSUM"</code></pre>
+          <p class="meta">Use the newest <code>*_FULL_*.bak</code> in that folder; the file names carry their timestamp. Returns <code>The backup set on file 1 is valid.</code></p></div>
+        <div><h4>3. Backups are fresh</h4>
+          <pre><code>powershell -NoProfile -ExecutionPolicy Bypass -File automation\powershell\Test-AfsBackupHealth.ps1</code></pre>
+          <p class="meta">Exit 0 means every engine answered: SQL log backups inside 30 minutes, the last RMAN run successful, the newest MySQL dump under 36 hours. The Oracle FRA check needs <code>.secrets\oracle_sys_password.txt</code>; without it the script exits 2 instead of reporting healthy.</p></div>
+        <div><h4>4. The estate rebuilds</h4>
+          <pre><code>powershell -NoProfile -ExecutionPolicy Bypass -File tools\drill-host-loss.ps1</code></pre>
+          <p class="meta">PASS: 11 of 11 objects row-identical, 0 balance mismatches, 3 s. It backs up both databases and restores scratch copies under <code>C:\Backups\hostloss</code>; the TDE-encrypted <code>AFS_Payments</code> rebuilds on the source engine because LocalDB cannot open a TDE database, and the output says so.</p></div>
+      </div>
     </div>
   </section>
 
