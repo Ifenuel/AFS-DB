@@ -83,10 +83,10 @@
 <div class="table-scroll"><table><thead><tr><th>Fault</th><th>Mechanism</th></tr></thead><tbody><tr><td>Missing</td><td>collector/plant outage and dropped frames; nothing reconstructs them</td></tr><tr><td>Duplicate</td><td>retries and out-of-order collisions with no idempotent key</td></tr><tr><td>Out of order</td><td>timestamps taken at the source, arrival order taken at the collector</td></tr><tr><td>Unit error</td><td>device configured in a different engineering unit</td></tr><tr><td>Spike / corrupt</td><td>sensor fault and malformed frame accepted as a value</td></tr><tr><td>Drift</td><td>calibration error, invisible without a reference or a trend check</td></tr></tbody></table></div>
 <h2>10. Engineering solution</h2>
 <p>Staging separates arrival from acceptance. Validation normalises units, rejects implausible values, detects duplicate tag/source/timestamp triples, and classifies late and out-of-order arrivals instead of discarding them. Quarantine keeps the raw payload. Corrections preserve originals. Completeness is scored per run from the configured cadence.</p>
-<h2>11. Limitations</h2>
-<ul><li>Three tags on one simulated wellhead; no OPC-UA, no real SCADA, no multi-site clock skew.</li><li>The collector and historian are on the same host, so network delay is simulated, not observed.</li><li>The completeness probability is a simplified gap-tail estimate.</li><li>Drift is injected, not detected by a model; the lab shows the data-quality consequence, not drift detection.</li><li>I make no claim about Seplat or any operator's telemetry.</li></ul>
-<h2>12. Residual risk</h2>
-<p>Quarantine requires an owner and a review process; otherwise it becomes a silent graveyard. A sustained unit error would be normalised every time and remain invisible unless the rate is alarmed. Corrections are manual, so a correction rate is itself a quality indicator.</p>
+<h2>11. Where I bounded the test</h2>
+<ul><li>I put three tags on a single simulated wellhead: no OPC-UA, no real SCADA, no multi-site clock skew.</li><li>The collector and historian share a host, so I simulate network delay rather than observe it.</li><li>The completeness probability is a simplified gap-tail estimate.</li><li>I inject drift rather than detect it with a model: the lab shows the data-quality consequence, not drift detection.</li><li>I make no claim about Seplat or any operator's telemetry.</li></ul>
+<h2>12. What remains exposed</h2>
+<p>Quarantine needs an owner and a review process, or it becomes a silent graveyard. A sustained unit error would be normalised every time and stay invisible unless I alarm on the rate. Corrections are manual, so the correction rate is itself a quality indicator.</p>
 <h2>13. Production considerations</h2>
 <p>Validate at the edge where possible; keep the raw frame; alarm on quarantine rate and completeness trend, not just on missing heartbeats; version tag metadata (unit, range) so historical values can be reinterpreted; and never impute an operational measurement without marking it as estimated.</p>
 <h2>14. Runbook</h2>
@@ -101,8 +101,8 @@ sqlcmd -E -C -S . -d AFS_Archive -Q &quot;SELECT * FROM telemetry.Quarantine ORD
 sqlcmd -E -C -S . -d AFS_Archive -Q &quot;SELECT * FROM telemetry.CompletenessScore ORDER BY ScoreId DESC;&quot;</code></pre>
 <h2>15. Evidence</h2>
 <div class="table-scroll"><table><thead><tr><th>Artifact</th><th>Path</th></tr></thead><tbody><tr><td>Schema</td><td><code>sql-server/telemetry/00_quality_schema.sql</code></td></tr><tr><td>Validation, scoring, correction, reset</td><td><code>sql-server/telemetry/10_quality_pipeline.sql</code></td></tr><tr><td>Fault-emitting collector</td><td><code>tools/ot/fault_collector.py</code></td></tr><tr><td>Driver and assertions</td><td><code>tools/ot/run_quality.py</code></td></tr><tr><td>Results</td><td><code>evidence/research/P-02/RESULTS.md</code>, <code>p02-latest.json</code></td></tr></tbody></table></div>
-<h2>16. What this does not prove</h2>
-<p>That the pipeline handles real SCADA volume, clock synchronisation across sites, or every industrial protocol. It proves that in this laboratory the listed faults are detected, classified, quarantined or normalised, with original values preserved and completeness measured rather than assumed.</p>
+<h2>16. What I am not claiming</h2>
+<p>I am not claiming the pipeline handles real SCADA volume, clock synchronisation across sites, or every industrial protocol. What I am claiming is that in this laboratory the listed faults are detected, classified, quarantined or normalised, with original values preserved and completeness measured rather than assumed.</p>
     </article>
     <nav class="case-nav" aria-label="Case navigation">
       <a href="case-p01.html">&larr; Previous investigation</a>

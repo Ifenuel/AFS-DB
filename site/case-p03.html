@@ -68,8 +68,8 @@
 <div class="table-scroll"><table><thead><tr><th>Failure</th><th>Cause</th><th>Control demonstrated</th></tr></thead><tbody><tr><td>Mass update</td><td>no predicate, no row-count expectation, executed directly</td><td><code>BEGIN TRAN</code> + <code>@@ROWCOUNT</code> assertion + <code>ROLLBACK</code>; change log entry with outcome</td></tr><tr><td>Unsafe migration</td><td>adding a <code>NOT NULL</code> column with no default to a populated table</td><td>engine rejection; documented nullable → backfill → <code>NOT NULL</code> path</td></tr><tr><td>Reader blocking</td><td>long-running writer under READ COMMITTED</td><td><code>READ_COMMITTED_SNAPSHOT</code> — measured 5.12 s → 0.10 s</td></tr><tr><td>Data loss</td><td>no recoverable backup chain</td><td>FULL recovery + full and log backups + <code>STOPAT</code> restore, verified by checksum</td></tr></tbody></table></div>
 <h2>6. What the restore proves — and what it does not</h2>
 <p>It proves that the backup chain is complete and that the database can be returned to a chosen second before a bad change, with the exact pre-change checksum. It does not prove that the application recovers in the same time, that the storage fault would be diagnosed correctly, or that the RTO target is met end to end.</p>
-<h2>7. Limitations</h2>
-<ul><li>Single instance; no Always On, no secondary site, no hardware fault injection.</li><li>10,000 rows; the restore timing does not transfer to a large database.</li><li><code>READ_COMMITTED_SNAPSHOT</code> changes concurrency semantics; it was applied to a disposable database only.</li><li>The failure detection uses expected invariants supplied by the operator — in production these must come from a trusted baseline.</li></ul>
+<h2>7. Where I bounded the test</h2>
+<ul><li>I ran this on a single instance: no Always On, no secondary site, no hardware fault injection.</li><li>10,000 rows; the restore timing does not transfer to a large database.</li><li><code>READ_COMMITTED_SNAPSHOT</code> changes concurrency semantics, so I applied it to a disposable database only.</li><li>The failure detection uses expected invariants I supply; in production those must come from a trusted baseline.</li></ul>
 <h2>8. Production considerations</h2>
 <p>Change review must require a predicate and an expected row count; migrations should be validated against a production-shaped copy; direct ad-hoc updates should be restricted to emergencies and logged; restore drills should record both database and service recovery; and RTO claims should name what is being timed.</p>
 <h2>9. Runbook</h2>
@@ -80,8 +80,8 @@ python tools/labchange/run_scenarios.py</code></pre>
 sqlcmd -E -C -S . -d AFS_Lab_Change -b -I -i sql-server/labchange/10_scenarios.sql</code></pre>
 <h2>10. Evidence</h2>
 <div class="table-scroll"><table><thead><tr><th>Artifact</th><th>Path</th></tr></thead><tbody><tr><td>Setup and seed</td><td><code>sql-server/labchange/00_setup.sql</code></td></tr><tr><td>Bad update, guard, migrations, detection</td><td><code>sql-server/labchange/10_scenarios.sql</code></td></tr><tr><td>Driver and assertions</td><td><code>tools/labchange/run_scenarios.py</code></td></tr><tr><td>Results</td><td><code>evidence/research/P-03/RESULTS.md</code>, <code>p03-latest.json</code></td></tr></tbody></table></div>
-<h2>11. What this does not prove</h2>
-<p>That the same recovery time holds at production size, that a storage-hardware fault would be diagnosed as the ECB event was, or that application-level recovery meets the same target. It proves the database-level control and the measurement discipline, and it keeps the two timings apart.</p>
+<h2>11. What I am not claiming</h2>
+<p>I am not claiming the same recovery time holds at production size, that I would diagnose a storage-hardware fault the way the ECB event was diagnosed, or that application-level recovery meets the same target. I am claiming the database-level control and the measurement discipline, with the two timings kept apart.</p>
     </article>
     <nav class="case-nav" aria-label="Case navigation">
       <a href="case-p02.html">&larr; Previous investigation</a>

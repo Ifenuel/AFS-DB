@@ -69,8 +69,8 @@
 <p>The procedure and its tables share an owner, so the procedure can write to tables the caller cannot touch directly. That is the intended boundary: the API is the only write path, and the trigger records who used it. It also means the <code>DENY</code> is not a substitute for reviewing what the procedure itself does.</p>
 <h2>7. Failed-login detection</h2>
 <p>Using the existing <code>AFS_Audit.security.SecurityEvent</code> data, a simple query counts failures per principal. In this estate 20 failed events are present, concentrated on <code>AFS_App</code>. A production version would add a time window, a threshold and a baseline, because a count without a rate is not an alert.</p>
-<h2>8. Limitations</h2>
-<ul><li>The audit trail is an <strong>in-database trigger</strong>, not SQL Server Audit, and not a SIEM feed. An attacker with <code>ALTER</code> or <code>CONTROL</code> could disable it — which is precisely why <code>DENY ALTER</code> is part of the fix.</li><li>Denied statements never execute, so they are evidenced by the engine error (Msg 229), not by the trigger. Server audit or extended events would be required to capture attempts centrally.</li><li>The principals have no logins, so no authentication or password policy is tested.</li><li>Detection is a query, not a scheduled alert.</li><li>I make no claim about any bank's access model.</li></ul>
+<h2>8. Where I bounded the test</h2>
+<ul><li>The audit trail is an <strong>in-database trigger</strong>, not SQL Server Audit and not a SIEM feed.</li><li>An attacker with <code>ALTER</code> or <code>CONTROL</code> could disable it — precisely why <code>DENY ALTER</code> is part of the fix.</li><li>Denied statements never execute, so the engine error (Msg 229) evidences them, not the trigger. Capturing attempts centrally would need server audit or extended events.</li><li>The principals have no logins, so I test no authentication or password policy.</li><li>Detection is a query, not a scheduled alert.</li><li>I make no claim about any bank's access model.</li></ul>
 <h2>9. Production considerations</h2>
 <p>Separate the application role from the deployment role; never grant schema <code>CONTROL</code> to an application; keep audit outside the reach of the audited principal; ship audit rows to an append-only store; alert on privilege changes and on failed-login rate; and review grants periodically against a baseline, because permission drift is gradual.</p>
 <h2>10. Runbook</h2>
@@ -84,8 +84,8 @@ sqlcmd -E -C -S . -d AFS_Payments -Q &quot;SELECT TOP 20 * FROM paylab.SecurityL
 sqlcmd -E -C -S . -d AFS_Payments -Q &quot;SELECT p.name, dp.permission_name, dp.state_desc FROM sys.database_permissions dp JOIN sys.database_principals p ON p.principal_id=dp.grantee_principal_id WHERE p.name LIKE &#x27;paylab%&#x27;;&quot;</code></pre>
 <h2>11. Evidence</h2>
 <div class="table-scroll"><table><thead><tr><th>Artifact</th><th>Path</th></tr></thead><tbody><tr><td>Baseline principals and grants</td><td><code>sql-server/security/00_lab_setup.sql</code></td></tr><tr><td>Least privilege and audit trigger</td><td><code>sql-server/security/10_least_privilege_fix.sql</code></td></tr><tr><td>Driver and assertions</td><td><code>tools/security/run_security.py</code></td></tr><tr><td>Results</td><td><code>evidence/research/P-04/RESULTS.md</code>, <code>p04-latest.json</code></td></tr></tbody></table></div>
-<h2>12. What this does not prove</h2>
-<p>That the audit trail is tamper-proof against a determined administrator, that it replaces a SIEM, or that the permission model matches any real bank. It proves that over-privilege is demonstrable, that removing it blocks the write while the API still works, and that legitimate writes become attributable.</p>
+<h2>12. What I am not claiming</h2>
+<p>I am not claiming the audit trail is tamper-proof against a determined administrator, that it replaces a SIEM, or that the permission model matches any real bank. I am claiming that over-privilege is demonstrable, that removing it blocks the write while the API still works, and that legitimate writes become attributable.</p>
     </article>
     <nav class="case-nav" aria-label="Case navigation">
       <a href="case-p03.html">&larr; Previous investigation</a>

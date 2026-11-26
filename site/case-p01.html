@@ -97,10 +97,10 @@
 <div class="table-scroll"><table><thead><tr><th>Batch</th><th>Seconds</th></tr></thead><tbody><tr><td>Dry posting (1 call + reconcile + diagnostics)</td><td>0.275</td></tr><tr><td>Duplicate (3 calls + reconcile)</td><td>0.597</td></tr><tr><td>Baseline concurrency (2 overlapping 400 ms calls)</td><td>0.641</td></tr><tr><td>Fixed replay (3 calls)</td><td>0.465</td></tr></tbody></table></div>
 <p>These are the values from the latest executed run; they move with host load, which is itself a reason not to quote them as engine benchmarks.</p>
 <p>No throughput claim is made: the harness starts a process per call, so these numbers measure the experiment, not a payment engine.</p>
-<h2>16. Limitations</h2>
-<ul><li>Single instance; no network, no MSDTC, no real switch or card network.</li><li>Synthetic accounts and amounts; 200 accounts is not a volume test.</li><li>The 400 ms think-time is injected to widen the race; a real system can lose the update at any timing.</li><li>Reconciliation runs on demand, not continuously.</li><li>Oracle/MySQL were not part of this case.</li><li>Nothing here proves how NIBSS or any bank implemented its posting path.</li></ul>
-<h2>17. Residual risks</h2>
-<p>Idempotency-key retention and reuse across retries; outbox publishing is at-least-once, so consumers must dedupe; reconciliation is a batch control, not a prevention control; a compromised application login can still post balanced but fraudulent entries — which is the subject of P-04.</p>
+<h2>16. Where I bounded the test</h2>
+<ul><li>I ran this on a single instance: no network, no MSDTC, no real switch or card network.</li><li>The accounts and amounts are synthetic, and 200 accounts is not a volume test.</li><li>I injected the 400 ms think-time to widen the race; a real system can lose the update at any timing.</li><li>Reconciliation runs on demand, not continuously.</li><li>Oracle and MySQL were not part of this case.</li><li>I make no claim about how NIBSS or any bank implemented its posting path.</li></ul>
+<h2>17. What remains exposed</h2>
+<p>The idempotency key still has to be retained and guarded against reuse across retries. Outbox publishing is at-least-once, so consumers must dedupe. Reconciliation is a batch control, not a prevention control. A compromised application login can still post balanced but fraudulent entries — the subject of P-04.</p>
 <h2>18. Production considerations</h2>
 <p>Keys should be client-supplied, bounded in lifetime and stored with the payment; reconciliation should run per institution and per settlement window with explicit tolerances; ledger rows should be append-only with no update grant; breaks need an owner and an SLA; and detection latency should be alarmed, because the NIBSS case was found in settlement review rather than in the payment path.</p>
 <h2>19. Runbook</h2>
@@ -119,8 +119,8 @@ sqlcmd -E -C -S . -d AFS_Payments -b -I -Q &quot;EXEC paylab.usp_Reset @DropIdem
 sqlcmd -E -C -S . -d AFS_Payments -Q &quot;EXEC paylab.usp_Investigate;&quot;</code></pre>
 <h2>20. Reproducibility and evidence</h2>
 <div class="table-scroll"><table><thead><tr><th>Artifact</th><th>Path</th></tr></thead><tbody><tr><td>Schema</td><td><code>sql-server/paylab/00_schema.sql</code></td></tr><tr><td>Unsafe processor, reconciliation, diagnostics</td><td><code>sql-server/paylab/10_baseline_unsafe.sql</code></td></tr><tr><td>Fixed processor, outbox, inbox</td><td><code>sql-server/paylab/20_fix.sql</code></td></tr><tr><td>Reset</td><td><code>sql-server/paylab/99_reset.sql</code></td></tr><tr><td>Driver and assertions</td><td><code>tools/paylab/run_scenarios.py</code></td></tr><tr><td>Results (Markdown)</td><td><code>evidence/research/P-01/RESULTS.md</code></td></tr><tr><td>Results (JSON) + raw SQL log</td><td><code>evidence/research/P-01/p01-latest.json</code>, <code>p01-run-*.log</code></td></tr></tbody></table></div>
-<h2>21. What this does not prove</h2>
-<p>It does not prove that the fix works across services or hosts, that it scales, or that it matches any real payment processor's design. It proves that in this laboratory, under these injections, the four defects produce specific breaks and the four controls eliminate them, with every assertion executed.</p>
+<h2>21. What I am not claiming</h2>
+<p>I am not claiming the fix works across services or hosts, that it scales, or that it matches any real payment processor's design. What I am claiming is narrower, and executed: in this laboratory, under these injections, the four defects produce specific breaks and the four controls eliminate them, with every assertion run.</p>
     </article>
     <nav class="case-nav" aria-label="Case navigation">
       <a href="investigations.html">&larr; Previous investigation</a>
